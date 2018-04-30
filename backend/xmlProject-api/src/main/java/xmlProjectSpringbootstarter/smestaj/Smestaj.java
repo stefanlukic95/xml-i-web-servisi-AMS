@@ -13,7 +13,7 @@ public class Smestaj {
     private String opis;
     private String slika;
 
-        
+
     public String getId() {
         return id;
     }

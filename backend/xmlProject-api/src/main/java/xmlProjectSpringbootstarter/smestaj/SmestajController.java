@@ -30,7 +30,7 @@ public class SmestajController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<List<Smestaj>> getAll() {
-        List<Smestaj> bioskopi = this.smestajService.findAll();
-        return new ResponseEntity<List<Smestaj>>(bioskopi, HttpStatus.OK);
+        List<Smestaj> smestaj = this.smestajService.findAll();
+        return new ResponseEntity<List<Smestaj>>(smestaj, HttpStatus.OK);
     }
 }
