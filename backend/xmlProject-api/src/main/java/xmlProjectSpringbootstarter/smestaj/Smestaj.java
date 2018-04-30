@@ -3,7 +3,7 @@ package xmlProjectSpringbootstarter.smestaj;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection ="Smestaj")
+@Document(collection = "Smestaj")
 public class Smestaj {
 
 
@@ -13,6 +13,9 @@ public class Smestaj {
     private String opis;
     private String slika;
 
+    public Smestaj(){
+
+    }
 
     public String getId() {
         return id;
@@ -55,8 +58,6 @@ public class Smestaj {
         this.slika = slika;
     }
 
-    public Smestaj(){
 
-    }
 }
 
