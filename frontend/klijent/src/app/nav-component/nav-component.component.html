@@ -1,0 +1,13 @@
+<div class="nav">
+  <ul>
+    <li>
+      <a routerLink='/smestaj'>Smestaj</a>
+    </li>
+
+   
+    <li *ngIf="!isLoggedIn">
+      <a routerLink='/register'>Registruj se</a>
+    </li>
+    
+  </ul>
+</div>
