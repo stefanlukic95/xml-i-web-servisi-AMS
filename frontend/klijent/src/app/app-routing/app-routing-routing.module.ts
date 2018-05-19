@@ -1,9 +1,11 @@
+import { RegistracijaComponent } from './../registracija/registracija.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule,Router } from '@angular/router';
+import { Routes, RouterModule, Router } from '@angular/router';
 import { SmestajComponent } from '../smestaj/smestaj.component';
 
 const routes: Routes = [
-  {path: 'smestaj', component: SmestajComponent}
+  { path: 'smestaj', component: SmestajComponent },
+  { path: 'registracija', component: RegistracijaComponent }
 ];
 
 @NgModule({

@@ -1,0 +1,25 @@
+<div class="register-page">
+  <div class="form">
+    <form (ngSubmit)="registruj()" class="register-form" #registerForm="ngForm">
+      <!-- email -->
+      <input type="email" placeholder="Email" name="email" [(ngModel)]="korisnik.email" required email #email="ngModel"/>
+      <small [hidden]="email.valid || (email.pristine && !registerForm.submitted)">
+        Morate uneti email u formatu <i>aaa@bbb.com</i>.
+      </small>
+      <!-- password -->
+      <input type="password" placeholder="Šifra" required name="password" [(ngModel)]="korisnik.password" password #password="ngModel" />
+
+      <!-- ime -->
+      <input type="text" placeholder="Ime" name="ime" [(ngModel)]="korisnik.ime" required #ime="ngModel">
+
+      <!-- prezime -->
+      <input type="text" placeholder="Prezime" name="prezime" [(ngModel)]="korisnik.prezime" required #prezime="ngModel">
+
+      <!-- brtel -->
+      <input type="text" placeholder="Broj Telefona" name="brtel" [(ngModel)]="korisnik.brtel" required #brtel="ngModel">
+
+      <!-- submit -->
+      <button type="submit" [disabled]="!registerForm.form.valid">Registruj se</button>
+    </form>
+  </div>
+</div>
