@@ -28,6 +28,10 @@ export class KategorijaComponent implements OnInit {
       );
     }
 
+    deleteKategorija(kategorija: Kategorija) {
+      this.kategorijaService.deleteKategorija(kategorija).subscribe();
+      this.kategorije = this.kategorije.filter(k => k !== kategorija);
+    }
 
 
   constructor(private kategorijaService: KategorijaService,

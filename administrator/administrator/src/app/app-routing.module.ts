@@ -9,11 +9,14 @@ import { DodatneuslugeEditComponent } from './dodatneusluge/dodatneusluge-edit/d
 
 const routes: Routes = [
   {path: 'tipsmestaja', component: TipsmestajaComponent},
-  {path: 'tipsmestaja-edit', component: TipsmestajaEditComponent},
+  {path: 'tipsmestaja/:tipsmestajaId', component: TipsmestajaEditComponent},
   {path: 'kategorija', component: KategorijaComponent},
-  {path: 'kategorija-edit', component: KategorijaEditComponent},
+  {path: 'kategorija/:kategorijaId', component: KategorijaEditComponent},
   {path: 'dodatneusluge', component: DodatneuslugeComponent},
   {path: 'dodatneusluge-edit', component: DodatneuslugeEditComponent},
+  {path: 'tipsmestaja-edit', component: TipsmestajaEditComponent},
+  {path: 'kategorija-edit', component: KategorijaEditComponent},
+  
 
 ];
 

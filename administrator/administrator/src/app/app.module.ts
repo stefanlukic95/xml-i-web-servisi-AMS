@@ -14,6 +14,7 @@ import { KategorijaService } from './kategorija.service';
 import { KategorijaEditComponent } from './kategorija/kategorija-edit/kategorija-edit.component';
 import { DodatneuslugeComponent } from './dodatneusluge/dodatneusluge.component';
 import { DodatneuslugeEditComponent } from './dodatneusluge/dodatneusluge-edit/dodatneusluge-edit.component';
+import { DodatneuslugeService } from './dodatneusluge.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { DodatneuslugeEditComponent } from './dodatneusluge/dodatneusluge-edit/d
   providers: [
     TipsmestajaService,
     KategorijaService,
+    DodatneuslugeService,
    
   ],
   bootstrap: [AppComponent]

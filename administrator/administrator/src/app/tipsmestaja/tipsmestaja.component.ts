@@ -30,6 +30,11 @@ export class TipsmestajaComponent implements OnInit {
       );
     }
 
+    deleteTipsmestaja(tipsmestaja: Tipsmestaja) {
+      this.tipsmestajaService.deleteTipsmestaja(tipsmestaja).subscribe();
+      this.tipovismestaja = this.tipovismestaja.filter(t => t !== tipsmestaja);
+    }
+
   constructor(private tipsmestajaService: TipsmestajaService,
               private location: Location,
               private route: ActivatedRoute

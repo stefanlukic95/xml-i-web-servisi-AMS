@@ -1,3 +1,29 @@
-<p>
-  kategorija-edit works!
-</p>
+<div class="row" *ngIf="!kategorijaEdit">
+    <h1>Dodavanje nove kategorije smestaja</h1>
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <form #novaKategorijaForm="ngForm" (ngSubmit)="novaKategorijaSubmit(novaKategorijaForm)">
+        <div class="form-group">
+          <label for="naziv">Naziv tipa smestaja</label>
+          <input type="text" id="naziv" name="naziv" class="form-control" required ngModel #kategorijaNaziv="ngModel">
+        </div>
+
+        <button type="submit" class="btn btn-primary" [disabled]="!novaKategorijaForm.valid">Dodaj</button>
+  </form>
+  </div>
+  </div>
+
+
+<div class="row" *ngIf="kategorijaEdit">
+<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+  <h1>Uredjivanje kategorije smestaja</h1>
+  <form #editKategorijaForm="ngForm" (ngSubmit)="kategorijaEdt()">
+    <div class="form-group">
+      <label for="naziv">Naziv tipa smestaja</label>
+      <input type="text" id="naziv" name="naziv" class="form-control" required ngModel #bioskopNaziv="ngModel" [(ngModel)]="kategorijaEdit.naziv">
+      <span class="help-block" *ngIf="!bioskopNaziv.valid && bioskopNaziv.touched">Naziv kategorije smestaja je obavezan!</span>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!editKategorijaForm.valid">Izmeni</button>
+  </form>
+</div>
+</div>

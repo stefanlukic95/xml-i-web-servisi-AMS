@@ -3,10 +3,11 @@
     <h4 class="list-group-item-heading" > Naziv kategorije smestaja: {{kategorijeShow.naziv}}</h4>
 
     <span class="pull-right"> 
-      <button class="btn btn-primary" routerLink="/kategorija-edit">Izmeni</button>
+      <button class="btn btn-primary" [routerLink]="['/kategorija/' + kategorijeShow.id]">Izmeni</button>
+      <button class="btn btn-danger" (click)="deleteKategorija(kategorijeShow)">Obrisi</button>
     </span>
   </div>
 </a>
-
+<button class="btn btn-primary" routerLink="/kategorija-edit">Dodaj kategoriju smestaja</button>
 
 
