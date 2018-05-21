@@ -10,6 +10,7 @@ import { Korisnik } from '../korisnik/korisnik';
 export class RegistracijaComponent implements OnInit {
 
   korisnik = new Korisnik('', '', '', '', '', '');
+  loading = false;
 
   constructor(private korisnikService: KorisnikService) { }
 
@@ -18,6 +19,7 @@ export class RegistracijaComponent implements OnInit {
   }
 
   registruj() {
+    this.loading = true;
     this.korisnikService.insertKorisnik(this.korisnik).subscribe();
   }
 

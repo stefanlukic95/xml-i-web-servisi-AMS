@@ -11,9 +11,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username: string;
-  password: string;
+  model: any = {};
   user: Korisnik;
+  loading = false;
 
   constructor(private router: Router, private authService: AuthService, private token: TokenStorage,
   private korisnikService: KorisnikService) {}
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   login(): void {
-    this.authService.attemptAuth(this.username, this.password).subscribe(
+    this.authService.attemptAuth(this.model.username, this.model.password).subscribe(
       data => {
         this.token.saveToken(data.token);
         this.router.navigate(['smestaj']);

@@ -1,25 +1,34 @@
-<div class="register-page">
-  <div class="form">
-    <form (ngSubmit)="registruj()" class="register-form" #registerForm="ngForm">
+<div class="col-md-6 col-md-offset-3">
+  <h2>Registracija</h2>
+    <form name="form" (ngSubmit)="f.form.valid && registruj()" class="register-form" #f="ngForm" novalidate>
       <!-- email -->
-      <input type="email" placeholder="Email" name="email" [(ngModel)]="korisnik.email" required email #email="ngModel"/>
-      <small [hidden]="email.valid || (email.pristine && !registerForm.submitted)">
-        Morate uneti email u formatu <i>aaa@bbb.com</i>.
-      </small>
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+        <input type="email" class="form-control" placeholder="Email" name="email" [(ngModel)]="korisnik.email" required email #email="ngModel"/>
+        <div class="help-block" *ngIf="f.submitted && !email.valid">Email je obavezan</div>
+      </div>
       <!-- password -->
-      <input type="password" placeholder="Šifra" required name="password" [(ngModel)]="korisnik.password" password #password="ngModel" />
-
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+        <input type="password" class="form-control" placeholder="Šifra" required name="password" [(ngModel)]="korisnik.password" password #password="ngModel" />
+        <div class="help-block" *ngIf="f.submitted && !password.valid">Sifra je obavezna</div>
+      </div>
       <!-- ime -->
-      <input type="text" placeholder="Ime" name="ime" [(ngModel)]="korisnik.ime" required #ime="ngModel">
-
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !ime.valid }">
+        <input type="text" class="form-control" placeholder="Ime" name="ime" [(ngModel)]="korisnik.ime" required #ime="ngModel">
+        <div class="help-block" *ngIf="f.submitted && !ime.valid">Ime je obavezno</div>
+      </div>
       <!-- prezime -->
-      <input type="text" placeholder="Prezime" name="prezime" [(ngModel)]="korisnik.prezime" required #prezime="ngModel">
-
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !prezime.valid }">
+        <input type="text" class="form-control" placeholder="Prezime" name="prezime" [(ngModel)]="korisnik.prezime" required #prezime="ngModel">
+        <div class="help-block" *ngIf="f.submitted && !prezime.valid">Prezime je obavezno</div>
+      </div>
       <!-- brtel -->
-      <input type="text" placeholder="Broj Telefona" name="brtel" [(ngModel)]="korisnik.brtel" required #brtel="ngModel">
-
+      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !brtel.valid }">
+        <input type="text" class="form-control" placeholder="Broj Telefona" name="brtel" [(ngModel)]="korisnik.brtel" required #brtel="ngModel">
+        <div class="help-block" *ngIf="f.submitted && !brtel.valid">Broj telefona je obavezan</div>
+      </div>
       <!-- submit -->
-      <button type="submit" [disabled]="!registerForm.form.valid">Registruj se</button>
+      <button class="btn btn-primary" [disabled]="loading">Registruj se</button>
+      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+      <a class="btn btn-link" [routerLink]="['/login']">Odustani</a>
     </form>
-  </div>
 </div>
