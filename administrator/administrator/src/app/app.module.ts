@@ -3,18 +3,42 @@ import { CommonModule } from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NavComponentComponent } from './nav-component/nav-component.component';
+import { TipsmestajaComponent } from './tipsmestaja/tipsmestaja.component';
+import { TipsmestajaService } from './tipsmestaja.service';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { TipsmestajaEditComponent } from './tipsmestaja/tipsmestaja-edit/tipsmestaja-edit.component';
+import { KategorijaComponent } from './kategorija/kategorija.component';
+import { KategorijaService } from './kategorija.service';
+import { KategorijaEditComponent } from './kategorija/kategorija-edit/kategorija-edit.component';
+import { DodatneuslugeComponent } from './dodatneusluge/dodatneusluge.component';
+import { DodatneuslugeEditComponent } from './dodatneusluge/dodatneusluge-edit/dodatneusluge-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
+    NavComponentComponent,
+    TipsmestajaComponent,
+    TipsmestajaEditComponent,
+    KategorijaComponent,
+    KategorijaEditComponent,
+    DodatneuslugeComponent,
+    DodatneuslugeEditComponent,
    
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
     
   ],
-  providers: [],
+  providers: [
+    TipsmestajaService,
+    KategorijaService,
+   
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

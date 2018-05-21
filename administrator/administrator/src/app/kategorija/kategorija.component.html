@@ -1,0 +1,12 @@
+<a class="list-group-item clearfix" *ngFor="let kategorijeShow of kategorije">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading" > Naziv kategorije smestaja: {{kategorijeShow.naziv}}</h4>
+
+    <span class="pull-right"> 
+      <button class="btn btn-primary" routerLink="/kategorija-edit">Izmeni</button>
+    </span>
+  </div>
+</a>
+
+
+
