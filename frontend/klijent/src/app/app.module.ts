@@ -1,3 +1,4 @@
+import { AuthService } from './login-core/auth.service';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 import { KorisnikService } from './korisnik/korisnik.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,6 +14,8 @@ import { HeaderComponent } from './header/header.component';
 import { SmestajComponent } from './smestaj/smestaj.component';
 import { RegistracijaComponent } from './registracija/registracija.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { TokenStorage } from './login-core/token-storage';
 
 
 @NgModule({
@@ -22,6 +25,7 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     SmestajComponent,
     RegistracijaComponent,
+    LoginComponent,
 
   ],
   imports: [
@@ -33,6 +37,8 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [
     KorisnikService,
+    AuthService,
+    TokenStorage
   ],
   bootstrap: [AppComponent]
 })

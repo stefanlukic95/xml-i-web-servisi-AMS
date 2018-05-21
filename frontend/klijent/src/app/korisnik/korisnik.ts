@@ -5,5 +5,7 @@ export class Korisnik {
     public email: string,
     public password: string,
     public brtel: string,
+    public pmb: string,
+    public id?: string
   ) { }
 }
