@@ -34,7 +34,9 @@ public class KorisnikController {
             List<String> uloge = new ArrayList<String>();
             uloge.add("ROLE_USER");
             korisnik.setUloge(uloge);
+            System.out.println("DOSAO DO INSERTA");
             Korisnik k = korisnikService.insert(korisnik);
+            System.out.println("PROSAO INSERT");
             return new ResponseEntity<Korisnik>(k, HttpStatus.OK);
         } else {
             return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);

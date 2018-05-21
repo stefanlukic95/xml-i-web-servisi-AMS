@@ -36,9 +36,6 @@ public class KorisnikServiceImpl implements UserDetailsService,KorisnikService {
                 ret = k;
             }
         }
-        if(ret == null) {
-            throw new UsernameNotFoundException("Invalid username or password");
-        }
         return ret;
     }
 
