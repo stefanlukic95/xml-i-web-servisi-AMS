@@ -1,3 +1,29 @@
-<p>
-  dodatneusluge-edit works!
-</p>
+<div class="row" *ngIf="!dodatnauslugaEdit">
+  <h1>Dodavanje nove dodatne usluge smestaja</h1>
+<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <form #novaDodatnauslugaForm="ngForm" (ngSubmit)="novaDodatnauslugaSubmit(novaDodatnauslugaForm)">
+      <div class="form-group">
+        <label for="naziv">Naziv dodatne usluge smestaja</label>
+        <input type="text" id="naziv" name="naziv" class="form-control" required ngModel #dodatnauslugaNaziv="ngModel">
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="!novaDodatnauslugaForm.valid">Dodaj</button>
+</form>
+</div>
+</div>
+
+
+<div class="row" *ngIf="dodatnauslugaEdit">
+<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+<h1>Uredjivanje dodatne usluge smestaja</h1>
+<form #editDodatnauslugaForm="ngForm" (ngSubmit)="dodatnauslugaEdt()">
+  <div class="form-group">
+    <label for="naziv">Naziv dodatne usluge smestaja</label>
+    <input type="text" id="naziv" name="naziv" class="form-control" required ngModel #dodatnauslugaNaziv="ngModel" [(ngModel)]="dodatnauslugaEdit.naziv">
+    <span class="help-block" *ngIf="!dodatnauslugaNaziv.valid && dodatnauslugaNaziv.touched">Naziv dodatne usluge smestaja je obavezan!</span>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="!editDodatnauslugaForm.valid">Izmeni</button>
+</form>
+</div>
+</div>

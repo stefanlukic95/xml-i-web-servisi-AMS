@@ -13,17 +13,17 @@
   </div>
 
 
-<div class="row" *ngIf="tipsmestajaEdit">
-<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-  <h1>Uredjivanje tipa smestaja</h1>
-  <form #editTipsmestajaForm="ngForm" (ngSubmit)="tipsmestajaEdt()">
-    <div class="form-group">
-      <label for="naziv">Naziv tipa smestaja</label>
-      <input type="text" id="naziv" name="naziv" class="form-control" required ngModel #bioskopNaziv="ngModel" [(ngModel)]="tipsmestajaEdit.naziv">
-      <span class="help-block" *ngIf="!bioskopNaziv.valid && bioskopNaziv.touched">Naziv tipa smestaja je obavezan!</span>
+  <div class="row" *ngIf="tipsmestajaEdit">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <h1>Uredjivanje tipa smestaja</h1>
+      <form #editTipsmestajaForm="ngForm" (ngSubmit)="tipsmestajaEdt()">
+        <div class="form-group">
+          <label for="naziv">Naziv tipa smestaja</label>
+          <input type="text" id="naziv" name="naziv" class="form-control" required ngModel #tipsmestajaNaziv="ngModel" [(ngModel)]="tipsmestajaEdit.naziv">
+          <span class="help-block" *ngIf="!tipsmestajaNaziv.valid && tipsmestajaNaziv.touched">Naziv tipa smestaja je obavezan!</span>
+        </div>
+    
+        <button type="submit" class="btn btn-primary" [disabled]="!editTipsmestajaForm.valid">Izmeni</button>
+      </form>
     </div>
-
-    <button type="submit" class="btn btn-primary" [disabled]="!tipsmestajaEdit.valid">Izmeni</button>
-  </form>
-</div>
-</div>
+    </div>

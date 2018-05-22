@@ -13,10 +13,10 @@ const routes: Routes = [
   {path: 'kategorija', component: KategorijaComponent},
   {path: 'kategorija/:kategorijaId', component: KategorijaEditComponent},
   {path: 'dodatneusluge', component: DodatneuslugeComponent},
-  {path: 'dodatneusluge-edit', component: DodatneuslugeEditComponent},
+  {path: 'dodatneusluge/:dodatnauslugaId', component: DodatneuslugeEditComponent},
   {path: 'tipsmestaja-edit', component: TipsmestajaEditComponent},
   {path: 'kategorija-edit', component: KategorijaEditComponent},
-  
+  {path: 'dodatneusluge-edit', component: DodatneuslugeEditComponent},
 
 ];
 

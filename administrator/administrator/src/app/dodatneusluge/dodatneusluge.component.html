@@ -3,9 +3,11 @@
     <h4 class="list-group-item-heading" > Naziv dodatne usluge: {{dodatneuslugeShow.naziv}}</h4>
 
     <span class="pull-right"> 
-      <button class="btn btn-primary" routerLink="/dodatneusluge-edit">Izmeni</button>
+      <button class="btn btn-primary"  [routerLink]="['/dodatneusluge/' + dodatneuslugeShow.id]">Izmeni</button>
+      <button class="btn btn-danger" (click)="deleteDodatnausluga(dodatneuslugeShow)">Obrisi</button>
     </span>
   </div>
 </a>
+<button class="btn btn-primary" routerLink="/dodatneusluge-edit">Dodaj dodatnu uslugu smestaja</button>
 
 

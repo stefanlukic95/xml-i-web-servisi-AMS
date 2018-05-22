@@ -18,9 +18,9 @@
   <h1>Uredjivanje kategorije smestaja</h1>
   <form #editKategorijaForm="ngForm" (ngSubmit)="kategorijaEdt()">
     <div class="form-group">
-      <label for="naziv">Naziv tipa smestaja</label>
-      <input type="text" id="naziv" name="naziv" class="form-control" required ngModel #bioskopNaziv="ngModel" [(ngModel)]="kategorijaEdit.naziv">
-      <span class="help-block" *ngIf="!bioskopNaziv.valid && bioskopNaziv.touched">Naziv kategorije smestaja je obavezan!</span>
+      <label for="naziv">Naziv kategorije smestaja</label>
+      <input type="text" id="naziv" name="naziv" class="form-control" required ngModel #kategorijaNaziv="ngModel" [(ngModel)]="kategorijaEdit.naziv">
+      <span class="help-block" *ngIf="!kategorijaNaziv.valid && kategorijaNaziv.touched">Naziv kategorije smestaja je obavezan!</span>
     </div>
 
     <button type="submit" class="btn btn-primary" [disabled]="!editKategorijaForm.valid">Izmeni</button>

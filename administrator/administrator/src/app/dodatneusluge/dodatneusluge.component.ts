@@ -29,7 +29,10 @@ export class DodatneuslugeComponent implements OnInit {
     }
 
 
-
+    deleteDodatnausluga(dodatnausluga: Dodatneusluge) {
+      this.dodatneuslugeService.deleteDodatnausluga(dodatnausluga).subscribe();
+      this.dodatneusluge = this.dodatneusluge.filter(d => d !== dodatnausluga);
+    }
   constructor(private dodatneuslugeService: DodatneuslugeService,
               private location: Location) { }
 
