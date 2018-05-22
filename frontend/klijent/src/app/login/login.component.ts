@@ -4,6 +4,7 @@ import { AuthService } from './../login-core/auth.service';
 import { Router } from '@angular/router';
 import { Korisnik } from './../korisnik/korisnik';
 import { Component, OnInit } from '@angular/core';
+import { AlertService } from '../alert/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +16,12 @@ export class LoginComponent implements OnInit {
   user: Korisnik;
   loading = false;
 
-  constructor(private router: Router, private authService: AuthService, private token: TokenStorage,
-  private korisnikService: KorisnikService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private token: TokenStorage,
+    private alertService: AlertService,
+    private korisnikService: KorisnikService) {}
 
   ngOnInit() {}
 
@@ -25,7 +30,9 @@ export class LoginComponent implements OnInit {
       data => {
         this.token.saveToken(data.token);
         this.router.navigate(['smestaj']);
-        window.location.reload();
+      },
+      error => {
+        this.alertService.error('Uneli ste neispravan email ili sifru');
       }
     );
 

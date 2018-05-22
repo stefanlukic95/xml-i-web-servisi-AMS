@@ -6,7 +6,7 @@
       <div *ngIf="f.submitted && !username.valid" class="help-block">Email je obavezan i mora biti u formatu(aaa@bb.cc)</div>
     </div>
     <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
-      <input type="text" class="form-control" placeholder="Sifra" name="password" [(ngModel)]="model.password" #password="ngModel" required />
+      <input type="password" class="form-control" placeholder="Sifra" name="password" [(ngModel)]="model.password" #password="ngModel" required />
       <div *ngIf="f.submitted && !password.valid" class="help-block">Sifra je obavezna</div>
     </div>
     <div class="form-group">
