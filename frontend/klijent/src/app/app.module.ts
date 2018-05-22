@@ -1,3 +1,4 @@
+import { AlertService } from './alert/alert.service';
 import { AuthService } from './login-core/auth.service';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 import { KorisnikService } from './korisnik/korisnik.service';
@@ -16,6 +17,7 @@ import { RegistracijaComponent } from './registracija/registracija.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { TokenStorage } from './login-core/token-storage';
+import { AlertComponent } from './alert/alert.component';
 
 
 @NgModule({
@@ -26,6 +28,7 @@ import { TokenStorage } from './login-core/token-storage';
     SmestajComponent,
     RegistracijaComponent,
     LoginComponent,
+    AlertComponent,
 
   ],
   imports: [
@@ -38,7 +41,8 @@ import { TokenStorage } from './login-core/token-storage';
   providers: [
     KorisnikService,
     AuthService,
-    TokenStorage
+    TokenStorage,
+    AlertService
   ],
   bootstrap: [AppComponent]
 })

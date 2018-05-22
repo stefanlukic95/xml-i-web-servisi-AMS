@@ -28,18 +28,16 @@ public class KorisnikController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<Korisnik> registerKorisnik(@RequestBody Korisnik korisnik) {
+    public ResponseEntity<?> registerKorisnik(@RequestBody Korisnik korisnik) {
         if (korisnikService.findByEmail(korisnik.getEmail()) == null) {
             korisnik.setEnabled(false);
             List<String> uloge = new ArrayList<String>();
             uloge.add("ROLE_USER");
             korisnik.setUloge(uloge);
-            System.out.println("DOSAO DO INSERTA");
             Korisnik k = korisnikService.insert(korisnik);
-            System.out.println("PROSAO INSERT");
             return new ResponseEntity<Korisnik>(k, HttpStatus.OK);
         } else {
-            return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Korisnik vec postoji");
         }
     }
 }
