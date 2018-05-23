@@ -16,6 +16,7 @@ public class Korisnik {
     private String email;
     private String password;
     private String br_tel;
+    private String adresa;
     private String pmb;
     @JsonIgnore
     private boolean enabled;
@@ -26,15 +27,25 @@ public class Korisnik {
 
     }
 
-    public Korisnik(String ime, String prezime, String email, String password, String br_tel, String pmb, boolean enabled, List<String> uloge) {
+    public Korisnik(String ime, String prezime, String email, String password, String br_tel, String adresa, String pmb, boolean enabled, List<String> uloge) {
         this.ime = ime;
         this.prezime = prezime;
         this.email = email;
         this.password = password;
         this.br_tel = br_tel;
+        this.adresa=adresa;
         this.pmb = pmb;
         this.enabled = enabled;
         this.uloge = uloge;
+
+    }
+
+    public String getAdresa() {
+        return adresa;
+    }
+
+    public void setAdresa(String adresa) {
+        this.adresa = adresa;
     }
 
     public boolean isEnabled() {

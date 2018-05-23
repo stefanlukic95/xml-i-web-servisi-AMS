@@ -15,6 +15,8 @@ import { KategorijaEditComponent } from './kategorija/kategorija-edit/kategorija
 import { DodatneuslugeComponent } from './dodatneusluge/dodatneusluge.component';
 import { DodatneuslugeEditComponent } from './dodatneusluge/dodatneusluge-edit/dodatneusluge-edit.component';
 import { DodatneuslugeService } from './dodatneusluge.service';
+import { KorisniciComponent } from './korisnici/korisnici.component';
+import { KorisniciService } from './korisnici.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +27,7 @@ import { DodatneuslugeService } from './dodatneusluge.service';
     KategorijaEditComponent,
     DodatneuslugeComponent,
     DodatneuslugeEditComponent,
+    KorisniciComponent,
    
     
   ],
@@ -39,6 +42,7 @@ import { DodatneuslugeService } from './dodatneusluge.service';
     TipsmestajaService,
     KategorijaService,
     DodatneuslugeService,
+    KorisniciService,
    
   ],
   bootstrap: [AppComponent]

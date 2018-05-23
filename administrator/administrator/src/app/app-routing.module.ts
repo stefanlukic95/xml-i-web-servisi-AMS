@@ -6,6 +6,7 @@ import { KategorijaComponent } from './kategorija/kategorija.component';
 import { KategorijaEditComponent } from './kategorija/kategorija-edit/kategorija-edit.component';
 import { DodatneuslugeComponent } from './dodatneusluge/dodatneusluge.component';
 import { DodatneuslugeEditComponent } from './dodatneusluge/dodatneusluge-edit/dodatneusluge-edit.component';
+import { KorisniciComponent } from './korisnici/korisnici.component';
 
 const routes: Routes = [
   {path: 'tipsmestaja', component: TipsmestajaComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'tipsmestaja-edit', component: TipsmestajaEditComponent},
   {path: 'kategorija-edit', component: KategorijaEditComponent},
   {path: 'dodatneusluge-edit', component: DodatneuslugeEditComponent},
+  {path: 'korisnici', component: KorisniciComponent},
 
 ];
 

@@ -40,4 +40,16 @@ public class KorisnikController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Korisnik vec postoji");
         }
     }
+
+
+    @RequestMapping(
+            method = RequestMethod.POST,
+            value = "/korisnici",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Korisnik> insertKorisnik(@RequestBody Korisnik korisnik) throws Exception{
+        Korisnik createdKorisnik  = this.korisnikService.create(korisnik);
+        return new ResponseEntity<Korisnik>(createdKorisnik, HttpStatus.CREATED);
+    }
 }
