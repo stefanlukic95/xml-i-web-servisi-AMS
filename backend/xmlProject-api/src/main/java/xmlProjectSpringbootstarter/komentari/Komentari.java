@@ -9,7 +9,7 @@ public class Komentari {
     @Id
     private String id;
     private String sadrzaj;
-    
+
 
 
     public Komentari(){
