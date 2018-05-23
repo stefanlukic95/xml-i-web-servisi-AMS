@@ -45,8 +45,10 @@ public class KorisnikController {
             List<String> uloge = new ArrayList<String>();
             uloge.add("ROLE_USER");
             korisnik.setUloge(uloge);
+            korisnik.setEnabled(true);
+            korisnik.setRezervacije(new ArrayList<Rezervacija>());
             Korisnik k = korisnikService.insert(korisnik);
-            return new ResponseEntity<Korisnik>(k, HttpStatus.OK);
+            return new ResponseEntity<Korisnik>(k, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);
         }

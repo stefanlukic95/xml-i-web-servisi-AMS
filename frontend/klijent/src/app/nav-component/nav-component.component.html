@@ -3,7 +3,7 @@
     <li>
       <a routerLink='/smestaj'>Smestaj</a>
     </li>
-    <li>
+    <li *ngIf="!isLoggedIn">
       <a routerLink='/login'>Login</a>
     </li>
     <li *ngIf="!isLoggedIn">
@@ -11,7 +11,7 @@
     </li>
   </ul>
 </div>
-<div class="logoutLblPos">
+<div *ngIf="isLoggedIn" class="logoutLblPos">
   <button class="btn btn-default btn-xs" (click)="logout()">Izloguj se</button>
-  <button class="btn btn-default btn-xs">{{ime}} {{prezime}}</button>
+  <button class="btn btn-default btn-xs" routerLink='profil' >Profil</button>
 </div>

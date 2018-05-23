@@ -17,7 +17,7 @@ public class Korisnik {
     private String prezime;
     private String email;
     private String password;
-    private String br_tel;
+    private String brtel;
     private String adresa;
     private String pmb;
     private List<Rezervacija> rezervacije;
@@ -27,17 +27,14 @@ public class Korisnik {
     private List<String> uloge;
 
     public Korisnik() {
-        this.enabled = true;
-        this.rezervacije = new ArrayList<Rezervacija>();
-        this.uloge = new ArrayList<String>();
     }
 
-    public Korisnik(String ime, String prezime, String email, String password, String br_tel, String adresa, String pmb, List<Rezervacija> rezervacije, boolean enabled, List<String> uloge) {
+    public Korisnik(String ime, String prezime, String email, String password, String brtel, String adresa, String pmb, List<Rezervacija> rezervacije, boolean enabled, List<String> uloge) {
         this.ime = ime;
         this.prezime = prezime;
         this.email = email;
         this.password = password;
-        this.br_tel = br_tel;
+        this.brtel = brtel;
         this.adresa = adresa;
         this.pmb = pmb;
         this.rezervacije = rezervacije;
@@ -105,12 +102,12 @@ public class Korisnik {
         this.password = password;
     }
 
-    public String getBr_tel() {
-        return br_tel;
+    public String getBrtel() {
+        return brtel;
     }
 
-    public void setBr_tel(String br_tel) {
-        this.br_tel = br_tel;
+    public void setBrtel(String brtel) {
+        this.brtel = brtel;
     }
 
     public String getPmb() {

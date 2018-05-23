@@ -1,6 +1,8 @@
+import { Interceptor } from './login-core/interceptor';
+import { ToggleLoginService } from './login/toggle-login.service';
 import { AlertService } from './alert/alert.service';
 import { AuthService } from './login-core/auth.service';
-import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpHandler, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { KorisnikService } from './korisnik/korisnik.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -44,7 +46,11 @@ import { ProfilComponent } from './profil/profil.component';
     KorisnikService,
     AuthService,
     TokenStorage,
-    AlertService
+    AlertService,
+    ToggleLoginService,
+    {provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi : true}
   ],
   bootstrap: [AppComponent]
 })
