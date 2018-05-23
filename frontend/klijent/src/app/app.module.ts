@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { TokenStorage } from './login-core/token-storage';
 import { AlertComponent } from './alert/alert.component';
+import { ProfilComponent } from './profil/profil.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { AlertComponent } from './alert/alert.component';
     RegistracijaComponent,
     LoginComponent,
     AlertComponent,
+    ProfilComponent,
 
   ],
   imports: [

@@ -30,6 +30,7 @@ export class LoginComponent implements OnInit {
       data => {
         this.token.saveToken(data.token);
         this.router.navigate(['smestaj']);
+        console.log('token: ' + this.token.getToken());
       },
       error => {
         this.alertService.error('Uneli ste neispravan email ili sifru');

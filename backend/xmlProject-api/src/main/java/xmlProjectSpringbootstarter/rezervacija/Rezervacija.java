@@ -2,6 +2,7 @@ package xmlProjectSpringbootstarter.rezervacija;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import xmlProjectSpringbootstarter.korisnik.Korisnik;
 
 import java.util.Date;
 
@@ -22,6 +23,7 @@ public class Rezervacija {
         this.datumDolaska = datumDolaska;
         this.datumOdlaska = datumOdlaska;
     }
+
 
     public String getId() {
         return id;

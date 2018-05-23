@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import xmlProjectSpringbootstarter.rezervacija.Rezervacija;
 
 import javax.xml.ws.Response;
 import java.util.ArrayList;
@@ -23,6 +24,17 @@ public class KorisnikController {
     }
 
     @RequestMapping(
+            method = RequestMethod.GET,
+            value = "/user/{email}/",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Korisnik> getKorisnik(@PathVariable("email") String email) {
+        Korisnik korisnik = korisnikService.findByEmail(email);
+        System.out.println(korisnik.getEmail());
+        return new ResponseEntity<Korisnik>(korisnik, HttpStatus.OK);
+
+    }
+    @RequestMapping(
             method = RequestMethod.POST,
             value = "/signup",
             consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -30,14 +42,13 @@ public class KorisnikController {
     )
     public ResponseEntity<?> registerKorisnik(@RequestBody Korisnik korisnik) {
         if (korisnikService.findByEmail(korisnik.getEmail()) == null) {
-            korisnik.setEnabled(false);
             List<String> uloge = new ArrayList<String>();
             uloge.add("ROLE_USER");
             korisnik.setUloge(uloge);
             Korisnik k = korisnikService.insert(korisnik);
             return new ResponseEntity<Korisnik>(k, HttpStatus.OK);
         } else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Korisnik vec postoji");
+            return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);
         }
     }
 }

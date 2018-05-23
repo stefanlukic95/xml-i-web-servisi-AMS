@@ -52,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().
                 authorizeRequests()
-                .antMatchers("/token/*").permitAll()
+                .antMatchers("/token/*", "/").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
@@ -63,7 +63,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/signup","/tipsmestaja","/tipsmestaja/*","/kategorija","/kategorija/*","/dodatneusluge","/dodatneusluge/*");
+        web.ignoring().antMatchers("/signup", "/user/*/", "/tipsmestaja","/tipsmestaja/*","/kategorija","/kategorija/*","/dodatneusluge","/dodatneusluge/*");
     }
 
     @Bean

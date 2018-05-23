@@ -3,7 +3,9 @@ package xmlProjectSpringbootstarter.korisnik;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import xmlProjectSpringbootstarter.rezervacija.Rezervacija;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Document(collection = "Korisnici")
@@ -17,24 +19,36 @@ public class Korisnik {
     private String password;
     private String br_tel;
     private String pmb;
+    private List<Rezervacija> rezervacije;
     @JsonIgnore
     private boolean enabled;
     @JsonIgnore
     private List<String> uloge;
 
     public Korisnik() {
-
+        this.enabled = true;
+        this.rezervacije = new ArrayList<Rezervacija>();
+        this.uloge = new ArrayList<String>();
     }
 
-    public Korisnik(String ime, String prezime, String email, String password, String br_tel, String pmb, boolean enabled, List<String> uloge) {
+    public Korisnik(String ime, String prezime, String email, String password, String br_tel, String pmb, List<Rezervacija> rezervacije, boolean enabled, List<String> uloge) {
         this.ime = ime;
         this.prezime = prezime;
         this.email = email;
         this.password = password;
         this.br_tel = br_tel;
         this.pmb = pmb;
+        this.rezervacije = rezervacije;
         this.enabled = enabled;
         this.uloge = uloge;
+    }
+
+    public List<Rezervacija> getRezervacije() {
+        return rezervacije;
+    }
+
+    public void setRezervacije(List<Rezervacija> rezervacije) {
+        this.rezervacije = rezervacije;
     }
 
     public boolean isEnabled() {

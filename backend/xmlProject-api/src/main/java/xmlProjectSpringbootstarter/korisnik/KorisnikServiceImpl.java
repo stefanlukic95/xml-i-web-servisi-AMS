@@ -22,6 +22,11 @@ public class KorisnikServiceImpl implements UserDetailsService,KorisnikService {
     private BCryptPasswordEncoder bcryptEncoder;
 
     @Override
+    public Korisnik findOne(String id) {
+        return korisnikRepository.findOne(id);
+    }
+
+    @Override
     public Korisnik insert(Korisnik k) {
         k.setPassword(bcryptEncoder.encode(k.getPassword()));
         return korisnikRepository.insert(k);
@@ -30,13 +35,12 @@ public class KorisnikServiceImpl implements UserDetailsService,KorisnikService {
     @Override
     public Korisnik findByEmail(String email) {
         List<Korisnik> korisnici = korisnikRepository.findAll();
-        Korisnik ret = null;
         for(Korisnik k: korisnici) {
             if(k.getEmail().equals(email)) {
-                ret = k;
+                return k;
             }
         }
-        return ret;
+        return null;
     }
 
     @Override
