@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {}
 
   login(): void {
+    this.loading = true;
     this.authService.attemptAuth(this.model.username, this.model.password).subscribe(
       data => {
         this.token.saveToken(data.token);
@@ -38,6 +39,7 @@ export class LoginComponent implements OnInit {
       },
       error => {
         this.alertService.error('Uneli ste neispravan email ili sifru');
+        this.loading = false;
       }
     );
 

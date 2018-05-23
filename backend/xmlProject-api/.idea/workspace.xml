@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="605d8e24-14d9-49ca-8660-5907efd3dcb4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/authentication/JwtAuthenticationFilter.java" afterPath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/authentication/JwtAuthenticationFilter.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/config/WebSecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/config/WebSecurityConfig.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/korisnik/Korisnik.java" afterPath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/korisnik/Korisnik.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/korisnik/KorisnikController.java" afterPath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/korisnik/KorisnikController.java" />
-    </list>
+    <list default="true" id="605d8e24-14d9-49ca-8660-5907efd3dcb4" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -135,16 +129,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
               <caret line="5" column="39" lean-forward="true" selection-start-line="5" selection-start-column="39" selection-end-line="5" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JwtTokenUtil.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/authentication/JwtTokenUtil.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -470,14 +454,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/authentication/JwtTokenUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/authentication/AuthToken.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
@@ -966,6 +942,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="47" column="38" lean-forward="true" selection-start-line="47" selection-start-column="38" selection-end-line="47" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../../PI/reseno/vezbe/src/main/java/pi/vezbe/service/impl/CountryServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="580">
+          <caret line="54" column="103" lean-forward="true" selection-start-line="54" selection-start-column="103" selection-end-line="54" selection-end-column="103" />
           <folding />
         </state>
       </provider>
