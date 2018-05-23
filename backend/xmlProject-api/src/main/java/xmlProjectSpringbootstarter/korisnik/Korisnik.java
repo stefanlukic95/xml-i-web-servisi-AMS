@@ -18,6 +18,7 @@ public class Korisnik {
     private String email;
     private String password;
     private String br_tel;
+    private String adresa;
     private String pmb;
     private List<Rezervacija> rezervacije;
     @JsonIgnore
@@ -31,16 +32,25 @@ public class Korisnik {
         this.uloge = new ArrayList<String>();
     }
 
-    public Korisnik(String ime, String prezime, String email, String password, String br_tel, String pmb, List<Rezervacija> rezervacije, boolean enabled, List<String> uloge) {
+    public Korisnik(String ime, String prezime, String email, String password, String br_tel, String adresa, String pmb, List<Rezervacija> rezervacije, boolean enabled, List<String> uloge) {
         this.ime = ime;
         this.prezime = prezime;
         this.email = email;
         this.password = password;
         this.br_tel = br_tel;
+        this.adresa = adresa;
         this.pmb = pmb;
         this.rezervacije = rezervacije;
         this.enabled = enabled;
         this.uloge = uloge;
+    }
+
+    public String getAdresa() {
+        return adresa;
+    }
+
+    public void setAdresa(String adresa) {
+        this.adresa = adresa;
     }
 
     public List<Rezervacija> getRezervacije() {

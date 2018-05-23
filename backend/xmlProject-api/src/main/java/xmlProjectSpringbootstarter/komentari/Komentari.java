@@ -11,6 +11,7 @@ public class Komentari {
     private String sadrzaj;
 
 
+
     public Komentari(){
 
     }

@@ -13,7 +13,7 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
   styleUrls: ['./kategorija-edit.component.css']
 })
 export class KategorijaEditComponent implements OnInit {
-  novaKategorija: NovaKategorija= new NovaKategorija("");
+  novaKategorija: NovaKategorija = new NovaKategorija("");
   kategorijaId: string;
   kategorijaEdit: Kategorija;
   kategorije: Kategorija[];

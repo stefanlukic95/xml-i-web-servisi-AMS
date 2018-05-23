@@ -51,4 +51,16 @@ public class KorisnikController {
             return new ResponseEntity<Korisnik>(HttpStatus.BAD_REQUEST);
         }
     }
+
+
+    @RequestMapping(
+            method = RequestMethod.POST,
+            value = "/korisnici",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Korisnik> insertKorisnik(@RequestBody Korisnik korisnik) throws Exception{
+        Korisnik createdKorisnik  = this.korisnikService.create(korisnik);
+        return new ResponseEntity<Korisnik>(createdKorisnik, HttpStatus.CREATED);
+    }
 }

@@ -60,4 +60,10 @@ public class KorisnikServiceImpl implements UserDetailsService,KorisnikService {
 
         return userDetails;
     }
+
+    @Override
+    public Korisnik create(Korisnik korisnik) throws Exception {
+        Korisnik savedKorisnik = this.korisnikRepository.insert(korisnik);
+        return savedKorisnik;
+    }
 }
