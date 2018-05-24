@@ -1,1 +1,27 @@
-<h1>Smestaj</h1>
+<div class="col-75">
+  <div class="container">
+    <form>
+      <div class="row">
+        <div class="col-50">
+          <h2>Pretraga smestaja</h2>
+          <label for="mesto">Mesto:</label>
+          <input type="text" id="mesto" name="mesto">
+          <label for="br_mesta">Broj osoba:</label>
+          <input type="number" name="br_mesta" step="1" min="1" value="1">
+          <div class="row">
+            <div class="col-50">
+              <label for="od_datum">Datum prijavljivanja:</label>
+              <input type="date" id="od_datum" name="od_datum">
+            </div>
+            <div class="col-50">
+              <label for="do_datum">Datum odjavljivanja:</label>
+              <input type="date" id="do_datum" name="do_datum">
+            </div>
+          </div>
+        </div>
+      </div>
+      <input type="submit" value="Pretrazi" class="btn">
+      <button class="btn-link" routerLink='detaljna_pretraga'>Detaljna pretraga</button>
+    </form>
+  </div>
+</div>

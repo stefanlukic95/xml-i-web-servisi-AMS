@@ -21,12 +21,14 @@ public class Korisnik {
     private String adresa;
     private String pmb;
     private List<Rezervacija> rezervacije;
+
     @JsonIgnore
     private boolean enabled;
     @JsonIgnore
     private List<String> uloge;
 
     public Korisnik() {
+
     }
 
     public Korisnik(String ime, String prezime, String email, String password, String brtel, String adresa, String pmb, List<Rezervacija> rezervacije, boolean enabled, List<String> uloge) {

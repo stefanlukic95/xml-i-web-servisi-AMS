@@ -21,6 +21,7 @@ import { LoginComponent } from './login/login.component';
 import { TokenStorage } from './login-core/token-storage';
 import { AlertComponent } from './alert/alert.component';
 import { ProfilComponent } from './profil/profil.component';
+import { DetaljnaPretragaComponent } from './detaljna-pretraga/detaljna-pretraga.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { ProfilComponent } from './profil/profil.component';
     LoginComponent,
     AlertComponent,
     ProfilComponent,
+    DetaljnaPretragaComponent,
 
   ],
   imports: [

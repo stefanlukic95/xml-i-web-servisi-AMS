@@ -42,8 +42,6 @@ public class SmestajServiceImpl implements  SmestajService{
         smestajUpdt.setOpis(smestaj.getOpis());
         smestajUpdt.setSlika((smestaj.getSlika()));
 
-
-
         Smestaj updateSmestaj = this.smestajRepository.save(smestajUpdt);
         return updateSmestaj;
     }

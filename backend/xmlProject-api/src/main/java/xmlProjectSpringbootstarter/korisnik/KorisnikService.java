@@ -1,5 +1,7 @@
 package xmlProjectSpringbootstarter.korisnik;
 
+import java.util.List;
+
 public interface KorisnikService{
     Korisnik findOne(String id);
     Korisnik insert(Korisnik k);

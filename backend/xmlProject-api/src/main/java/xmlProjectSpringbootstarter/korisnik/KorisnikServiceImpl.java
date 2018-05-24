@@ -32,7 +32,7 @@ public class KorisnikServiceImpl implements UserDetailsService,KorisnikService {
         return korisnikRepository.insert(k);
     }
 
-    @Override
+    /*@Override
     public Korisnik findByEmail(String email) {
         List<Korisnik> korisnici = korisnikRepository.findAll();
         for(Korisnik k: korisnici) {
@@ -41,6 +41,11 @@ public class KorisnikServiceImpl implements UserDetailsService,KorisnikService {
             }
         }
         return null;
+    }*/
+
+    @Override
+    public Korisnik findByEmail(String email) {
+        return korisnikRepository.findByEmail(email);
     }
 
     @Override
