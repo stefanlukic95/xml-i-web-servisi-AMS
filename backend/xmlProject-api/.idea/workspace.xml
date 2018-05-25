@@ -1,41 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="605d8e24-14d9-49ca-8660-5907efd3dcb4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/dodatneuslg/Dodatneusluge.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/dodatneuslg/DodatneuslugeController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/dodatneuslg/DodatneuslugeRepository.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/dodatneuslg/DodatneuslugeService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/dodatneuslg/DodatneuslugeServiceImpl.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/korisnik/Korisnik.java" afterPath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/korisnik/Korisnik.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/korisnik/KorisnikRepository.java" afterPath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/korisnik/KorisnikRepository.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/korisnik/KorisnikService.java" afterPath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/korisnik/KorisnikService.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/korisnik/KorisnikServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/korisnik/KorisnikServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/lokacija/Lokacija.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/lokacija/LokacijaController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/lokacija/LokacijaRepository.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/lokacija/LokacijaService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/lokacija/LokacijaServiceImpl.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/smestaj/Smestaj.java" afterPath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/smestaj/Smestaj.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/smestaj/SmestajServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/xmlProjectSpringbootstarter/smestaj/SmestajServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/korisnik/Korisnik.class" afterPath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/korisnik/Korisnik.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/korisnik/KorisnikRepository.class" afterPath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/korisnik/KorisnikRepository.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/korisnik/KorisnikServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/korisnik/KorisnikServiceImpl.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/lokacija/Lokacija.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/lokacija/LokacijaController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/lokacija/LokacijaRepository.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/lokacija/LokacijaService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/lokacija/LokacijaServiceImpl.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/smestaj/Smestaj.class" afterPath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/smestaj/Smestaj.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/smestaj/SmestajController.class" afterPath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/smestaj/SmestajController.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/smestaj/SmestajService.class" afterPath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/smestaj/SmestajService.class" />
-      <change beforePath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/smestaj/SmestajServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/xmlProjectSpringbootstarter/smestaj/SmestajServiceImpl.class" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/klijent/src/app/app-routing/app-routing-routing.module.ts" afterPath="$PROJECT_DIR$/../../frontend/klijent/src/app/app-routing/app-routing-routing.module.ts" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/klijent/src/app/app.module.ts" afterPath="$PROJECT_DIR$/../../frontend/klijent/src/app/app.module.ts" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/klijent/src/app/smestaj/smestaj.component.css" afterPath="$PROJECT_DIR$/../../frontend/klijent/src/app/smestaj/smestaj.component.css" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/klijent/src/app/smestaj/smestaj.component.html" afterPath="$PROJECT_DIR$/../../frontend/klijent/src/app/smestaj/smestaj.component.html" />
-    </list>
+    <list default="true" id="605d8e24-14d9-49ca-8660-5907efd3dcb4" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -517,7 +483,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1294" height="1057" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
