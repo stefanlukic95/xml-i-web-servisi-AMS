@@ -6,7 +6,7 @@ public interface DodatnaUslugaService {
 
     List<DodatnaUsluga> findAll();
     DodatnaUsluga findOne(String id);
-    DodatnaUsluga create(DodatnaUsluga dusluga) throws Exception;
-    DodatnaUsluga update(DodatnaUsluga dusluga) throws Exception;
+    DodatnaUsluga create(DodatnaUsluga dusluga);
+    DodatnaUsluga update(DodatnaUsluga dusluga);
     void delete(String id);
 }

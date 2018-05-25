@@ -25,18 +25,14 @@ public class SmestajServiceImpl implements  SmestajService{
     }
 
     @Override
-    public Smestaj create(Smestaj smestaj) throws Exception {
+    public Smestaj create(Smestaj smestaj){
         Smestaj savedSmestaj = this.smestajRepository.insert(smestaj);
         return savedSmestaj;
     }
 
     @Override
-    public Smestaj update(Smestaj smestaj) throws Exception {
+    public Smestaj update(Smestaj smestaj){
         Smestaj smestajUpdt = this.smestajRepository.findOne(smestaj.getId());
-
-        if(smestajUpdt == null){
-            throw new Exception("Nije pronadjen smestaj.");
-        }
 
         smestajUpdt.setKapacitet(smestaj.getKapacitet());
         smestajUpdt.setOpis(smestaj.getOpis());

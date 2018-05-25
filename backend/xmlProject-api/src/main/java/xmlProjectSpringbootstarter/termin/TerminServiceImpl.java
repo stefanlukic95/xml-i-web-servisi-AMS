@@ -25,18 +25,14 @@ public class TerminServiceImpl implements TerminService{
     }
 
     @Override
-    public Termin create(Termin termin) throws Exception {
+    public Termin create(Termin termin){
         Termin savedTermin = this.terminRepository.insert(termin);
         return savedTermin;
     }
 
     @Override
-    public Termin update(Termin termin) throws Exception {
+    public Termin update(Termin termin){
         Termin terminUpdt = this.terminRepository.findOne(termin.getId());
-
-        if(terminUpdt == null){
-            throw new Exception("Nije pronadjen termin.");
-        }
 
         terminUpdt.setCena(termin.getCena());
         terminUpdt.setMesec(termin.getMesec());

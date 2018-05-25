@@ -14,18 +14,13 @@ public class Termin {
 
     }
 
-    public Termin(String id, String mesec, int cena) {
-        this.id = id;
+    public Termin( String mesec, int cena) {
         this.mesec = mesec;
         this.cena = cena;
     }
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getMesec() {

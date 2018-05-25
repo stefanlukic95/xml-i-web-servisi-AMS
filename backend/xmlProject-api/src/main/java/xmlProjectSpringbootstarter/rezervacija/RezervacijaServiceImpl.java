@@ -25,7 +25,7 @@ public class RezervacijaServiceImpl implements RezervacijaService {
     }
 
     @Override
-    public Rezervacija create(Rezervacija rezervacija) throws Exception {
+    public Rezervacija create(Rezervacija rezervacija){
         Rezervacija savedRezervacija = this.rezervacijaRepository.insert(rezervacija);
         return savedRezervacija;
     }

@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import xmlProjectSpringbootstarter.korisnik.Korisnik;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Document (collection = "Rezervacija")
@@ -11,15 +12,14 @@ public class Rezervacija {
 
     @Id
     private String id;
-    private Date datumDolaska;
-    private Date datumOdlaska;
+    private LocalDate datumDolaska;
+    private LocalDate datumOdlaska;
 
     public Rezervacija(){
 
     }
 
-    public Rezervacija(String id, Date datumDolaska, Date datumOdlaska) {
-        this.id = id;
+    public Rezervacija(LocalDate datumDolaska, LocalDate datumOdlaska) {
         this.datumDolaska = datumDolaska;
         this.datumOdlaska = datumOdlaska;
     }
@@ -29,23 +29,19 @@ public class Rezervacija {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Date getDatumDolaska() {
+    public LocalDate getDatumDolaska() {
         return datumDolaska;
     }
 
-    public void setDatumDolaska(Date datumDolaska) {
+    public void setDatumDolaska(LocalDate datumDolaska) {
         this.datumDolaska = datumDolaska;
     }
 
-    public Date getDatumOdlaska() {
+    public LocalDate getDatumOdlaska() {
         return datumOdlaska;
     }
 
-    public void setDatumOdlaska(Date datumOdlaska) {
+    public void setDatumOdlaska(LocalDate datumOdlaska) {
         this.datumOdlaska = datumOdlaska;
     }
 }

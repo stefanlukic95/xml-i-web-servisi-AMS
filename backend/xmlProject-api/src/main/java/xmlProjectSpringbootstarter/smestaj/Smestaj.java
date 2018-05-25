@@ -39,6 +39,22 @@ public class Smestaj {
         this.dodatne_usluge = dodatne_usluge;
     }
 
+    public List<Termin> getTermini() {
+        return termini;
+    }
+
+    public void setTermini(List<Termin> termini) {
+        this.termini = termini;
+    }
+
+    public List<DodatnaUsluga> getDodatne_usluge() {
+        return dodatne_usluge;
+    }
+
+    public void setDodatne_usluge(List<DodatnaUsluga> dodatne_usluge) {
+        this.dodatne_usluge = dodatne_usluge;
+    }
+
     public String getId() {
         return id;
     }

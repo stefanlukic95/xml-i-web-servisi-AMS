@@ -11,7 +11,7 @@ public class NaseljenoMesto {
     private String id;
     private String naziv;
     private String pttBroj;
-    private String drzava;
+    private String drzava; //referenca na drzavu
 
     public NaseljenoMesto() {
 

@@ -15,17 +15,12 @@ public class Kategorija {
 
     }
 
-    public Kategorija(String id, String naziv) {
-        this.id = id;
+    public Kategorija(String naziv) {
         this.naziv = naziv;
     }
 
     public String getId() {
         return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getNaziv() {
