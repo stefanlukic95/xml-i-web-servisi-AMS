@@ -18,12 +18,12 @@ export class KorisniciService {
 
 
 
-  getKorisnici(): Observable<Korisnik[]> {
-    return this.http.get<Korisnik[]>(this.url1);
+  getKorisnici(): Observable<Korisnikp[]> {
+    return this.http.get<Korisnikp[]>(this.url1);
 
   }
-  getKorisnik(id: string): Observable<Korisnik> {
-    return this.http.get<Korisnik>(this.url1 + '/' + id);
+  getKorisnik(id: string): Observable<Korisnikp> {
+    return this.http.get<Korisnikp>(this.url1 + '/' + id);
   }
 
   insertKorisnik(korisnik: Korisnik): Observable<Korisnik> {
@@ -41,6 +41,14 @@ export class KorisniciService {
     );
   }
   
+  adKorisnik(korisnik: Korisnikp): Observable<Korisnikp> {
+    const id = typeof korisnik === 'string' ? korisnik : korisnik.id;
+    const url1 = `${this.url1}/${id}`;
+    return this.http.put<Korisnikp>(url1, korisnik, httpOptions).pipe(
+      catchError(this.handleError<Korisnikp>('adKorisnik'))
+    );
+  }
+
   constructor(private http: HttpClient) { }
 
 

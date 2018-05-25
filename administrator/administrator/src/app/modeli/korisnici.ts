@@ -6,7 +6,8 @@ export class Korisnik {
       public pmb: string,
       public password: string,
       public email: string,
-  
+      public uloge: string,
+      public enabled: boolean,
    
     
     ) { }

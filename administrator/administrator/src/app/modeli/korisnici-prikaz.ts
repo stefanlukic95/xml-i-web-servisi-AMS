@@ -8,6 +8,7 @@ export class Korisnikp {
       public password: string,
       public email: string,
       public uloge: string,
+      public enabled: boolean,
    
     
     ) { }

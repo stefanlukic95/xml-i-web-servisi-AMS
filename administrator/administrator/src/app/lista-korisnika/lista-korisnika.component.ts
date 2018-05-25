@@ -13,12 +13,12 @@ import { Korisnikp } from '../modeli/korisnici-prikaz';
 })
 export class ListaKorisnikaComponent implements OnInit {
 
-  @Input() korisniciShow: Korisnik;
+  @Input() korisniciShow: Korisnikp;
 
-  korisnici: Korisnik[];
+  korisnici: Korisnikp[];
   korisnikId: string;
-  korisnikEdit: Korisnik;
-
+  korisnikEdit: Korisnikp;
+  korisnik: Korisnikp
 
   getKorisnici(): void {
     this.korisniciService.getKorisnici()
@@ -36,6 +36,7 @@ export class ListaKorisnikaComponent implements OnInit {
       this.korisnici = this.korisnici.filter(k => k !== korisnik);
     }
 
+   
   constructor(private korisniciService: KorisniciService,
               private location: Location,
                  ) { }
@@ -43,6 +44,7 @@ export class ListaKorisnikaComponent implements OnInit {
 
   ngOnInit() {
     this.getKorisnici();
+    console.log(this.korisnici);
   }
 
 }
