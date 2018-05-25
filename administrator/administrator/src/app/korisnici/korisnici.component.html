@@ -13,6 +13,11 @@
       </div>
 
       <div class="form-group">
+        <label for="email">e-mail</label>
+        <input type="text" id="email" name="email" class="form-control" required ngModel #korisnikEmail="ngModel">
+      </div>
+      
+      <div class="form-group">
         <label for="adresa">Adresa </label>
         <input type="text" id="adresa" name="adresa" class="form-control" required ngModel #korisnikAdresa="ngModel">
       </div>
@@ -21,6 +26,15 @@
         <label for="pmb">PMB</label>
         <input type="text" id="pmb" name="pmb" class="form-control" required ngModel #korisnikPMB="ngModel">
       </div>
+
+
+      <div class="form-group">
+        <label for="password">sifra</label>
+        <input type="text" id="password" name="sifpasswordra" class="form-control" required ngModel #korisnikPassword="ngModel">
+      </div>
+
+    
+
 
       <button type="submit" class="btn btn-primary" [disabled]="!noviKorisnikForm.valid">Dodaj</button>
 </form>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Korisnikp } from './modeli/korisnici-prikaz';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -13,7 +14,17 @@ const httpOptions = {
 export class KorisniciService {
 
   private url = 'http://localhost:8080/korisnici';
+  private url1 = 'http://localhost:8080/korisnici-list';
 
+
+
+  getKorisnici(): Observable<Korisnik[]> {
+    return this.http.get<Korisnik[]>(this.url1);
+
+  }
+  getKorisnik(id: string): Observable<Korisnik> {
+    return this.http.get<Korisnik>(this.url1 + '/' + id);
+  }
 
   insertKorisnik(korisnik: Korisnik): Observable<Korisnik> {
     return this.http.post<Korisnik>(this.url, korisnik, httpOptions).pipe(
@@ -21,6 +32,14 @@ export class KorisniciService {
     );
   }
 
+  deleteKorisnik(korisnik: Korisnikp | string): Observable<Korisnikp> {
+    const id = typeof korisnik === 'string' ? korisnik : korisnik.id;
+    const url = `${this.url}/${id}`;
+
+    return this.http.delete<Korisnikp>(url, httpOptions).pipe(
+      catchError(this.handleError<Korisnikp>('deleteKorinsik'))
+    );
+  }
   
   constructor(private http: HttpClient) { }
 
