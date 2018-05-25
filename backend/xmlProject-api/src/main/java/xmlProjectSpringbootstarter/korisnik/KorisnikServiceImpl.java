@@ -71,4 +71,16 @@ public class KorisnikServiceImpl implements UserDetailsService,KorisnikService {
         Korisnik savedKorisnik = this.korisnikRepository.insert(korisnik);
         return savedKorisnik;
     }
+
+
+    @Override
+    public List<Korisnik> findAll(){
+        List<Korisnik> korisnik = this.korisnikRepository.findAll();
+        return korisnik;
+    }
+
+    @Override
+    public void delete(String id) {
+        this.korisnikRepository.delete(id);
+    }
 }
