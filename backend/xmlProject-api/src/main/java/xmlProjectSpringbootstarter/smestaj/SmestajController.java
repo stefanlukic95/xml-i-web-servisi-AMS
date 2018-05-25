@@ -11,6 +11,7 @@ import xmlProjectSpringbootstarter.kategorija.KategorijaService;
 import xmlProjectSpringbootstarter.korisnik.Korisnik;
 import xmlProjectSpringbootstarter.korisnik.KorisnikService;
 import xmlProjectSpringbootstarter.naseljeno_mesto.NaseljenoMesto;
+import xmlProjectSpringbootstarter.naseljeno_mesto.NaseljenoMestoOut;
 import xmlProjectSpringbootstarter.naseljeno_mesto.NaseljenoMestoService;
 import xmlProjectSpringbootstarter.tipsmestaja.Tipsmestaja;
 import xmlProjectSpringbootstarter.tipsmestaja.TipsmestajaService;
@@ -51,7 +52,7 @@ public class SmestajController {
         List<Smestaj> smestaj = smestajService.findAll();
         List<SmestajOut> smestajOuts = new ArrayList<SmestajOut>();
         for(Smestaj s : smestaj) {
-            NaseljenoMesto nas = naseljenoMestoService.findOne(s.getNaseljeno_mesto());
+            NaseljenoMestoOut nas = naseljenoMestoService.findOne(s.getNaseljeno_mesto());
             Korisnik agent = korisnikService.findOne(s.getAgent());
             Tipsmestaja tip = tipsmestajaService.findOne(s.getTipSmestaja());
             Kategorija kategorija = kategorijaService.findOne(s.getKategorijaSmestaja());

@@ -4,6 +4,7 @@ import xmlProjectSpringbootstarter.dodatnaUsluga.DodatnaUsluga;
 import xmlProjectSpringbootstarter.kategorija.Kategorija;
 import xmlProjectSpringbootstarter.korisnik.Korisnik;
 import xmlProjectSpringbootstarter.naseljeno_mesto.NaseljenoMesto;
+import xmlProjectSpringbootstarter.naseljeno_mesto.NaseljenoMestoOut;
 import xmlProjectSpringbootstarter.rezervacija.Rezervacija;
 import xmlProjectSpringbootstarter.termin.Termin;
 import xmlProjectSpringbootstarter.tipsmestaja.Tipsmestaja;
@@ -15,7 +16,7 @@ public class SmestajOut {
     private String id;
     private String naziv;
     private Integer kapacitet;
-    private NaseljenoMesto naseljeno_mesto;
+    private NaseljenoMestoOut naseljeno_mesto;
     private String opis;
     private String slika;
     private List<Rezervacija> rezervacije;
@@ -25,7 +26,7 @@ public class SmestajOut {
     private List<Termin> termini;
     private List<DodatnaUsluga> dodatne_usluge;
 
-    public SmestajOut(String id, String naziv, Integer kapacitet, NaseljenoMesto naseljeno_mesto, String opis, String slika, List<Rezervacija> rezervacije, Korisnik agent, Tipsmestaja tipSmestaja, Kategorija kategorijaSmestaja, List<Termin> termini, List<DodatnaUsluga> dodatne_usluge) {
+    public SmestajOut(String id, String naziv, Integer kapacitet, NaseljenoMestoOut naseljeno_mesto, String opis, String slika, List<Rezervacija> rezervacije, Korisnik agent, Tipsmestaja tipSmestaja, Kategorija kategorijaSmestaja, List<Termin> termini, List<DodatnaUsluga> dodatne_usluge) {
         this.id = id;
         this.naziv = naziv;
         this.kapacitet = kapacitet;
@@ -68,11 +69,11 @@ public class SmestajOut {
         this.kapacitet = kapacitet;
     }
 
-    public NaseljenoMesto getNaseljeno_mesto() {
+    public NaseljenoMestoOut getNaseljeno_mesto() {
         return naseljeno_mesto;
     }
 
-    public void setNaseljeno_mesto(NaseljenoMesto naseljeno_mesto) {
+    public void setNaseljeno_mesto(NaseljenoMestoOut naseljeno_mesto) {
         this.naseljeno_mesto = naseljeno_mesto;
     }
 

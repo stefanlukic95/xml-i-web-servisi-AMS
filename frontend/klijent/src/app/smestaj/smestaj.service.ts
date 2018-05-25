@@ -9,6 +9,7 @@ export class SmestajService {
 
   private url_smestaj = 'http://localhost:8080/smestaj';
 
+
   constructor(private http: HttpClient) { }
 
 }
