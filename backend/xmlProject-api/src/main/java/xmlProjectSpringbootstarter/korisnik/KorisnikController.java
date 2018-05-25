@@ -62,7 +62,68 @@ public class KorisnikController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<Korisnik> insertKorisnik(@RequestBody Korisnik korisnik) throws Exception{
+        List<String> uloge =  new ArrayList<String>();
+        uloge.add("ROLE_AGENT");
+        korisnik.setUloge(uloge);
+        korisnik.setEnabled(true);
         Korisnik createdKorisnik  = this.korisnikService.create(korisnik);
         return new ResponseEntity<Korisnik>(createdKorisnik, HttpStatus.CREATED);
+    }
+
+
+    @RequestMapping(
+            method = RequestMethod.GET,
+            value ="/korisnici-list",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<List<Korisnik>> getAll() {
+        List<Korisnik> korisnik = korisnikService.findAll();
+        return new ResponseEntity<List<Korisnik>>(korisnik, HttpStatus.OK);
+    }
+
+
+    @RequestMapping(
+            method = RequestMethod.GET,
+            value ="/korisnici-list/{id}",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Korisnik> getKorinsik(@PathVariable("id") String id) {
+        Korisnik korisnik = this.korisnikService.findOne(id);
+        if(korisnik == null){
+            return new ResponseEntity<Korisnik>(HttpStatus.NOT_FOUND);
+        }
+        return new ResponseEntity<Korisnik>(korisnik, HttpStatus.OK);
+    }
+
+    @RequestMapping(
+            method = RequestMethod.DELETE,
+            value = "/korisnici/{id}"
+    )
+    public ResponseEntity<Korisnik> deleteKorisnik(@PathVariable("id") String id){
+        this.korisnikService.delete(id);
+        return new ResponseEntity<Korisnik>(HttpStatus.NO_CONTENT);
+    }
+
+
+
+    @RequestMapping(
+            method = RequestMethod.PUT,
+            value = "/korisnici-list/{id}",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Korisnik> adKorisnik(@PathVariable("id") String id, @RequestBody Korisnik korisnik) throws Exception{
+        Korisnik korisnici = this.korisnikService.findOne(id);
+
+        if(korisnici == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        Korisnik updateKorisnik = this.korisnikService.activateDeactivate(korisnik);
+        if (updateKorisnik == null) {
+            return new ResponseEntity<Korisnik>(
+                    HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return new ResponseEntity<>(updateKorisnik, HttpStatus.OK);
     }
 }

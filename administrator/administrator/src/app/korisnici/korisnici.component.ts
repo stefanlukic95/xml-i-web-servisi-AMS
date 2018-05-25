@@ -13,7 +13,7 @@ import { Korisnik } from '../modeli/korisnici';
 })
 export class KorisniciComponent implements OnInit {
 
-noviKorisnik: Korisnik = new Korisnik("","","","");
+noviKorisnik: Korisnik = new Korisnik("","","","","","","",true);
 korisnici: Korisnik[];
 
   constructor(private korisniciService: KorisniciService,
@@ -25,8 +25,9 @@ korisnici: Korisnik[];
                 this.noviKorisnik.prezime = forma.value.prezime;
                 this.noviKorisnik.adresa = forma.value.adresa;
                 this.noviKorisnik.pmb = forma.value.pmb;
-                this.noviKorisnik.uloga = forma.value.uloga;
-            
+                this.noviKorisnik.password = forma.value.password;
+                this.noviKorisnik.email = forma.value.email;
+                
                
                 this.korisniciService.insertKorisnik(this.noviKorisnik).subscribe();
                 forma.reset();

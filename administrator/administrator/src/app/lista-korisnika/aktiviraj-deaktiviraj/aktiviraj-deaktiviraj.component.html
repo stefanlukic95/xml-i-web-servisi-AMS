@@ -1,0 +1,15 @@
+
+<div class="row" *ngIf="korisnikEdit">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <h1>Aktiviraj/deaktiviraj korisnika</h1>
+    <form #aktdeaktForm="ngForm" (ngSubmit)="korisnikEdt()">
+      <div class="form-group">
+        <label for="enabled">Aktivan:</label>
+        <input type="boolean" id="enabled" name="enabled" class="form-control" required ngModel #korisnikEnabled="ngModel" [(ngModel)]="korisnikEdit.enabled">
+        <span class="help-block" *ngIf="!korisnikEnabled.valid && korisnikEnabled.touched">Obavezno!</span>
+      </div>
+  
+      <button type="submit" class="btn btn-primary" [disabled]="!aktdeaktForm.valid">Izmeni</button>
+    </form>
+  </div>
+  </div>

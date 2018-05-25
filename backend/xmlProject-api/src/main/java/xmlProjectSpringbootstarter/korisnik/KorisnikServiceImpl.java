@@ -71,4 +71,32 @@ public class KorisnikServiceImpl implements UserDetailsService,KorisnikService {
         Korisnik savedKorisnik = this.korisnikRepository.insert(korisnik);
         return savedKorisnik;
     }
+
+
+    @Override
+    public List<Korisnik> findAll(){
+        List<Korisnik> korisnik = this.korisnikRepository.findAll();
+        return korisnik;
+    }
+
+    @Override
+    public void delete(String id) {
+        this.korisnikRepository.delete(id);
+    }
+
+
+
+    @Override
+    public Korisnik activateDeactivate(Korisnik korisnik) throws Exception {
+        Korisnik korisnikUpdt = this.korisnikRepository.findOne(korisnik.getId());
+
+        if(korisnikUpdt == null){
+            throw new Exception("Nije pronadjen korisnik.");
+        }
+        //korisnikUpdt.setEnabled(false);
+        korisnikUpdt.setEnabled(korisnik.isEnabled());
+
+        Korisnik updateKorisnik = this.korisnikRepository.save(korisnikUpdt);
+        return updateKorisnik;
+    }
 }

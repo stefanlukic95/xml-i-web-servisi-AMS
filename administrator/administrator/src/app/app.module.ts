@@ -17,6 +17,8 @@ import { DodatneuslugeEditComponent } from './dodatneusluge/dodatneusluge-edit/d
 import { DodatneuslugeService } from './dodatneusluge.service';
 import { KorisniciComponent } from './korisnici/korisnici.component';
 import { KorisniciService } from './korisnici.service';
+import { ListaKorisnikaComponent } from './lista-korisnika/lista-korisnika.component';
+import { AktivirajDeaktivirajComponent } from './lista-korisnika/aktiviraj-deaktiviraj/aktiviraj-deaktiviraj.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +30,8 @@ import { KorisniciService } from './korisnici.service';
     DodatneuslugeComponent,
     DodatneuslugeEditComponent,
     KorisniciComponent,
+    ListaKorisnikaComponent,
+    AktivirajDeaktivirajComponent,
    
     
   ],
