@@ -38,15 +38,7 @@ export class AktivirajDeaktivirajComponent implements OnInit {
     }  
   }
 
-
-  korisnikADSubmit(forma: NgForm){
-    this.korisnikEdit.enabled = forma.value.enabled;
-    this.korisniciService.adKorisnik(this.korisnikEdit).subscribe();
-    forma.reset();
-    this.location.back();
-  }
-
-  korisnikEdt() {
+  adkorisnikEdt() {
     this.korisniciService.adKorisnik(this.korisnikEdit).subscribe();
     this.location.back();
   }

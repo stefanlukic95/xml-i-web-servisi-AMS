@@ -23,7 +23,6 @@ const routes: Routes = [
   {path: 'korisnici', component: KorisniciComponent},
   {path: 'lista-korisnika', component: ListaKorisnikaComponent},
   {path: 'lista-korisnika/:korisnikId', component: AktivirajDeaktivirajComponent},
-
 ];
 
 @NgModule({
