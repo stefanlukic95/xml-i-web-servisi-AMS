@@ -7,7 +7,7 @@
         <input type="text" id="naziv" name="naziv" class="form-control" required ngModel #dodatnauslugaNaziv="ngModel">
       </div>
 
-      <button type="submit" class="btn btn-primary" [disabled]="!novaDodatnauslugaForm.valid">Dodaj</button>
+      <button type="submit" class="button" [disabled]="!novaDodatnauslugaForm.valid">Dodaj</button>
 </form>
 </div>
 </div>
@@ -23,7 +23,7 @@
     <span class="help-block" *ngIf="!dodatnauslugaNaziv.valid && dodatnauslugaNaziv.touched">Naziv dodatne usluge smestaja je obavezan!</span>
   </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="!editDodatnauslugaForm.valid">Izmeni</button>
+  <button type="submit" class="button" [disabled]="!editDodatnauslugaForm.valid">Izmeni</button>
 </form>
 </div>
 </div>

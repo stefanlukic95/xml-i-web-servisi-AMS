@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { KorisniciService } from '../../korisnici.service';
 import { Korisnikp } from '../../modeli/korisnici-prikaz';
 import { Location } from '@angular/common';
@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
   styleUrls: ['./aktiviraj-deaktiviraj.component.css']
 })
 export class AktivirajDeaktivirajComponent implements OnInit {
-
+ 
   korisnik: Korisnikp;
   korisnikId: string;
   korisnikEdit: Korisnikp;

@@ -7,7 +7,7 @@
           <input type="text" id="naziv" name="naziv" class="form-control" required ngModel #tipsmestajaNaziv="ngModel">
         </div>
 
-        <button type="submit" class="btn btn-primary" [disabled]="!noviTipsmestajaForm.valid">Dodaj</button>
+        <button type="submit" class="button" [disabled]="!noviTipsmestajaForm.valid">Dodaj</button>
   </form>
   </div>
   </div>
@@ -23,7 +23,7 @@
           <span class="help-block" *ngIf="!tipsmestajaNaziv.valid && tipsmestajaNaziv.touched">Naziv tipa smestaja je obavezan!</span>
         </div>
     
-        <button type="submit" class="btn btn-primary" [disabled]="!editTipsmestajaForm.valid">Izmeni</button>
+        <button type="submit" class="button" [disabled]="!editTipsmestajaForm.valid">Izmeni</button>
       </form>
     </div>
     </div>
