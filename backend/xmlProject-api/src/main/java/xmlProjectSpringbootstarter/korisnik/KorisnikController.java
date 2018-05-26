@@ -112,13 +112,14 @@ public class KorisnikController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<Korisnik> adKorisnik(@PathVariable("id") String id, @RequestBody Korisnik korisnik) throws Exception{
+    public ResponseEntity<Korisnik> actDeactKorisnik(@PathVariable("id") String id, @RequestBody Korisnik korisnik) throws Exception{
         Korisnik korisnici = this.korisnikService.findOne(id);
 
         if(korisnici == null){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         Korisnik updateKorisnik = this.korisnikService.activateDeactivate(korisnik);
+
         if (updateKorisnik == null) {
             return new ResponseEntity<Korisnik>(
                     HttpStatus.INTERNAL_SERVER_ERROR);
@@ -126,4 +127,7 @@ public class KorisnikController {
 
         return new ResponseEntity<>(updateKorisnik, HttpStatus.OK);
     }
+
+
+
 }
