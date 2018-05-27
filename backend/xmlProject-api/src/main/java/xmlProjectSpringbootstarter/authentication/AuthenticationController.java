@@ -14,6 +14,7 @@ import xmlProjectSpringbootstarter.dodatnaUsluga.DodatnaUslugaService;
 import xmlProjectSpringbootstarter.drzava.Drzava;
 import xmlProjectSpringbootstarter.drzava.DrzavaService;
 import xmlProjectSpringbootstarter.kategorija.KategorijaService;
+import xmlProjectSpringbootstarter.komentari.Komentari;
 import xmlProjectSpringbootstarter.korisnik.Korisnik;
 import xmlProjectSpringbootstarter.korisnik.KorisnikService;
 import xmlProjectSpringbootstarter.naseljeno_mesto.NaseljenoMesto;
@@ -22,10 +23,14 @@ import xmlProjectSpringbootstarter.rezervacija.Rezervacija;
 import xmlProjectSpringbootstarter.rezervacija.RezervacijaService;
 import xmlProjectSpringbootstarter.smestaj.Smestaj;
 import xmlProjectSpringbootstarter.smestaj.SmestajService;
+import xmlProjectSpringbootstarter.smestaj.Zauzetost;
 import xmlProjectSpringbootstarter.termin.Termin;
 import xmlProjectSpringbootstarter.termin.TerminService;
 import xmlProjectSpringbootstarter.tipsmestaja.TipsmestajaService;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -83,11 +88,22 @@ public class AuthenticationController {
             nas = naseljenoMestoService.insert(nas);
             NaseljenoMesto nas1 = new NaseljenoMesto("Beograd", "11000", drzave.get(0).getId());
             nas1 = naseljenoMestoService.insert(nas1);
-            Rezervacija rez = new Rezervacija(LocalDate.of(2018,5,6), LocalDate.of(2018,5,26));
+            String datumDol = "01-07-2018";
+            String datumOdl = "01-08-2018";
+            DateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+            Date date = null;
+            Date date1 = null;
+            try {
+                date = format.parse(datumDol);
+                date1 = format.parse(datumOdl);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            Rezervacija rez = new Rezervacija(date, date1);
             rez = rezervacijaService.create(rez);
             List<Rezervacija> rezervacije = new ArrayList<Rezervacija>();
             rezervacije.add(rez);
-            String agent = korisnikService.findByEmail("peric@gmail.com").getId();
+            String agent = korisnikService.findByEmail("agent@gmail.com").getId();
             String tip_smestaja = tipsmestajaService.findOne("5b02e093b576a0187c8f25ce").getId();
             String kategorijaSmestaja = kategorijaService.findOne("5b02e46ab576a0187c8f25d1").getId();
             Termin termin = new Termin("Januar", 500);
@@ -99,7 +115,7 @@ public class AuthenticationController {
             List<DodatnaUsluga> dodatneUsluge = new ArrayList<DodatnaUsluga>();
             dodatneUsluge.add(dod);
 
-            Smestaj smestaj = new Smestaj("Hotel Park", 4, nas.getId(),"Veoma lep hotel","", rezervacije, agent, tip_smestaja, kategorijaSmestaja, termini, dodatneUsluge);
+            Smestaj smestaj = new Smestaj("Hotel Park", 4, nas.getId(),"Veoma lep hotel","", rezervacije,new ArrayList<Zauzetost>(),new ArrayList<Komentari>(), agent, tip_smestaja, kategorijaSmestaja, termini, dodatneUsluge);
             smestajService.create(smestaj);
 
         }*/
