@@ -44,7 +44,7 @@
 }
 
 input[type=text] {
-  width: 50%;
+  width: 100%;
   margin-bottom: 20px;
   padding: 12px;
   border: 1px solid #ccc;
@@ -52,7 +52,7 @@ input[type=text] {
 }
 
 input[type=number] {
-  width: 50%;
+  width: 100%;
   margin-bottom: 20px;
   padding: 12px;
   border: 1px solid #ccc;
@@ -60,7 +60,7 @@ input[type=number] {
 }
 
 input[type=date] {
-  width: 60%;
+  width: 100%;
   margin-bottom: 20px;
   padding: 12px;
   border: 1px solid #ccc;

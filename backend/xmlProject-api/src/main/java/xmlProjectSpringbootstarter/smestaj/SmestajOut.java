@@ -28,7 +28,8 @@ public class SmestajOut {
     private List<Termin> termini;
     private List<DodatnaUsluga> dodatne_usluge;
 
-    public SmestajOut(String naziv, Integer kapacitet, NaseljenoMestoOut naseljeno_mesto, String opis, String slika, List<Rezervacija> rezervacije, List<Zauzetost> zauzeto, List<Komentari> komentari, Korisnik agent, Tipsmestaja tipSmestaja, Kategorija kategorijaSmestaja, List<Termin> termini, List<DodatnaUsluga> dodatne_usluge) {
+    public SmestajOut(String id, String naziv, Integer kapacitet, NaseljenoMestoOut naseljeno_mesto, String opis, String slika, List<Rezervacija> rezervacije, List<Zauzetost> zauzeto, List<Komentari> komentari, Korisnik agent, Tipsmestaja tipSmestaja, Kategorija kategorijaSmestaja, List<Termin> termini, List<DodatnaUsluga> dodatne_usluge) {
+        this.id = id;
         this.naziv = naziv;
         this.kapacitet = kapacitet;
         this.naseljeno_mesto = naseljeno_mesto;

@@ -1,3 +1,4 @@
+import { SmestajService } from './smestaj.service';
 import { DodatnaUsluga } from './../model/dodatna-usluga';
 import { Termin } from './../model/termin';
 import { KategorijaSmestaja } from './../model/kategorija-smestaja';
@@ -15,11 +16,20 @@ import { Smestaj } from './smestaj';
 })
 export class SmestajComponent implements OnInit {
 
-  smestaj: Smestaj;
+  smestaj: Smestaj[];
+  model: any = {};
 
-  constructor() { }
+  constructor(private smestajService: SmestajService) { }
 
   ngOnInit() {
+  }
+
+  search() {
+    this.smestajService.search(this.model).subscribe(
+      data => {
+        this.smestaj = data;
+      }
+    );
   }
 
 }

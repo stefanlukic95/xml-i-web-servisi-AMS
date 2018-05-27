@@ -1,3 +1,4 @@
+import { Smestaj } from './smestaj';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -11,5 +12,9 @@ export class SmestajService {
 
 
   constructor(private http: HttpClient) { }
+
+  search(model: any) {
+    return this.http.get<Smestaj[]>(this.url_smestaj + '?mesto=' + model.mesto + '&brOsoba=' + model.br_mesta + '&datumOd=' + model.datumOd + '&datumDo=' + model.datumDo);
+  }
 
 }

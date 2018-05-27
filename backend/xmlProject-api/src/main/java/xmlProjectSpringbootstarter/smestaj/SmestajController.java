@@ -57,7 +57,7 @@ public class SmestajController {
             Tipsmestaja tip = tipsmestajaService.findOne(s.getTipSmestaja());
             Kategorija kategorija = kategorijaService.findOne(s.getKategorijaSmestaja());
             smestajOuts.add(
-                    new SmestajOut(s.getId(),s.getNaziv(),s.getKapacitet(),nas,s.getOpis(),s.getSlika(),s.getRezervacije(),agent,tip,kategorija,s.getTermini(),s.getDodatne_usluge())
+                    new SmestajOut(s.getId(),s.getNaziv(),s.getKapacitet(),nas,s.getOpis(),s.getSlika(),s.getRezervacije(),s.getZauzeto(),s.getKomentari(),agent,tip,kategorija,s.getTermini(),s.getDodatne_usluge())
             );
         }
         return new ResponseEntity<List<SmestajOut>>(smestajOuts, HttpStatus.OK);
