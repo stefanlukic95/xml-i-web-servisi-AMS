@@ -9,6 +9,7 @@ import { DodatneuslugeEditComponent } from './dodatneusluge/dodatneusluge-edit/d
 import { KorisniciComponent } from './korisnici/korisnici.component';
 import { ListaKorisnikaComponent } from './lista-korisnika/lista-korisnika.component';
 import { AktivirajDeaktivirajComponent } from './lista-korisnika/aktiviraj-deaktiviraj/aktiviraj-deaktiviraj.component';
+import { KomentariComponent } from './komentari/komentari.component';
 
 const routes: Routes = [
   {path: 'tipsmestaja', component: TipsmestajaComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'korisnici', component: KorisniciComponent},
   {path: 'lista-korisnika', component: ListaKorisnikaComponent},
   {path: 'lista-korisnika/:korisnikId', component: AktivirajDeaktivirajComponent},
+  {path: 'komentari', component: KomentariComponent},
 ];
 
 @NgModule({
