@@ -2,8 +2,8 @@ package xmlProjectSpringbootstarter.smestaj;
 
 import xmlProjectSpringbootstarter.dodatnaUsluga.DodatnaUsluga;
 import xmlProjectSpringbootstarter.kategorija.Kategorija;
+import xmlProjectSpringbootstarter.komentari.Komentari;
 import xmlProjectSpringbootstarter.korisnik.Korisnik;
-import xmlProjectSpringbootstarter.naseljeno_mesto.NaseljenoMesto;
 import xmlProjectSpringbootstarter.naseljeno_mesto.NaseljenoMestoOut;
 import xmlProjectSpringbootstarter.rezervacija.Rezervacija;
 import xmlProjectSpringbootstarter.termin.Termin;
@@ -20,20 +20,23 @@ public class SmestajOut {
     private String opis;
     private String slika;
     private List<Rezervacija> rezervacije;
+    private List<Zauzetost> zauzeto;
+    private List<Komentari> komentari;
     private Korisnik agent;
     private Tipsmestaja tipSmestaja;
     private Kategorija kategorijaSmestaja;
     private List<Termin> termini;
     private List<DodatnaUsluga> dodatne_usluge;
 
-    public SmestajOut(String id, String naziv, Integer kapacitet, NaseljenoMestoOut naseljeno_mesto, String opis, String slika, List<Rezervacija> rezervacije, Korisnik agent, Tipsmestaja tipSmestaja, Kategorija kategorijaSmestaja, List<Termin> termini, List<DodatnaUsluga> dodatne_usluge) {
-        this.id = id;
+    public SmestajOut(String naziv, Integer kapacitet, NaseljenoMestoOut naseljeno_mesto, String opis, String slika, List<Rezervacija> rezervacije, List<Zauzetost> zauzeto, List<Komentari> komentari, Korisnik agent, Tipsmestaja tipSmestaja, Kategorija kategorijaSmestaja, List<Termin> termini, List<DodatnaUsluga> dodatne_usluge) {
         this.naziv = naziv;
         this.kapacitet = kapacitet;
         this.naseljeno_mesto = naseljeno_mesto;
         this.opis = opis;
         this.slika = slika;
         this.rezervacije = rezervacije;
+        this.zauzeto = zauzeto;
+        this.komentari = komentari;
         this.agent = agent;
         this.tipSmestaja = tipSmestaja;
         this.kategorijaSmestaja = kategorijaSmestaja;
@@ -41,8 +44,24 @@ public class SmestajOut {
         this.dodatne_usluge = dodatne_usluge;
     }
 
+    public List<Komentari> getKomentari() {
+        return komentari;
+    }
+
+    public void setKomentari(List<Komentari> komentari) {
+        this.komentari = komentari;
+    }
+
     public SmestajOut() {
 
+    }
+
+    public List<Zauzetost> getZauzeto() {
+        return zauzeto;
+    }
+
+    public void setZauzeto(List<Zauzetost> zauzeto) {
+        this.zauzeto = zauzeto;
     }
 
     public String getId() {

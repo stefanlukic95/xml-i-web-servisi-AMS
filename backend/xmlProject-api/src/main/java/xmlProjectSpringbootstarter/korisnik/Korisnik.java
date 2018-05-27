@@ -3,9 +3,9 @@ package xmlProjectSpringbootstarter.korisnik;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import xmlProjectSpringbootstarter.poruka.Poruka;
 import xmlProjectSpringbootstarter.rezervacija.Rezervacija;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Document(collection = "Korisnici")
@@ -21,6 +21,7 @@ public class Korisnik {
     private String adresa;
     private String pmb;
     private List<Rezervacija> rezervacije;
+    private List<Poruka> poruke;
 
     @JsonIgnore
     private boolean enabled;
@@ -31,7 +32,7 @@ public class Korisnik {
 
     }
 
-    public Korisnik(String ime, String prezime, String email, String password, String brtel, String adresa, String pmb, List<Rezervacija> rezervacije, boolean enabled, List<String> uloge) {
+    public Korisnik(String ime, String prezime, String email, String password, String brtel, String adresa, String pmb, List<Rezervacija> rezervacije, List<Poruka> poruke, boolean enabled, List<String> uloge) {
         this.ime = ime;
         this.prezime = prezime;
         this.email = email;
@@ -40,8 +41,17 @@ public class Korisnik {
         this.adresa = adresa;
         this.pmb = pmb;
         this.rezervacije = rezervacije;
+        this.poruke = poruke;
         this.enabled = enabled;
         this.uloge = uloge;
+    }
+
+    public List<Poruka> getPoruke() {
+        return poruke;
+    }
+
+    public void setPoruke(List<Poruka> poruke) {
+        this.poruke = poruke;
     }
 
     public String getAdresa() {

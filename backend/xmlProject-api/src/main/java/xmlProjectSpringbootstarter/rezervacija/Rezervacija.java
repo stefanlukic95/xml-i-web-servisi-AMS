@@ -2,10 +2,8 @@ package xmlProjectSpringbootstarter.rezervacija;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import xmlProjectSpringbootstarter.korisnik.Korisnik;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Document (collection = "Rezervacija")
 public class Rezervacija {
@@ -14,16 +12,25 @@ public class Rezervacija {
     private String id;
     private LocalDate datumDolaska;
     private LocalDate datumOdlaska;
+    private Integer cena;
 
     public Rezervacija(){
 
     }
 
-    public Rezervacija(LocalDate datumDolaska, LocalDate datumOdlaska) {
+    public Rezervacija(LocalDate datumDolaska, LocalDate datumOdlaska, Integer cena) {
         this.datumDolaska = datumDolaska;
         this.datumOdlaska = datumOdlaska;
+        this.cena = cena;
     }
 
+    public Integer getCena() {
+        return cena;
+    }
+
+    public void setCena(Integer cena) {
+        this.cena = cena;
+    }
 
     public String getId() {
         return id;
