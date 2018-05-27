@@ -93,10 +93,18 @@ public class KorisnikServiceImpl implements UserDetailsService,KorisnikService {
         if(korisnikUpdt == null){
             throw new Exception("Nije pronadjen korisnik.");
         }
-        //korisnikUpdt.setEnabled(false);
-        korisnikUpdt.setEnabled(korisnik.isEnabled());
+
+
+        if(korisnikUpdt.isEnabled() == true) {
+            korisnikUpdt.setEnabled(false);
+        }else if(korisnikUpdt.isEnabled() == false){
+            korisnikUpdt.setEnabled(true);
+        }
+
 
         Korisnik updateKorisnik = this.korisnikRepository.save(korisnikUpdt);
         return updateKorisnik;
     }
+
+
 }

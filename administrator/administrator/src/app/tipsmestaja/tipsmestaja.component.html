@@ -1,13 +1,13 @@
 <a class="list-group-item clearfix" *ngFor="let tipovismestajaShow of tipovismestaja">
   <div class="pull-left">
-    <h4 class="list-group-item-heading" > Naziv tipa smestaja: {{tipovismestajaShow.naziv}}</h4>
+    <h2 class="list-group-item-heading" > Naziv tipa smestaja: {{tipovismestajaShow.naziv}}</h2>
 
     <span class="pull-right"> 
-      <button class="btn btn-primary" [routerLink]="['/tipsmestaja/' + tipovismestajaShow.id]">Izmeni</button>
-      <button class="btn btn-danger" (click)="deleteTipsmestaja(tipovismestajaShow)">Obrisi</button>
+      <button class="button" [routerLink]="['/tipsmestaja/' + tipovismestajaShow.id]">Izmeni</button>
+      <button class="button-danger" (click)="deleteTipsmestaja(tipovismestajaShow)">Obrisi</button>
     </span>
   </div>
 </a>
-<button class="btn btn-primary" routerLink="/tipsmestaja-edit">Dodaj tip smestaja</button>
+<button class="button" routerLink="/tipsmestaja-edit">Dodaj tip smestaja</button>
 
 

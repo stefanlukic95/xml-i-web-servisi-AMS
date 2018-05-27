@@ -1,13 +1,13 @@
 <a class="list-group-item clearfix" *ngFor="let dodatneuslugeShow of dodatneusluge">
   <div class="pull-left">
-    <h4 class="list-group-item-heading" > Naziv dodatne usluge: {{dodatneuslugeShow.naziv}}</h4>
+    <h2 class="list-group-item-heading" > Naziv dodatne usluge: {{dodatneuslugeShow.naziv}}</h2>
 
     <span class="pull-right"> 
-      <button class="btn btn-primary"  [routerLink]="['/dodatneusluge/' + dodatneuslugeShow.id]">Izmeni</button>
-      <button class="btn btn-danger" (click)="deleteDodatnausluga(dodatneuslugeShow)">Obrisi</button>
+      <button class="button"  [routerLink]="['/dodatneusluge/' + dodatneuslugeShow.id]">Izmeni</button>
+      <button class="button-danger" (click)="deleteDodatnausluga(dodatneuslugeShow)">Obrisi</button>
     </span>
   </div>
 </a>
-<button class="btn btn-primary" routerLink="/dodatneusluge-edit">Dodaj dodatnu uslugu smestaja</button>
+<button class="button" routerLink="/dodatneusluge-edit">Dodaj dodatnu uslugu smestaja</button>
 
 

@@ -1,15 +1,14 @@
 <a class="list-group-item clearfix" *ngFor="let korisniciShow of korisnici">
   <div class="pull-left">
-    <h3 class="list-group-item-heading" > Korisnik:</h3>
-    <h4 class="list-group-item-heading" > ime: {{korisniciShow.ime}}</h4>
-    <h4 class="list-group-item-heading" > prezime: {{korisniciShow.prezime}}</h4>
-    <h4 class="list-group-item-heading" > e-mail: {{korisniciShow.email}}</h4>
-    <h4 class="list-group-item-heading" > pmb: {{korisniciShow.pmb}}</h4>
+    <h1 class="list-group-item-heading" > Korisnik:</h1>
+    <h2 class="list-group-item-heading" > ime: {{korisniciShow.ime}}</h2>
+    <h2 class="list-group-item-heading" > prezime: {{korisniciShow.prezime}}</h2>
+    <h2 class="list-group-item-heading" > e-mail: {{korisniciShow.email}}</h2>
+    <h2 class="list-group-item-heading" > pmb: {{korisniciShow.pmb}}</h2>
 
     <span class="pull-right"> 
-
-      <button class="btn btn-danger" (click)="deleteKorisnik(korisniciShow)">Obrisi</button>
-      <button class="btn btn-primary" [routerLink]="['/lista-korisnika/' + korisniciShow.id]">Aktiviraj/Deaktiviraj</button>
+      <button class="button" [routerLink]="['/lista-korisnika/' + korisniciShow.id]">Aktiviraj/Deaktiviraj </button>
+      <button class="button-danger" (click)="deleteKorisnik(korisniciShow)">Obrisi</button>
     </span>
   </div>
 </a>

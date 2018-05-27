@@ -38,7 +38,11 @@ public class KomentariServiceImpl implements KomentariService{
             throw new Exception("Nije pronadjen komentar.");
         }
 
-        komentariUpdt.setSadrzaj(komentar.getSadrzaj());
+        if(komentariUpdt.isOdobren() == true) {
+            komentariUpdt.setOdobren(false);
+        }else if(komentariUpdt.isOdobren() == false){
+            komentariUpdt.setOdobren(true);
+        }
 
         Komentari updateKomentari = this.komentariRepository.save(komentariUpdt);
         return updateKomentari;

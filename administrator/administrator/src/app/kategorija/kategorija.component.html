@@ -1,13 +1,13 @@
 <a class="list-group-item clearfix" *ngFor="let kategorijeShow of kategorije">
   <div class="pull-left">
-    <h4 class="list-group-item-heading" > Naziv kategorije smestaja: {{kategorijeShow.naziv}}</h4>
+    <h2 class="list-group-item-heading" > Naziv kategorije smestaja: {{kategorijeShow.naziv}}</h2>
 
     <span class="pull-right"> 
-      <button class="btn btn-primary" [routerLink]="['/kategorija/' + kategorijeShow.id]">Izmeni</button>
-      <button class="btn btn-danger" (click)="deleteKategorija(kategorijeShow)">Obrisi</button>
+      <button class="button" [routerLink]="['/kategorija/' + kategorijeShow.id]">Izmeni</button>
+      <button class="button-danger" (click)="deleteKategorija(kategorijeShow)">Obrisi</button>
     </span>
   </div>
 </a>
-<button class="btn btn-primary" routerLink="/kategorija-edit">Dodaj kategoriju smestaja</button>
+<button class="button" routerLink="/kategorija-edit">Dodaj kategoriju smestaja</button>
 
 

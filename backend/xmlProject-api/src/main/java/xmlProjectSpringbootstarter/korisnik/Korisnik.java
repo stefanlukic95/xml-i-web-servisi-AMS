@@ -74,6 +74,7 @@ public class Korisnik {
         return enabled;
     }
 
+
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }

@@ -45,9 +45,11 @@ export class KorisniciService {
     const id = typeof korisnik === 'string' ? korisnik : korisnik.id;
     const url1 = `${this.url1}/${id}`;
     return this.http.put<Korisnikp>(url1, korisnik, httpOptions).pipe(
-      catchError(this.handleError<Korisnikp>('adKorisnik'))
+      catchError(this.handleError<Korisnikp>('dKorisnik'))
     );
   }
+
+
 
   constructor(private http: HttpClient) { }
 

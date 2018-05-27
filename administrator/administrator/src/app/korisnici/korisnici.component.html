@@ -3,40 +3,40 @@
 <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
     <form #noviKorisnikForm="ngForm" (ngSubmit)="noviKorisnikSubmit(noviKorisnikForm)">
       <div class="form-group">
-        <label for="ime">Ime </label>
-        <input type="text" id="ime" name="ime" class="form-control" required ngModel #korisnikIme="ngModel">
+        <label for="ime" class="font">Ime </label>
+        <input type="text" id="ime" name="ime" class="textarea" required ngModel #korisnikIme="ngModel">
       </div>
 
       <div class="form-group">
-        <label for="prezime">Prezime </label>
-        <input type="text" id="prezime" name="prezime" class="form-control" required ngModel #korisnikPrezime="ngModel">
+        <label for="prezime" class="font">Prezime </label>
+        <input type="text" id="prezime" name="prezime" class="textarea" required ngModel #korisnikPrezime="ngModel">
       </div>
 
       <div class="form-group">
-        <label for="email">e-mail</label>
-        <input type="text" id="email" name="email" class="form-control" required ngModel #korisnikEmail="ngModel">
+        <label for="email" class="font">e-mail</label>
+        <input type="text" email id="email" name="email" class="textarea" required ngModel #korisnikEmail="ngModel">
       </div>
       
       <div class="form-group">
-        <label for="adresa">Adresa </label>
-        <input type="text" id="adresa" name="adresa" class="form-control" required ngModel #korisnikAdresa="ngModel">
+        <label for="adresa" class="font">Adresa </label>
+        <input type="text" id="adresa" name="adresa" class="textarea" required ngModel #korisnikAdresa="ngModel">
       </div>
 
       <div class="form-group">
-        <label for="pmb">PMB</label>
-        <input type="text" id="pmb" name="pmb" class="form-control" required ngModel #korisnikPMB="ngModel">
+        <label for="pmb" class="font">PMB</label>
+        <input type="text" id="pmb" name="pmb" class="textarea" required ngModel #korisnikPMB="ngModel">
       </div>
 
 
       <div class="form-group">
-        <label for="password">sifra</label>
-        <input type="text" id="password" name="sifpasswordra" class="form-control" required ngModel #korisnikPassword="ngModel">
+        <label for="password" class="font">sifra</label>
+        <input type="password" id="password" name="password" class="textarea" required ngModel #korisnikPassword="ngModel">
       </div>
 
     
 
 
-      <button type="submit" class="btn btn-primary" [disabled]="!noviKorisnikForm.valid">Dodaj</button>
+      <button type="submit" class="button" [disabled]="!noviKorisnikForm.valid">Dodaj</button>
 </form>
 </div>
 
