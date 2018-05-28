@@ -14,7 +14,8 @@ export class SmestajService {
   constructor(private http: HttpClient) { }
 
   search(model: any) {
-    return this.http.get<Smestaj[]>(this.url_smestaj + '?mesto=' + model.mesto + '&brOsoba=' + model.br_mesta + '&datumOd=' + model.datumOd + '&datumDo=' + model.datumDo);
+    return this.http.get<Smestaj[]>(this.url_smestaj + '/search?mesto=' + model.mesto + '&brOsoba=' + model.br_mesta +
+    '&datumOd=' + model.datumOd + '&datumDo=' + model.datumDo);
   }
 
 }

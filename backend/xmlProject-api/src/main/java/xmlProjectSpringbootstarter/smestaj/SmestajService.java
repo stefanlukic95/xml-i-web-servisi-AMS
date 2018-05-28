@@ -7,6 +7,7 @@ public interface SmestajService {
     Smestaj findOne(String id);
     Smestaj create(Smestaj smestaj);
     Smestaj update(Smestaj smestaj);
+    List<Smestaj> searchBynas(String id);
     void delete(String id);
 
 }
