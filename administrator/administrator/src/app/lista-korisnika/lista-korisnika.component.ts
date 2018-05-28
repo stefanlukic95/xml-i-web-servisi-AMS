@@ -18,8 +18,11 @@ export class ListaKorisnikaComponent implements OnInit {
   korisnici: Korisnikp[];
   korisnikId: string;
   korisnikEdit: Korisnikp;
-  korisnik: Korisnikp
+  korisnik: Korisnikp;
 
+  
+
+  
   getKorisnici(): void {
     this.korisniciService.getKorisnici()
       .subscribe(korisnici => this.korisnici = korisnici);

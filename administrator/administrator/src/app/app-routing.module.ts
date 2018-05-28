@@ -26,7 +26,7 @@ const routes: Routes = [
   {path: 'lista-korisnika', component: ListaKorisnikaComponent},
   {path: 'lista-korisnika/:korisnikId', component: AktivirajDeaktivirajComponent},
   {path: 'komentari', component: KomentariComponent},
-  {path: 'komentari/:komentariId', component: OdobravanjeKomentaraComponent},
+  {path: 'komentari/:komentarId', component: OdobravanjeKomentaraComponent},
 ];
 
 @NgModule({

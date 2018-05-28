@@ -3,7 +3,7 @@ import { KomentariService } from '../../komentari.service';
 import { Location } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Komentari } from '../../modeli/komentari';
-
+import { NgForm } from '@angular/forms/src/directives/ng_form';
 
 @Component({
   selector: 'app-odobravanje-komentara',
@@ -39,7 +39,11 @@ export class OdobravanjeKomentaraComponent implements OnInit {
       );
       this.getKomentar();
     }  
+  }
 
+  odobriKomentar() {
+    this.komentariService.odobriKomentar(this.komentarEdit).subscribe();
+    this.location.back();
   }
 
 }

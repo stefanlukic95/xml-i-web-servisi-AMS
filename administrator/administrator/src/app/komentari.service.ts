@@ -6,6 +6,13 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Komentari } from './modeli/komentari';
 
 
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+
+
 @Injectable()
 export class KomentariService {
 
@@ -20,6 +27,16 @@ export class KomentariService {
   
   getKomentar(id: string): Observable<Komentari> {
     return this.http.get<Komentari>(this.url + '/' + id);
+  }
+
+
+    
+  odobriKomentar(komentar: Komentari): Observable<Komentari> {
+    const id = typeof komentar === 'string' ? komentar : komentar.id;
+    const url = `${this.url}/${id}`;
+    return this.http.put<Komentari>(url, komentar, httpOptions).pipe(
+      catchError(this.handleError<Komentari>('odobriKomentar'))
+    );
   }
 
   constructor(private http: HttpClient) { }

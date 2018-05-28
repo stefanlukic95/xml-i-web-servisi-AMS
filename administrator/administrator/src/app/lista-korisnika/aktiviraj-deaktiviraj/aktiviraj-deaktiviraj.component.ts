@@ -43,4 +43,6 @@ export class AktivirajDeaktivirajComponent implements OnInit {
     this.location.back();
   }
 
+
+
 }

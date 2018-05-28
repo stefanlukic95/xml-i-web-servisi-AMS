@@ -9,8 +9,9 @@ export class Korisnikp {
       public email: string,
       public uloge: string,
       public enabled: boolean,
-   
     
     ) { }
   }
+
+    
   
