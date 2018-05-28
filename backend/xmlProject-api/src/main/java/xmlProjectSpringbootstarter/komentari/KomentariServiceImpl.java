@@ -38,9 +38,7 @@ public class KomentariServiceImpl implements KomentariService{
             throw new Exception("Nije pronadjen komentar.");
         }
 
-        if(komentariUpdt.isOdobren() == true) {
-            komentariUpdt.setOdobren(false);
-        }else if(komentariUpdt.isOdobren() == false){
+        if(komentariUpdt.isOdobren() == false) {
             komentariUpdt.setOdobren(true);
         }
 
