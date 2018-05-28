@@ -20,6 +20,8 @@ import { KorisniciService } from './korisnici.service';
 import { ListaKorisnikaComponent } from './lista-korisnika/lista-korisnika.component';
 import { AktivirajDeaktivirajComponent } from './lista-korisnika/aktiviraj-deaktiviraj/aktiviraj-deaktiviraj.component';
 import { KomentariComponent } from './komentari/komentari.component';
+import { KomentariService } from './komentari.service';
+import { OdobravanjeKomentaraComponent } from './komentari/odobravanje-komentara/odobravanje-komentara.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +36,7 @@ import { KomentariComponent } from './komentari/komentari.component';
     ListaKorisnikaComponent,
     AktivirajDeaktivirajComponent,
     KomentariComponent,
+    OdobravanjeKomentaraComponent,
    
     
   ],
@@ -49,6 +52,7 @@ import { KomentariComponent } from './komentari/komentari.component';
     KategorijaService,
     DodatneuslugeService,
     KorisniciService,
+    KomentariService,
     
    
   ],
