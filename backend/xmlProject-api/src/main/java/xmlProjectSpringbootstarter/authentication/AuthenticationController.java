@@ -82,7 +82,7 @@ public class AuthenticationController {
                 )
         );
 
-        {
+        /*{
             List<Drzava> drzave = drzavaService.findAll();
             NaseljenoMesto nas = new NaseljenoMesto("Novi Sad","21000", drzave.get(0).getId());
             nas = naseljenoMestoService.insert(nas);
@@ -100,10 +100,13 @@ public class AuthenticationController {
                 e.printStackTrace();
             }
             Rezervacija rez = new Rezervacija(date, date1);
+            Zauzetost zau = new Zauzetost(date,date1);
+            List<Zauzetost> zauzeto = new ArrayList<Zauzetost>();
+            zauzeto.add(zau);
             rez = rezervacijaService.create(rez);
             List<Rezervacija> rezervacije = new ArrayList<Rezervacija>();
             rezervacije.add(rez);
-            String agent = korisnikService.findByEmail("agent@gmail.com").getId();
+            String agent = korisnikService.findByEmail("iiiii@gmail.com").getId();
             String tip_smestaja = tipsmestajaService.findOne("5b02e093b576a0187c8f25ce").getId();
             String kategorijaSmestaja = kategorijaService.findOne("5b02e46ab576a0187c8f25d1").getId();
             Termin termin = new Termin("Januar", 500);
@@ -115,10 +118,10 @@ public class AuthenticationController {
             List<DodatnaUsluga> dodatneUsluge = new ArrayList<DodatnaUsluga>();
             dodatneUsluge.add(dod);
 
-            Smestaj smestaj = new Smestaj("Hotel Park", 4, nas.getId(),"Veoma lep hotel","", rezervacije,new ArrayList<Zauzetost>(),new ArrayList<Komentari>(), agent, tip_smestaja, kategorijaSmestaja, termini, dodatneUsluge);
+            Smestaj smestaj = new Smestaj("Hotel Park", 4, nas.getId(),"Veoma lep hotel","", rezervacije,zauzeto,new ArrayList<Komentari>(), agent, tip_smestaja, kategorijaSmestaja, termini, dodatneUsluge);
             smestajService.create(smestaj);
 
-        }
+        }*/
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         final Korisnik user = korisnikService.findByEmail(loginUser.getUsername());

@@ -18,10 +18,31 @@ export class SmestajComponent implements OnInit {
 
   smestaj: Smestaj[];
   model: any = {};
+  detaljno = false;
+  rezultati = false;
+  tipovi: TipSmestaja[];
+  kategorije: KategorijaSmestaja[];
+  dodatneUsl: DodatnaUsluga[];
+
 
   constructor(private smestajService: SmestajService) { }
 
   ngOnInit() {
+    this.smestajService.getTipovi().subscribe(
+      data => {
+        this.tipovi = data;
+      }
+    );
+    this.smestajService.getKategorije().subscribe(
+      data => {
+        this.kategorije = data;
+      }
+    );
+    this.smestajService.getDodatne().subscribe(
+      data => {
+        this.dodatneUsl = data;
+      }
+    );
   }
 
   search() {
@@ -30,6 +51,11 @@ export class SmestajComponent implements OnInit {
         this.smestaj = data;
       }
     );
+    this.rezultati = true;
+  }
+
+  toggleDetaljno() {
+    this.detaljno = !this.detaljno;
   }
 
 }
