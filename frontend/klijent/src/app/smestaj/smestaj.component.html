@@ -1,28 +1,52 @@
 <div class="col-75">
   <div class="container">
-    <form name="form" (ngSubmit)="f.form.valid && search()" #f="ngForm" novalidate >
+    <form name="form" (ngSubmit)="f.form.valid && search()" #f="ngForm" novalidate>
       <div class="row">
         <div class="col-50">
           <h2>Pretraga smestaja</h2>
-          <label for="mesto">Mesto:</label>
-          <input type="text" id="mesto" name="mesto" [(ngModel)]="model.mesto" #mesto="ngModel" required>
-          <div *ngIf="f.submitted && !mesto.valid" class="help-block">Sifra je obavezna</div>
-          <label for="br_mesta">Broj osoba:</label>
-          <input type="number" name="br_mesta" step="1" min="1" value="1" [(ngModel)]="model.br_mesta" #brmesta="ngModel" required>
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !mesto.valid }">
+            <label for="mesto">Mesto:</label>
+            <input type="text" id="mesto" name="mesto" [(ngModel)]="model.mesto" #mesto="ngModel" required>
+            <div *ngIf="f.submitted && !mesto.valid" class="help-block">Mesto je obavezno</div>
+          </div>
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !brmesta.valid }">
+            <label for="br_mesta">Broj osoba:</label>
+            <input type="number" id="brmesta" name="br_mesta" step="1" min="1" max="30" [(ngModel)]="model.br_mesta" #brmesta="ngModel"
+              required>
+            <div *ngIf="f.submitted && !brmesta.valid" class="help-block">Broj mesta je obavezan</div>
+          </div>
           <div class="row">
             <div class="col-50">
-              <label for="od_datum">Datum prijavljivanja:</label>
-              <input type="date" id="od_datum" name="od_datum" [(ngModel)]="model.datumOd" #datumOd="ngModel" required>
+              <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !datumOd.valid }">
+                <label for="od_datum">Datum prijavljivanja:</label>
+                <input type="date" id="od_datum" name="od_datum" [(ngModel)]="model.datumOd" #datumOd="ngModel" required>
+                <div *ngIf="f.submitted && !datumOd.valid" class="help-block">Datum prijavljivanja je obavezan</div>
+              </div>
             </div>
             <div class="col-50">
-              <label for="do_datum">Datum odjavljivanja:</label>
-              <input type="date" id="do_datum" name="do_datum" [(ngModel)]="model.datumDo" #datumDo="ngModel" required>
+              <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !datumDo.valid }">
+                <label for="do_datum">Datum odjavljivanja:</label>
+                <input type="date" id="do_datum" name="do_datum" [(ngModel)]="model.datumDo" #datumDo="ngModel" required>
+                <div *ngIf="f.submitted && !datumDo.valid" class="help-block">Datum odjavljivanja je obavezan</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <button class="btn">Pretrazi</button>
+      <button type="submit" class="btn">Pretrazi</button>
       <button class="btn-link" routerLink='detaljna_pretraga'>Detaljna pretraga</button>
     </form>
+  </div>
+</div>
+
+<div class="col-md-4 col-md-offset-6">
+  <h1>Rezultati</h1>
+  <div *ngFor="let s of smestaj">
+    <div class="pull-left">
+      <h2 class="list-group-item-heading"> {{s.naziv}}</h2>
+      <h4 class="list-group-item-heading"> agent: {{s.agent.ime}}</h4>
+      <h4 class="list-group-item-heading"> kapacitet: {{s.kapacitet}}</h4>
+      <button>Rezervisi</button>
+    </div>
   </div>
 </div>

@@ -82,7 +82,7 @@ public class AuthenticationController {
                 )
         );
 
-        /*{
+        {
             List<Drzava> drzave = drzavaService.findAll();
             NaseljenoMesto nas = new NaseljenoMesto("Novi Sad","21000", drzave.get(0).getId());
             nas = naseljenoMestoService.insert(nas);
@@ -118,7 +118,7 @@ public class AuthenticationController {
             Smestaj smestaj = new Smestaj("Hotel Park", 4, nas.getId(),"Veoma lep hotel","", rezervacije,new ArrayList<Zauzetost>(),new ArrayList<Komentari>(), agent, tip_smestaja, kategorijaSmestaja, termini, dodatneUsluge);
             smestajService.create(smestaj);
 
-        }*/
+        }
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         final Korisnik user = korisnikService.findByEmail(loginUser.getUsername());

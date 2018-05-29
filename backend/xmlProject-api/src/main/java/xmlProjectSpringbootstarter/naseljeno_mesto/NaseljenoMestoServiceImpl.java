@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 import xmlProjectSpringbootstarter.drzava.Drzava;
 import xmlProjectSpringbootstarter.drzava.DrzavaService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class NaseljenoMestoServiceImpl implements NaseljenoMestoService {
 
@@ -25,5 +28,19 @@ public class NaseljenoMestoServiceImpl implements NaseljenoMestoService {
     @Override
     public NaseljenoMesto insert(NaseljenoMesto nas) {
         return naseljenoMestoRepository.insert(nas);
+    }
+
+    @Override
+    public List<NaseljenoMesto> search(String naziv) {
+        List<NaseljenoMesto> mesta = naseljenoMestoRepository.findAll();
+        List<NaseljenoMesto> pronadjeni = new ArrayList<NaseljenoMesto>();
+
+        for(NaseljenoMesto nas : mesta) {
+            if(nas.getNaziv().toLowerCase().contains(naziv.toLowerCase())) {
+                pronadjeni.add(nas);
+            }
+        }
+
+        return pronadjeni;
     }
 }

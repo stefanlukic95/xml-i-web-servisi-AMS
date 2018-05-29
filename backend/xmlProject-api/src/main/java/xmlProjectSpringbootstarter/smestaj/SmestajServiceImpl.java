@@ -3,6 +3,7 @@ package xmlProjectSpringbootstarter.smestaj;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -40,6 +41,19 @@ public class SmestajServiceImpl implements  SmestajService{
 
         Smestaj updateSmestaj = this.smestajRepository.save(smestajUpdt);
         return updateSmestaj;
+    }
+
+    @Override
+    public List<Smestaj> searchBynas(String id) {
+        List<Smestaj> smestaji = smestajRepository.findAll();
+        List<Smestaj> pronadjeni = new ArrayList<Smestaj>();
+
+        for(Smestaj s: smestaji) {
+            if(s.getNaseljeno_mesto().equals(id)) {
+                pronadjeni.add(s);
+            }
+        }
+        return pronadjeni;
     }
 
     @Override
