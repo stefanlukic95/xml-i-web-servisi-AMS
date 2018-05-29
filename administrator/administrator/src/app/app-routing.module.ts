@@ -11,6 +11,7 @@ import { ListaKorisnikaComponent } from './lista-korisnika/lista-korisnika.compo
 import { AktivirajDeaktivirajComponent } from './lista-korisnika/aktiviraj-deaktiviraj/aktiviraj-deaktiviraj.component';
 import { KomentariComponent } from './komentari/komentari.component';
 import { OdobravanjeKomentaraComponent } from './komentari/odobravanje-komentara/odobravanje-komentara.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: 'tipsmestaja', component: TipsmestajaComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: 'lista-korisnika/:korisnikId', component: AktivirajDeaktivirajComponent},
   {path: 'komentari', component: KomentariComponent},
   {path: 'komentari/:komentarId', component: OdobravanjeKomentaraComponent},
+  {path: 'login', component: LoginComponent},
 ];
 
 @NgModule({

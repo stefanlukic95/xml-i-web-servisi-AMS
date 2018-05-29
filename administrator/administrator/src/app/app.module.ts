@@ -22,6 +22,12 @@ import { AktivirajDeaktivirajComponent } from './lista-korisnika/aktiviraj-deakt
 import { KomentariComponent } from './komentari/komentari.component';
 import { KomentariService } from './komentari.service';
 import { OdobravanjeKomentaraComponent } from './komentari/odobravanje-komentara/odobravanje-komentara.component';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './login.service';
+import { TokenStorage } from './login-core/token-storage';
+import { AuthService } from './login-core/auth.service';
+import { Interceptor } from './login-core/interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +43,7 @@ import { OdobravanjeKomentaraComponent } from './komentari/odobravanje-komentara
     AktivirajDeaktivirajComponent,
     KomentariComponent,
     OdobravanjeKomentaraComponent,
+    LoginComponent,
    
     
   ],
@@ -53,6 +60,13 @@ import { OdobravanjeKomentaraComponent } from './komentari/odobravanje-komentara
     DodatneuslugeService,
     KorisniciService,
     KomentariService,
+    LoginService,
+    TokenStorage,
+    AuthService,
+    {provide: HTTP_INTERCEPTORS,
+      useClass: Interceptor,
+      multi : true},
+
     
    
   ],
