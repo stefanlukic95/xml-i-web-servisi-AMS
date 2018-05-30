@@ -21,15 +21,6 @@
               <input type="date" id="od_datum" name="od_datum" [(ngModel)]="model.datumOd" #datumOd="ngModel" required>
               <div *ngIf="f.submitted && !datumOd.valid" class="help-block">Datum prijavljivanja je obavezan</div>
             </div>
-            <div *ngIf="detaljno" class="form-group" [ngClass]="{ 'has-error': f.submitted && !brmesta.valid }">
-              <label>Dodatne usluge: </label>
-              <div *ngFor="let dodatna of dodatneUsl">
-                <label class="container1">{{dodatna.naziv}}
-                  <input type="checkbox">
-                  <span class="checkmark"></span>
-                </label>
-              </div>
-            </div>
           </div>
           <div class="col-50">
             <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !datumDo.valid }">
@@ -40,10 +31,21 @@
           </div>
           <div class="col-50">
             <div *ngIf="detaljno" class="form-group" [ngClass]="{ 'has-error': f.submitted && !brmesta.valid }">
+              <label>Dodatne usluge: </label>
+              <div *ngFor="let dodatna of dodatneUsl">
+                <label class="container1">{{dodatna.naziv}}
+                  <input type="checkbox" value="dodatna.id" [(ngModel)]="dodatna.checked" name="dodatna.naziv">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-50">
+            <div *ngIf="detaljno" class="form-group" [ngClass]="{ 'has-error': f.submitted && !brmesta.valid }">
               <label>Tip smestaja: </label>
               <div *ngFor="let tip of tipovi">
                 <label class="container1">{{tip.naziv}}
-                  <input type="checkbox" value="{{tip.id}}">
+                  <input type="checkbox" value="tip.id" [(ngModel)]="tip.checked" name="tip.naziv">
                   <span class="checkmark"></span>
                 </label>
               </div>
@@ -54,7 +56,7 @@
           <label>Kategorija smestaja: </label>
           <div *ngFor="let kat of kategorije">
             <label class="container1">{{kat.naziv}}
-              <input type="checkbox">
+              <input type="checkbox" value="kat.id" [(ngModel)]="kat.checked" name="kat.naziv">
               <span class="checkmark"></span>
             </label>
           </div>

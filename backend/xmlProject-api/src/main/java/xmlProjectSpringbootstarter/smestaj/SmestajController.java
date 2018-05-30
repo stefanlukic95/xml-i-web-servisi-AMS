@@ -144,9 +144,6 @@ public class SmestajController {
             e.printStackTrace();
         }
 
-        System.out.println("DATUM OD::::" + datumOd);
-        System.out.println("DATUM DO::::" + datumDo);
-
         List<SmestajOut> pronadjeniOut = new ArrayList<SmestajOut>();
         List<Smestaj> pronadjeni = new ArrayList<Smestaj>();
         List<NaseljenoMesto> mesta = naseljenoMestoService.search(naziv);
