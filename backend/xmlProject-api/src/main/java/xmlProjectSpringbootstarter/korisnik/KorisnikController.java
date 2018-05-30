@@ -34,6 +34,7 @@ public class KorisnikController {
         return new ResponseEntity<Korisnik>(korisnik, HttpStatus.OK);
 
     }
+
     @RequestMapping(
             method = RequestMethod.POST,
             value = "/signup",
@@ -61,22 +62,23 @@ public class KorisnikController {
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<Korisnik> insertKorisnik(@RequestBody Korisnik korisnik) throws Exception{
-        List<String> uloge =  new ArrayList<String>();
+    public ResponseEntity<Korisnik> insertKorisnik(@RequestBody Korisnik korisnik) throws Exception {
+        List<String> uloge = new ArrayList<String>();
         uloge.add("ROLE_AGENT");
         korisnik.setUloge(uloge);
         korisnik.setEnabled(true);
-        Korisnik createdKorisnik  = this.korisnikService.create(korisnik);
+        Korisnik createdKorisnik = this.korisnikService.create(korisnik);
         return new ResponseEntity<Korisnik>(createdKorisnik, HttpStatus.CREATED);
     }
 
 
     @RequestMapping(
             method = RequestMethod.GET,
-            value ="/korisnici-list",
+            value = "/korisnici-list",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<List<Korisnik>> getAll() {
+
         List<Korisnik> korisnik = korisnikService.findAll();
         return new ResponseEntity<List<Korisnik>>(korisnik, HttpStatus.OK);
     }
@@ -84,16 +86,20 @@ public class KorisnikController {
 
     @RequestMapping(
             method = RequestMethod.GET,
-            value ="/korisnici-list/{id}",
+            value = "/korisnici-list/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<Korisnik> getKorinsik(@PathVariable("id") String id) {
+
         Korisnik korisnik = this.korisnikService.findOne(id);
-        if(korisnik == null){
+        if (korisnik.getUloge().contains("ROLE_AGENT")) {
+            return new ResponseEntity<Korisnik>(korisnik, HttpStatus.OK);
+        }else {
             return new ResponseEntity<Korisnik>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Korisnik>(korisnik, HttpStatus.OK);
     }
+
+
 
     @RequestMapping(
             method = RequestMethod.DELETE,
