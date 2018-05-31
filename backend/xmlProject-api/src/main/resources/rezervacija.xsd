@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    xmlns:sm="smestaj">
+
+    <xs:import namespace="smestaj" schemaLocation="smestaj.xsd"/>
+    <xs:element name="rezervacija">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="sm:smestaj"/>
+                <xs:element name="korisnik" type="sm:lice"/>
+                <xs:element name="datum_dolaska" type="xs:date"/>
+                <xs:element name="datum_odlaska" type="xs:date"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
