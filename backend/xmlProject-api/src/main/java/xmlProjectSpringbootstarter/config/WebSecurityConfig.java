@@ -3,6 +3,7 @@ package xmlProjectSpringbootstarter.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -53,6 +54,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         http.cors().and().csrf().disable().
                 authorizeRequests()
                 .antMatchers("/token/*", "/").permitAll()
+                .antMatchers(HttpMethod.GET, "/dodatneusluge/*","/kategorija/*","/tipsmestaja/*","/korisnici/*","/korisnici-list/*","/komentari/*").hasAuthority("ROLE_ADMIN")
+                .antMatchers(HttpMethod.POST, "/dodatneusluge/*","/kategorija/*","/tipsmestaja/*","/korisnici/*","/korisnici-list/*","/komentari/*").hasAuthority("ROLE_ADMIN")
+                .antMatchers(HttpMethod.PUT, "/dodatneusluge/*","/kategorija/*","/tipsmestaja/*","/korisnici/*","/korisnici-list/*","/komentari/*").hasAuthority("ROLE_ADMIN")
+                .antMatchers(HttpMethod.DELETE, "/dodatneusluge/*","/kategorija/*","/tipsmestaja/*","/korisnici/*","/korisnici-list/*","/komentari/*").hasAuthority("ROLE_ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
@@ -63,7 +68,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/smestaj/search","/signup","/user/*/","/smestaj","/tipsmestaja","/tipsmestaja/*","/kategorija","/kategorija/*","/dodatneusluge","/dodatneusluge/*","/korisnici","/korisnici/*","/korisnici-list","/korisnici-list/*","/komentari","/komentari/*");
+        web.ignoring().antMatchers("/smestaj/search","/signup","/user/*/","/smestaj");
     }
 
     @Bean
