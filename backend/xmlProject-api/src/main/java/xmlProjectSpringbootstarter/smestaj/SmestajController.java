@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.*;
+import xmlProjectSpringbootstarter.dodatnaUsluga.DodatnaUsluga;
+import xmlProjectSpringbootstarter.dodatnaUsluga.DodatnaUslugaService;
 import xmlProjectSpringbootstarter.kategorija.Kategorija;
 import xmlProjectSpringbootstarter.kategorija.KategorijaService;
 import xmlProjectSpringbootstarter.korisnik.Korisnik;
@@ -42,6 +45,9 @@ public class SmestajController {
 
     @Autowired
     private KategorijaService kategorijaService;
+
+    @Autowired
+    private DodatnaUslugaService dodatnaUslugaService;
 
     public SmestajController(SmestajService smestajService){
         this.smestajService = smestajService;
@@ -131,7 +137,9 @@ public class SmestajController {
             value = "/smestaj/search",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<List<SmestajOut>> simpleSearch(@RequestParam Map<String, String> parameters) {
+    public ResponseEntity<List<SmestajOut>> simpleSearch(@RequestParam Map<String, String> parameters, @RequestParam(value = "dodatna", required = false) String[] dodatna,
+                                                         @RequestParam(value = "tip", required = false) String[] tip, @RequestParam(value = "kategorija", required = false) String[] kategorija) {
+        List<Smestaj> ukloniti = new ArrayList<Smestaj>();
         String naziv = parameters.get("mesto");
         Integer kapacitet = Integer.parseInt(parameters.get("brOsoba"));
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -143,6 +151,7 @@ public class SmestajController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        //samo preuzeti parametre i proveriti da li je parameters.get()==null
 
         List<SmestajOut> pronadjeniOut = new ArrayList<SmestajOut>();
         List<Smestaj> pronadjeni = new ArrayList<Smestaj>();
@@ -165,13 +174,80 @@ public class SmestajController {
             }
         }
 
+        if(kategorija != null) {
+            for(Smestaj s: pronadjeni) {
+                boolean kat_prosla = false;
+                for(String k: kategorija) {
+                    if(s.getKategorijaSmestaja().equals(k)) {
+                        kat_prosla = true;
+                    }
+                }
+
+                if(!kat_prosla) {
+                    ukloniti.add(s);
+                }
+            }
+            for(Smestaj u : ukloniti) {
+                pronadjeni.remove(u);
+            }
+            ukloniti.clear();
+        }
+
+        if(tip != null) {
+            for(Smestaj s: pronadjeni) {
+                boolean tip_prosao = false;
+                for(String t: tip) {
+                    if(s.getTipSmestaja().equals(t)) {
+                        tip_prosao = true;
+                    }
+                }
+                if(!tip_prosao) {
+                    ukloniti.add(s);
+                }
+            }
+            for(Smestaj u : ukloniti) {
+                pronadjeni.remove(u);
+            }
+            ukloniti.clear();
+        }
+
+        if(dodatna != null) {
+            List<DodatnaUsluga> dodatne = new ArrayList<DodatnaUsluga>();
+            for(String d : dodatna) {
+                dodatne.add(dodatnaUslugaService.findOne(d));
+            }
+
+            for(Smestaj s: pronadjeni) {
+                for(DodatnaUsluga d : dodatne) {
+                    boolean dodatna_prosla = false;
+                    for(DodatnaUsluga p : s.getDodatne_usluge()) {
+                        if(p.getId().equals(d.getId())) {
+                            dodatna_prosla = true;
+                        }
+                    }
+                    if(!dodatna_prosla) {
+                        ukloniti.add(s);
+                        break;
+                    }
+
+                }
+            }
+
+            for(Smestaj u: ukloniti) {
+                pronadjeni.remove(u);
+            }
+
+            ukloniti.clear();
+        }
+
+
         for(Smestaj s: pronadjeni) {
             NaseljenoMestoOut nas = naseljenoMestoService.findOne(s.getNaseljeno_mesto());
             Korisnik agent = korisnikService.findOne(s.getAgent());
-            Tipsmestaja tip = tipsmestajaService.findOne(s.getTipSmestaja());
-            Kategorija kategorija = kategorijaService.findOne(s.getKategorijaSmestaja());
+            Tipsmestaja t = tipsmestajaService.findOne(s.getTipSmestaja());
+            Kategorija k = kategorijaService.findOne(s.getKategorijaSmestaja());
             pronadjeniOut.add(
-                    new SmestajOut(s.getId(),s.getNaziv(),s.getKapacitet(),nas,s.getOpis(),s.getSlika(),s.getRezervacije(),s.getZauzeto(),s.getKomentari(),agent,tip,kategorija,s.getTermini(),s.getDodatne_usluge())
+                    new SmestajOut(s.getId(),s.getNaziv(),s.getKapacitet(),nas,s.getOpis(),s.getSlika(),s.getRezervacije(),s.getZauzeto(),s.getKomentari(),agent,t,k,s.getTermini(),s.getDodatne_usluge())
             );
         }
 

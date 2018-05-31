@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { AlertService } from './../alert/alert.service';
+import { TokenStorage } from './../login-core/token-storage';
 import { SmestajService } from './smestaj.service';
 import { DodatnaUsluga } from './../model/dodatna-usluga';
 import { Termin } from './../model/termin';
@@ -15,7 +18,6 @@ import { Smestaj } from './smestaj';
   styleUrls: ['./smestaj.component.css']
 })
 export class SmestajComponent implements OnInit {
-
   smestaj: Smestaj[];
   model: any = {};
   detaljno = false;
@@ -26,38 +28,54 @@ export class SmestajComponent implements OnInit {
   izabraniTipovi = [];
   izabraneKategorije = [];
   izabraneDodatne = [];
+  datum1: Date;
+  datum2: Date;
 
-
-  constructor(private smestajService: SmestajService) { }
+  constructor(
+    private smestajService: SmestajService,
+    private token: TokenStorage,
+    private alertService: AlertService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    this.smestajService.getTipovi().subscribe(
-      data => {
-        this.tipovi = data;
-        for (const t of this.tipovi) {
-          t.checked = false;
-        }
+    this.smestajService.getTipovi().subscribe(data => {
+      this.tipovi = data;
+      for (const t of this.tipovi) {
+        t.checked = false;
       }
-    );
-    this.smestajService.getKategorije().subscribe(
-      data => {
-        this.kategorije = data;
-        for (const k of this.kategorije) {
-          k.checked = false;
-        }
+    });
+    this.smestajService.getKategorije().subscribe(data => {
+      this.kategorije = data;
+      for (const k of this.kategorije) {
+        k.checked = false;
       }
-    );
-    this.smestajService.getDodatne().subscribe(
-      data => {
-        this.dodatneUsl = data;
-        for (const d of this.dodatneUsl) {
-          d.checked = false;
-        }
+    });
+    this.smestajService.getDodatne().subscribe(data => {
+      this.dodatneUsl = data;
+      for (const d of this.dodatneUsl) {
+        d.checked = false;
       }
-    );
+    });
+    // OVO JE PRIVREMENOOOO
+    //
+    //
+    //
+    this.smestajService.getSmestaj().subscribe(data => {
+      this.smestaj = data;
+      this.rezultati = true;
+    });
+    //
+    //
+    //
+    //
+    //
   }
 
   search() {
+    this.izabraneDodatne = [];
+    this.izabraneKategorije = [];
+    this.izabraniTipovi = [];
     for (const d of this.dodatneUsl) {
       if (d.checked) {
         this.izabraneDodatne.push(d.id);
@@ -73,22 +91,39 @@ export class SmestajComponent implements OnInit {
         this.izabraneKategorije.push(k.id);
       }
     }
-    console.log(this.izabraneDodatne);
-    console.log(this.izabraneKategorije);
-    console.log(this.izabraniTipovi);
-    this.smestajService.search(this.model).subscribe(
-      data => {
+    this.datum1 = this.model.datumOd;
+    this.datum2 = this.model.datumDo;
+    this.smestajService
+      .search(
+        this.model,
+        this.izabraneDodatne,
+        this.izabraniTipovi,
+        this.izabraneKategorije
+      )
+      .subscribe(data => {
         this.smestaj = data;
-      }
-    );
-    this.rezultati = true;
-    console.log(this.dodatneUsl);
+        if (this.smestaj.length === 0) {
+          this.alertService.error(
+            'Nijedan smestaj ne odgovara zadatom kriterijumu'
+          );
+        } else {
+          this.rezultati = true;
+        }
+      });
+    window.scroll(0, 0);
   }
 
   toggleDetaljno() {
     this.detaljno = !this.detaljno;
   }
 
-
-
+  reserve() {
+    if (this.token.getToken() === null) {
+      this.alertService.error(
+        'Morate biti prijavljeni da biste rezervisali smestaj',
+        true
+      );
+      this.router.navigate(['login']);
+    }
+  }
 }

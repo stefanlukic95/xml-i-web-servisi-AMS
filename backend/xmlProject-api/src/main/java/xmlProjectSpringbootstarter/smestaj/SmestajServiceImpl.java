@@ -33,13 +33,13 @@ public class SmestajServiceImpl implements  SmestajService{
 
     @Override
     public Smestaj update(Smestaj smestaj){
-        Smestaj smestajUpdt = this.smestajRepository.findOne(smestaj.getId());
+        /*Smestaj smestajUpdt = this.smestajRepository.findOne(smestaj.getId());
 
         smestajUpdt.setKapacitet(smestaj.getKapacitet());
         smestajUpdt.setOpis(smestaj.getOpis());
-        smestajUpdt.setSlika((smestaj.getSlika()));
+        smestajUpdt.setSlika((smestaj.getSlika()));*/
 
-        Smestaj updateSmestaj = this.smestajRepository.save(smestajUpdt);
+        Smestaj updateSmestaj = this.smestajRepository.save(smestaj);
         return updateSmestaj;
     }
 

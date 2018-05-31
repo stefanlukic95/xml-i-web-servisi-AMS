@@ -21,7 +21,6 @@ import { LoginComponent } from './login/login.component';
 import { TokenStorage } from './login-core/token-storage';
 import { AlertComponent } from './alert/alert.component';
 import { ProfilComponent } from './profil/profil.component';
-import { DetaljnaPretragaComponent } from './detaljna-pretraga/detaljna-pretraga.component';
 import { SmestajService } from './smestaj/smestaj.service';
 
 
@@ -35,7 +34,6 @@ import { SmestajService } from './smestaj/smestaj.service';
     LoginComponent,
     AlertComponent,
     ProfilComponent,
-    DetaljnaPretragaComponent,
 
   ],
   imports: [
