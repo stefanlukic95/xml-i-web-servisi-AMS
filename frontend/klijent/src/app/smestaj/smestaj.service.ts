@@ -22,6 +22,20 @@ export class SmestajService {
 
   constructor(private http: HttpClient) { }
 
+  // OVO JE PRIVREMENO
+  //
+  //
+  //
+  //
+  getSmestaj() {
+    return this.http.get<Smestaj[]>(this.url_smestaj, httpOptions);
+  }
+  //
+  //
+  //
+  //
+  //
+
   search(model: any, dodatne: String[], tipovi: String[], kategorije: String[]) {
     this.url_check_dod = '';
     this.url_check_kat = '';

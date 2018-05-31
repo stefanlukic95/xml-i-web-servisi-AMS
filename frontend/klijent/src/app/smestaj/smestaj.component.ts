@@ -1,3 +1,6 @@
+import { Router } from '@angular/router';
+import { AlertService } from './../alert/alert.service';
+import { TokenStorage } from './../login-core/token-storage';
 import { SmestajService } from './smestaj.service';
 import { DodatnaUsluga } from './../model/dodatna-usluga';
 import { Termin } from './../model/termin';
@@ -25,8 +28,15 @@ export class SmestajComponent implements OnInit {
   izabraniTipovi = [];
   izabraneKategorije = [];
   izabraneDodatne = [];
+  datum1: Date;
+  datum2: Date;
 
-  constructor(private smestajService: SmestajService) {}
+  constructor(
+    private smestajService: SmestajService,
+    private token: TokenStorage,
+    private alertService: AlertService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.smestajService.getTipovi().subscribe(data => {
@@ -47,35 +57,73 @@ export class SmestajComponent implements OnInit {
         d.checked = false;
       }
     });
+    // OVO JE PRIVREMENOOOO
+    //
+    //
+    //
+    this.smestajService.getSmestaj().subscribe(data => {
+      this.smestaj = data;
+      this.rezultati = true;
+    });
+    //
+    //
+    //
+    //
+    //
   }
 
   search() {
-      this.izabraneDodatne = [];
-      this.izabraneKategorije = [];
-      this.izabraniTipovi = [];
-      for (const d of this.dodatneUsl) {
-        if (d.checked) {
-          this.izabraneDodatne.push(d.id);
-        }
+    this.izabraneDodatne = [];
+    this.izabraneKategorije = [];
+    this.izabraniTipovi = [];
+    for (const d of this.dodatneUsl) {
+      if (d.checked) {
+        this.izabraneDodatne.push(d.id);
       }
-      for (const t of this.tipovi) {
-        if (t.checked) {
-          this.izabraniTipovi.push(t.id);
-        }
+    }
+    for (const t of this.tipovi) {
+      if (t.checked) {
+        this.izabraniTipovi.push(t.id);
       }
-      for (const k of this.kategorije) {
-        if (k.checked) {
-          this.izabraneKategorije.push(k.id);
-        }
+    }
+    for (const k of this.kategorije) {
+      if (k.checked) {
+        this.izabraneKategorije.push(k.id);
       }
-    this.smestajService.search(this.model, this.izabraneDodatne, this.izabraniTipovi, this.izabraneKategorije).subscribe(data => {
-      this.smestaj = data;
-    });
-    this.rezultati = true;
+    }
+    this.datum1 = this.model.datumOd;
+    this.datum2 = this.model.datumDo;
+    this.smestajService
+      .search(
+        this.model,
+        this.izabraneDodatne,
+        this.izabraniTipovi,
+        this.izabraneKategorije
+      )
+      .subscribe(data => {
+        this.smestaj = data;
+        if (this.smestaj.length === 0) {
+          this.alertService.error(
+            'Nijedan smestaj ne odgovara zadatom kriterijumu'
+          );
+        } else {
+          this.rezultati = true;
+        }
+      });
     window.scroll(0, 0);
   }
 
   toggleDetaljno() {
     this.detaljno = !this.detaljno;
+  }
+
+  reserve() {
+    if (this.token.getToken() === null) {
+      this.alertService.error(
+        'Morate biti prijavljeni da biste rezervisali smestaj',
+        true
+      );
+      this.router.navigate(['login']);
+    }
   }
 }

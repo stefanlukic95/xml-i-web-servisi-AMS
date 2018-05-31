@@ -1,4 +1,3 @@
-import { DetaljnaPretragaComponent } from './../detaljna-pretraga/detaljna-pretraga.component';
 import { ProfilComponent } from './../profil/profil.component';
 import { RegistracijaComponent } from './../registracija/registracija.component';
 import { NgModule } from '@angular/core';
@@ -10,8 +9,7 @@ const routes: Routes = [
   { path: 'smestaj', component: SmestajComponent },
   { path: 'registracija', component: RegistracijaComponent },
   { path: 'login', component: LoginComponent},
-  { path: 'profil', component: ProfilComponent },
-  { path: 'smestaj/detaljna_pretraga', component: DetaljnaPretragaComponent}
+  { path: 'profil', component: ProfilComponent }
 ];
 
 @NgModule({
