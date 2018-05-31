@@ -15,7 +15,6 @@ import { Smestaj } from './smestaj';
   styleUrls: ['./smestaj.component.css']
 })
 export class SmestajComponent implements OnInit {
-
   smestaj: Smestaj[];
   model: any = {};
   detaljno = false;
@@ -27,68 +26,56 @@ export class SmestajComponent implements OnInit {
   izabraneKategorije = [];
   izabraneDodatne = [];
 
-
-  constructor(private smestajService: SmestajService) { }
+  constructor(private smestajService: SmestajService) {}
 
   ngOnInit() {
-    this.smestajService.getTipovi().subscribe(
-      data => {
-        this.tipovi = data;
-        for (const t of this.tipovi) {
-          t.checked = false;
-        }
+    this.smestajService.getTipovi().subscribe(data => {
+      this.tipovi = data;
+      for (const t of this.tipovi) {
+        t.checked = false;
       }
-    );
-    this.smestajService.getKategorije().subscribe(
-      data => {
-        this.kategorije = data;
-        for (const k of this.kategorije) {
-          k.checked = false;
-        }
+    });
+    this.smestajService.getKategorije().subscribe(data => {
+      this.kategorije = data;
+      for (const k of this.kategorije) {
+        k.checked = false;
       }
-    );
-    this.smestajService.getDodatne().subscribe(
-      data => {
-        this.dodatneUsl = data;
-        for (const d of this.dodatneUsl) {
-          d.checked = false;
-        }
+    });
+    this.smestajService.getDodatne().subscribe(data => {
+      this.dodatneUsl = data;
+      for (const d of this.dodatneUsl) {
+        d.checked = false;
       }
-    );
+    });
   }
 
   search() {
-    for (const d of this.dodatneUsl) {
-      if (d.checked) {
-        this.izabraneDodatne.push(d.id);
+      this.izabraneDodatne = [];
+      this.izabraneKategorije = [];
+      this.izabraniTipovi = [];
+      for (const d of this.dodatneUsl) {
+        if (d.checked) {
+          this.izabraneDodatne.push(d.id);
+        }
       }
-    }
-    for (const t of this.tipovi) {
-      if (t.checked) {
-        this.izabraniTipovi.push(t.id);
+      for (const t of this.tipovi) {
+        if (t.checked) {
+          this.izabraniTipovi.push(t.id);
+        }
       }
-    }
-    for (const k of this.kategorije) {
-      if (k.checked) {
-        this.izabraneKategorije.push(k.id);
+      for (const k of this.kategorije) {
+        if (k.checked) {
+          this.izabraneKategorije.push(k.id);
+        }
       }
-    }
-    console.log(this.izabraneDodatne);
-    console.log(this.izabraneKategorije);
-    console.log(this.izabraniTipovi);
-    this.smestajService.search(this.model).subscribe(
-      data => {
-        this.smestaj = data;
-      }
-    );
+    this.smestajService.search(this.model, this.izabraneDodatne, this.izabraniTipovi, this.izabraneKategorije).subscribe(data => {
+      this.smestaj = data;
+    });
     this.rezultati = true;
-    console.log(this.dodatneUsl);
+    window.scroll(0, 0);
   }
 
   toggleDetaljno() {
     this.detaljno = !this.detaljno;
   }
-
-
-
 }

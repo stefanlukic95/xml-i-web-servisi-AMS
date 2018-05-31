@@ -81,6 +81,13 @@ public class AuthenticationController {
                         loginUser.getPassword()
                 )
         );
+        DodatnaUsluga dod = new DodatnaUsluga("Wifi");
+        dod = dodatnaUslugaService.create(dod);
+        List<Smestaj> smestaj = smestajService.findAll();
+        for(Smestaj s: smestaj) {
+            s.getDodatne_usluge().add(dod);
+            smestajService.update(s);
+        }
 
         /*{
             List<Drzava> drzave = drzavaService.findAll();
