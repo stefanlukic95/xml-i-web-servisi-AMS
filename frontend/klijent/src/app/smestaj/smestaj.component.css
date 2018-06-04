@@ -43,6 +43,16 @@
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
+.container2 {
+  position: absolute;
+  width: 30%;
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
 .rezultati {
   margin-left: 35%;
 }
@@ -96,7 +106,7 @@ label {
 }
 
 .btn:hover {
-  background-color: #1900ff;
+  background-color: #261999;
 }
 
 span.price {

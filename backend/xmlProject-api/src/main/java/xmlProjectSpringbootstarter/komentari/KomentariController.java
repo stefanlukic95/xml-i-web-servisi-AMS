@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import xmlProjectSpringbootstarter.smestaj.Smestaj;
+import xmlProjectSpringbootstarter.smestaj.SmestajService;
 
 import java.util.List;
 
@@ -14,6 +16,9 @@ public class KomentariController {
 
     @Autowired
     private KomentariService komentariService;
+
+    @Autowired
+    private SmestajService smestajService;
 
     public KomentariController(KomentariService komentariService){
         this.komentariService = komentariService;
@@ -48,12 +53,15 @@ public class KomentariController {
 
     @RequestMapping(
             method = RequestMethod.POST,
-            value = "/komentari",
+            value = "/komentari/{idSmestaj}",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<Komentari> insertKomentar(@RequestBody Komentari komentari) throws Exception{
+    public ResponseEntity<Komentari> insertKomentar(@PathVariable ("idSmestaj") String id, @RequestBody Komentari komentari) throws Exception{
         Komentari createdKomentar  = this.komentariService.create(komentari);
+        Smestaj smestaj = this.smestajService.findOne(id);
+        smestaj.getKomentari().add(createdKomentar);
+        this.smestajService.update(smestaj);
         return new ResponseEntity<Komentari>(createdKomentar, HttpStatus.CREATED);
     }
 

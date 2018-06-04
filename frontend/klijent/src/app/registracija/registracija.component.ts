@@ -12,7 +12,8 @@ import { Korisnik } from '../korisnik/korisnik';
 })
 export class RegistracijaComponent implements OnInit {
 
-  korisnik = new Korisnik('', '', '', '', '', '');
+  korisnik = new Korisnik('', '', '', '', '', '', '', [], []);
+
   loading = false;
   error = '';
 

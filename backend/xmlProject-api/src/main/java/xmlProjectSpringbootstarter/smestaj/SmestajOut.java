@@ -18,7 +18,7 @@ public class SmestajOut {
     private Integer kapacitet;
     private NaseljenoMestoOut naseljeno_mesto;
     private String opis;
-    private String slika;
+    private List<String> slike;
     private List<Rezervacija> rezervacije;
     private List<Zauzetost> zauzeto;
     private List<Komentari> komentari;
@@ -28,13 +28,13 @@ public class SmestajOut {
     private List<Termin> termini;
     private List<DodatnaUsluga> dodatne_usluge;
 
-    public SmestajOut(String id, String naziv, Integer kapacitet, NaseljenoMestoOut naseljeno_mesto, String opis, String slika, List<Rezervacija> rezervacije, List<Zauzetost> zauzeto, List<Komentari> komentari, Korisnik agent, Tipsmestaja tipSmestaja, Kategorija kategorijaSmestaja, List<Termin> termini, List<DodatnaUsluga> dodatne_usluge) {
+    public SmestajOut(String id, String naziv, Integer kapacitet, NaseljenoMestoOut naseljeno_mesto, String opis, List<String> slike, List<Rezervacija> rezervacije, List<Zauzetost> zauzeto, List<Komentari> komentari, Korisnik agent, Tipsmestaja tipSmestaja, Kategorija kategorijaSmestaja, List<Termin> termini, List<DodatnaUsluga> dodatne_usluge) {
         this.id = id;
         this.naziv = naziv;
         this.kapacitet = kapacitet;
         this.naseljeno_mesto = naseljeno_mesto;
         this.opis = opis;
-        this.slika = slika;
+        this.slike = slike;
         this.rezervacije = rezervacije;
         this.zauzeto = zauzeto;
         this.komentari = komentari;
@@ -105,12 +105,12 @@ public class SmestajOut {
         this.opis = opis;
     }
 
-    public String getSlika() {
-        return slika;
+    public List<String> getSlike() {
+        return slike;
     }
 
-    public void setSlika(String slika) {
-        this.slika = slika;
+    public void setSlike(List<String> slike) {
+        this.slike = slike;
     }
 
     public List<Rezervacija> getRezervacije() {

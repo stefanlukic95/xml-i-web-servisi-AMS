@@ -15,6 +15,7 @@ import xmlProjectSpringbootstarter.drzava.Drzava;
 import xmlProjectSpringbootstarter.drzava.DrzavaService;
 import xmlProjectSpringbootstarter.kategorija.KategorijaService;
 import xmlProjectSpringbootstarter.komentari.Komentari;
+import xmlProjectSpringbootstarter.komentari.KomentariService;
 import xmlProjectSpringbootstarter.korisnik.Korisnik;
 import xmlProjectSpringbootstarter.korisnik.KorisnikService;
 import xmlProjectSpringbootstarter.naseljeno_mesto.NaseljenoMesto;
@@ -73,6 +74,9 @@ public class AuthenticationController {
     @Autowired
     private KorisnikService korisnikService;
 
+    @Autowired
+    private KomentariService komentariService;
+
     @RequestMapping(value = "/generate-token", method= RequestMethod.POST)
     public ResponseEntity<?> register(@RequestBody LoginUser loginUser) throws AuthenticationException {
         final Authentication authentication = authenticationManager.authenticate(
@@ -82,7 +86,11 @@ public class AuthenticationController {
                 )
         );
 
-        /*{
+        /*Smestaj smestaj = smestajService.findOne("5b0d88029e81b71f6c086ca0");
+        Komentari komentar = komentariService.findOne("5b0bda762569022d187739fe");
+        smestaj.getKomentari().add(komentar);
+        smestajService.update(smestaj);
+        {
             List<Drzava> drzave = drzavaService.findAll();
             NaseljenoMesto nas = new NaseljenoMesto("Novi Sad","21000", drzave.get(0).getId());
             nas = naseljenoMestoService.insert(nas);

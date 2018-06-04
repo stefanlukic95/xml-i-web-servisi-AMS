@@ -10,19 +10,16 @@ public class Komentari {
     @Id
     private String id;
     private String sadrzaj;
-
-    @JsonIgnore
+    private String ime;
     private boolean odobren;
-
-
 
     public Komentari(){
 
     }
 
-    public Komentari(String id, String sadrzaj, boolean odobren) {
-        this.id = id;
+    public Komentari(String sadrzaj, String ime, boolean odobren) {
         this.sadrzaj = sadrzaj;
+        this.ime = ime;
         this.odobren = odobren;
     }
 
@@ -48,5 +45,13 @@ public class Komentari {
 
     public void setSadrzaj(String sadrzaj) {
         this.sadrzaj = sadrzaj;
+    }
+
+    public String getIme() {
+        return ime;
+    }
+
+    public void setIme(String ime) {
+        this.ime = ime;
     }
 }

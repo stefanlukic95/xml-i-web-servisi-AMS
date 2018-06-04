@@ -18,7 +18,7 @@ public class Smestaj {
     private Integer kapacitet;
     private String naseljeno_mesto; // referenca na naseljeno mesto u kom se nalazi
     private String opis;
-    private String slika;
+    private List<String> slike;
     private List<Rezervacija> rezervacije;
     private List<Zauzetost> zauzeto;
     private List<Komentari> komentari;
@@ -28,12 +28,12 @@ public class Smestaj {
     private List<Termin> termini;
     private List<DodatnaUsluga> dodatne_usluge;
 
-    public Smestaj(String naziv, Integer kapacitet, String naseljeno_mesto, String opis, String slika, List<Rezervacija> rezervacije, List<Zauzetost> zauzeto, List<Komentari> komentari, String agent, String tipSmestaja, String kategorijaSmestaja, List<Termin> termini, List<DodatnaUsluga> dodatne_usluge) {
+    public Smestaj(String naziv, Integer kapacitet, String naseljeno_mesto, String opis, List<String> slike, List<Rezervacija> rezervacije, List<Zauzetost> zauzeto, List<Komentari> komentari, String agent, String tipSmestaja, String kategorijaSmestaja, List<Termin> termini, List<DodatnaUsluga> dodatne_usluge) {
         this.naziv = naziv;
         this.kapacitet = kapacitet;
         this.naseljeno_mesto = naseljeno_mesto;
         this.opis = opis;
-        this.slika = slika;
+        this.slike = slike;
         this.rezervacije = rezervacije;
         this.zauzeto = zauzeto;
         this.komentari = komentari;
@@ -148,14 +148,12 @@ public class Smestaj {
         this.opis = opis;
     }
 
-    public String getSlika() {
-        return slika;
+    public List<String> getSlike() {
+        return slike;
     }
 
-    public void setSlika(String slika) {
-        this.slika = slika;
+    public void setSlike(List<String> slike) {
+        this.slike = slike;
     }
-
-
 }
 

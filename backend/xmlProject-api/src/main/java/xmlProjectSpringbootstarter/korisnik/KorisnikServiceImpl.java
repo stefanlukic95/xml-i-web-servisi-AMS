@@ -74,6 +74,11 @@ public class KorisnikServiceImpl implements UserDetailsService,KorisnikService {
         return savedKorisnik;
     }
 
+    @Override
+    public Korisnik update(Korisnik korisnik) {
+        return korisnikRepository.save(korisnik);
+    }
+
 
     @Override
     public List<Korisnik> findAll(){

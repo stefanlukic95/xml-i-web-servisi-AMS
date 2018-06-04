@@ -1,3 +1,4 @@
+import { KomentarService } from './services/komentar.service';
 import { Interceptor } from './login-core/interceptor';
 import { ToggleLoginService } from './login/toggle-login.service';
 import { AlertService } from './alert/alert.service';
@@ -22,6 +23,7 @@ import { TokenStorage } from './login-core/token-storage';
 import { AlertComponent } from './alert/alert.component';
 import { ProfilComponent } from './profil/profil.component';
 import { SmestajService } from './smestaj/smestaj.service';
+import { DetaljiComponent } from './smestaj/detalji/detalji.component';
 
 
 @NgModule({
@@ -34,6 +36,7 @@ import { SmestajService } from './smestaj/smestaj.service';
     LoginComponent,
     AlertComponent,
     ProfilComponent,
+    DetaljiComponent,
 
   ],
   imports: [
@@ -49,6 +52,7 @@ import { SmestajService } from './smestaj/smestaj.service';
     TokenStorage,
     AlertService,
     ToggleLoginService,
+    KomentarService,
     {provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,
       multi : true},

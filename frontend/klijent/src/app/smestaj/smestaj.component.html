@@ -75,18 +75,21 @@
 
 <div *ngIf="rezultati">
   <div class="rezultati">
-    <h1><b>Rezultati pretrage:</b> </h1>
+
+    <h1>
+      <b>Rezultati pretrage:</b>
+    </h1>
     <div *ngFor="let s of smestaj">
-      <div class="pull-left">
-        <h2 class="list-group-item-heading"> {{s.naziv}}</h2>
-        <h4 class="list-group-item"> Kategorija: {{s.kategorijaSmestaja.naziv}}</h4>
-        <h4 class="list-group-item"> Kapacitet: {{s.kapacitet}}</h4>
-        <h4 class="list-group-item"> Opis: {{s.opis}}</h4>
-        <h4 class="list-group-item"> Cena: </h4>
-        <h4 class="list-group-item"> Ocena korisnika: </h4>
-        <button (click)="reserve()" class="btn btn-primary bg-primary">Rezervisi</button>
-      </div>
+      <a [routerLink]="['detalji/' + s.id]">
+        <div class="container2">
+          <h2> {{s.naziv}}</h2>
+          <h4> Kategorija: {{s.kategorijaSmestaja.naziv}}</h4>
+          <h4> Kapacitet: {{s.kapacitet}}</h4>
+          <h4> Opis: {{s.opis}}</h4>
+          <h4> Cena: </h4>
+          <h4> Ocena korisnika: </h4>
+        </div>
+      </a>
     </div>
   </div>
 </div>
-

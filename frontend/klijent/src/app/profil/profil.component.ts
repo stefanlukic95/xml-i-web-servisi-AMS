@@ -11,7 +11,9 @@ import * as jwt_decode from 'jwt-decode';
 })
 export class ProfilComponent implements OnInit {
 
-  korisnik = new Korisnik('', '', '', '', '', '');
+  // korisnik = new Korisnik('', '', '', '', '', '', '', [], []);
+
+  korisnik: Korisnik;
 
   constructor(
     private korisnikService: KorisnikService,

@@ -22,12 +22,9 @@ public class Rezervacija {
     public Rezervacija(Date datumDolaska, Date datumOdlaska) {
         this.datumDolaska = datumDolaska;
         this.datumOdlaska = datumOdlaska;
-        calculatePrice();
     }
 
-    private void calculatePrice() {
 
-    }
     public Integer getCena() {
         return cena;
     }

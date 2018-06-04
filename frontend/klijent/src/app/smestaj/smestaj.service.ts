@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { DodatnaUsluga } from './../model/dodatna-usluga';
 import { KategorijaSmestaja } from './../model/kategorija-smestaja';
 import { TipSmestaja } from './../model/tip-smestaja';
@@ -27,7 +28,7 @@ export class SmestajService {
   //
   //
   //
-  getSmestaj() {
+  getSmestaje(): Observable<Smestaj[]> {
     return this.http.get<Smestaj[]>(this.url_smestaj, httpOptions);
   }
   //
@@ -35,6 +36,9 @@ export class SmestajService {
   //
   //
   //
+  getSmestaj(id: string): Observable<Smestaj> {
+    return this.http.get<Smestaj>(this.url_smestaj + '/' + id, httpOptions);
+  }
 
   search(model: any, dodatne: String[], tipovi: String[], kategorije: String[]) {
     this.url_check_dod = '';
@@ -59,15 +63,15 @@ export class SmestajService {
     '&datumOd=' + model.datumOd + '&datumDo=' + model.datumDo + this.url_check_dod + this.url_check_tip + this.url_check_kat);
   }
 
-  getTipovi() {
+  getTipovi(): Observable<TipSmestaja[]> {
     return this.http.get<TipSmestaja[]>(this.url_tip, httpOptions);
   }
 
-  getKategorije() {
+  getKategorije(): Observable<KategorijaSmestaja[]> {
     return this.http.get<KategorijaSmestaja[]>(this.url_kategorija, httpOptions);
   }
 
-  getDodatne() {
+  getDodatne(): Observable<DodatnaUsluga[]> {
     return this.http.get<DodatnaUsluga[]>(this.url_dodatnaUsl, httpOptions);
   }
 

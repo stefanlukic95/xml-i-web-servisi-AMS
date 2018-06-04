@@ -28,8 +28,7 @@ export class SmestajComponent implements OnInit {
   izabraniTipovi = [];
   izabraneKategorije = [];
   izabraneDodatne = [];
-  datum1: Date;
-  datum2: Date;
+  datumi = [];
 
   constructor(
     private smestajService: SmestajService,
@@ -61,7 +60,7 @@ export class SmestajComponent implements OnInit {
     //
     //
     //
-    this.smestajService.getSmestaj().subscribe(data => {
+    this.smestajService.getSmestaje().subscribe(data => {
       this.smestaj = data;
       this.rezultati = true;
     });
@@ -91,8 +90,11 @@ export class SmestajComponent implements OnInit {
         this.izabraneKategorije.push(k.id);
       }
     }
-    this.datum1 = this.model.datumOd;
-    this.datum2 = this.model.datumDo;
+    this.datumi = [];
+    this.datumi.push(this.model.datumOd);
+    this.datumi.push(this.model.datumDo);
+    localStorage.setItem('date1', this.datumi[0]);
+    localStorage.setItem('date2', this.datumi[1]);
     this.smestajService
       .search(
         this.model,

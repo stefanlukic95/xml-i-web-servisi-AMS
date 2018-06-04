@@ -1,3 +1,4 @@
+import { Komentar } from './../model/komentar';
 import { DodatnaUsluga } from './../model/dodatna-usluga';
 import { Termin } from './../model/termin';
 import { KategorijaSmestaja } from './../model/kategorija-smestaja';
@@ -18,6 +19,7 @@ export class Smestaj {
     public kategorijaSmestaja: KategorijaSmestaja,
     public termini: Array<Termin>,
     public dodatne_usluge: Array<DodatnaUsluga>,
+    public komentari: Array<Komentar>,
     public id?: string
   ) { }
 }

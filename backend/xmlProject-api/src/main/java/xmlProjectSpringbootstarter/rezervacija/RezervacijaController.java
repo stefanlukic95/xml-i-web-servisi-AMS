@@ -5,6 +5,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import xmlProjectSpringbootstarter.korisnik.Korisnik;
+import xmlProjectSpringbootstarter.korisnik.KorisnikService;
+import xmlProjectSpringbootstarter.smestaj.Smestaj;
+import xmlProjectSpringbootstarter.smestaj.SmestajService;
+import xmlProjectSpringbootstarter.smestaj.Zauzetost;
 
 import java.util.List;
 
@@ -14,6 +19,12 @@ public class RezervacijaController {
 
     @Autowired
     private RezervacijaService rezervacijaService;
+
+    @Autowired
+    private KorisnikService korisnikService;
+
+    @Autowired
+    private SmestajService smestajService;
 
     public RezervacijaController(RezervacijaService rezervacijaService){
         this.rezervacijaService = rezervacijaService;
@@ -48,12 +59,21 @@ public class RezervacijaController {
 
     @RequestMapping(
             method = RequestMethod.POST,
-            value = "/rezervacija",
+            value = "/rezervacija/{smestajId}/{korisnikId}",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<Rezervacija> insertRezervacija(@RequestBody Rezervacija rezervacija) throws Exception{
+    public ResponseEntity<Rezervacija> insertRezervacija(@PathVariable ("smestajId") String idSmestaj, @PathVariable ("korisnikId") String idKorisnik, @RequestBody Rezervacija rezervacija) throws Exception{
         Rezervacija createdRezervacija  = this.rezervacijaService.create(rezervacija);
+        Smestaj smestaj = smestajService.findOne(idSmestaj);
+        Korisnik korisnik = korisnikService.findOne(idKorisnik);
+        smestaj.getRezervacije().add(createdRezervacija);
+        Zauzetost zauz = new Zauzetost(createdRezervacija.getDatumDolaska(), createdRezervacija.getDatumOdlaska());
+        smestaj.getZauzeto().add(zauz);
+        korisnik.getRezervacije().add(createdRezervacija);
+        korisnikService.update(korisnik);
+        smestajService.update(smestaj);
+
         return new ResponseEntity<Rezervacija>(createdRezervacija, HttpStatus.CREATED);
     }
 

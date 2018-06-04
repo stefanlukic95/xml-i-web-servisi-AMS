@@ -68,7 +68,7 @@ public class SmestajController {
             Tipsmestaja tip = tipsmestajaService.findOne(s.getTipSmestaja());
             Kategorija kategorija = kategorijaService.findOne(s.getKategorijaSmestaja());
             smestajOuts.add(
-                    new SmestajOut(s.getId(),s.getNaziv(),s.getKapacitet(),nas,s.getOpis(),s.getSlika(),s.getRezervacije(),s.getZauzeto(),s.getKomentari(),agent,tip,kategorija,s.getTermini(),s.getDodatne_usluge())
+                    new SmestajOut(s.getId(),s.getNaziv(),s.getKapacitet(),nas,s.getOpis(),s.getSlike(),s.getRezervacije(),s.getZauzeto(),s.getKomentari(),agent,tip,kategorija,s.getTermini(),s.getDodatne_usluge())
             );
         }
         return new ResponseEntity<List<SmestajOut>>(smestajOuts, HttpStatus.OK);
@@ -80,12 +80,19 @@ public class SmestajController {
             value ="/smestaj/{id}",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<Smestaj> getSmestaj(@PathVariable("id") String id) {
+    public ResponseEntity<SmestajOut> getSmestaj(@PathVariable("id") String id) {
         Smestaj smestaj = this.smestajService.findOne(id);
-        if(smestaj == null){
-            return new ResponseEntity<Smestaj>(HttpStatus.NOT_FOUND);
+        if(smestaj == null) {
+            return new ResponseEntity<SmestajOut>(HttpStatus.NOT_FOUND);
+        } else {
+            NaseljenoMestoOut nas = naseljenoMestoService.findOne(smestaj.getNaseljeno_mesto());
+            Korisnik agent = korisnikService.findOne(smestaj.getAgent());
+            Tipsmestaja tip = tipsmestajaService.findOne(smestaj.getTipSmestaja());
+            Kategorija kategorija = kategorijaService.findOne(smestaj.getKategorijaSmestaja());
+            SmestajOut smestajOut = new SmestajOut(smestaj.getId(), smestaj.getNaziv(), smestaj.getKapacitet(), nas, smestaj.getOpis(), smestaj.getSlike(), smestaj.getRezervacije(), smestaj.getZauzeto(), smestaj.getKomentari(), agent, tip, kategorija, smestaj.getTermini(), smestaj.getDodatne_usluge());
+
+            return new ResponseEntity<SmestajOut>(smestajOut, HttpStatus.OK);
         }
-        return new ResponseEntity<Smestaj>(smestaj, HttpStatus.OK);
     }
 
 
@@ -247,7 +254,7 @@ public class SmestajController {
             Tipsmestaja t = tipsmestajaService.findOne(s.getTipSmestaja());
             Kategorija k = kategorijaService.findOne(s.getKategorijaSmestaja());
             pronadjeniOut.add(
-                    new SmestajOut(s.getId(),s.getNaziv(),s.getKapacitet(),nas,s.getOpis(),s.getSlika(),s.getRezervacije(),s.getZauzeto(),s.getKomentari(),agent,t,k,s.getTermini(),s.getDodatne_usluge())
+                    new SmestajOut(s.getId(),s.getNaziv(),s.getKapacitet(),nas,s.getOpis(),s.getSlike(),s.getRezervacije(),s.getZauzeto(),s.getKomentari(),agent,t,k,s.getTermini(),s.getDodatne_usluge())
             );
         }
 
