@@ -11,16 +11,26 @@ public class Komentari {
     private String id;
     private String sadrzaj;
     private String ime;
+    private String smestajId;
     private boolean odobren;
 
     public Komentari(){
 
     }
 
-    public Komentari(String sadrzaj, String ime, boolean odobren) {
+    public Komentari(String sadrzaj, String ime, String smestajId, boolean odobren) {
         this.sadrzaj = sadrzaj;
         this.ime = ime;
+        this.smestajId = smestajId;
         this.odobren = odobren;
+    }
+
+    public String getSmestajId() {
+        return smestajId;
+    }
+
+    public void setSmestajId(String smestajId) {
+        this.smestajId = smestajId;
     }
 
     public String getId() {

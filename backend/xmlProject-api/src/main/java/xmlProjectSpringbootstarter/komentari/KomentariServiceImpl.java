@@ -32,17 +32,7 @@ public class KomentariServiceImpl implements KomentariService{
 
     @Override
     public Komentari update(Komentari komentar) throws Exception {
-        Komentari komentariUpdt = this.komentariRepository.findOne(komentar.getId());
-
-        if(komentariUpdt == null){
-            throw new Exception("Nije pronadjen komentar.");
-        }
-
-        if(komentariUpdt.isOdobren() == false) {
-            komentariUpdt.setOdobren(true);
-        }
-
-        Komentari updateKomentari = this.komentariRepository.save(komentariUpdt);
+        Komentari updateKomentari = this.komentariRepository.save(komentar);
         return updateKomentari;
     }
 

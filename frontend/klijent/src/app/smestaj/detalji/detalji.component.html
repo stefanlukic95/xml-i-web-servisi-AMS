@@ -14,7 +14,7 @@
 
     <h4>Komentari: </h4>
     <div *ngFor="let k of smestaj?.komentari">
-      <div class="container2" *ngIf="k.odobren">
+      <div *ngIf="k.odobren">
         <h4>{{k.ime}}</h4>
         <p>{{k.sadrzaj}}</p>
       </div>

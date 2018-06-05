@@ -58,10 +58,8 @@ public class KomentariController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<Komentari> insertKomentar(@PathVariable ("idSmestaj") String id, @RequestBody Komentari komentari) throws Exception{
+        komentari.setSmestajId(id);
         Komentari createdKomentar  = this.komentariService.create(komentari);
-        Smestaj smestaj = this.smestajService.findOne(id);
-        smestaj.getKomentari().add(createdKomentar);
-        this.smestajService.update(smestaj);
         return new ResponseEntity<Komentari>(createdKomentar, HttpStatus.CREATED);
     }
 
@@ -73,12 +71,14 @@ public class KomentariController {
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     public ResponseEntity<Komentari> updateKomentar(@PathVariable("id") String id, @RequestBody Komentari komentar) throws Exception{
-        Komentari komentari = this.komentariService.findOne(id);
 
-        if(komentari == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        Smestaj smestaj = smestajService.findOne(komentar.getSmestajId());
+
+        komentar.setOdobren(true);
         Komentari updateKomentar = this.komentariService.update(komentar);
+        smestaj.getKomentari().add(updateKomentar);
+        smestajService.update(smestaj);
+
         if (updateKomentar == null) {
             return new ResponseEntity<Komentari>(
                     HttpStatus.INTERNAL_SERVER_ERROR);
