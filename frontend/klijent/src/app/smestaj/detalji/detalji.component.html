@@ -3,14 +3,15 @@
   <h4>Kapacitet: {{smestaj?.kapacitet}}</h4>
   <h4>Mesto: {{smestaj?.naseljeno_mesto.naziv}}</h4>
   <div>
-    <h4>Agent: {{smestaj?.agent.ime}} {{smestaj?.agent.prezime}}</h4>
-    <h4>Kategorija: {{smestaj?.kategorijaSmestaja.naziv}}</h4>
+    <h4>Agent: {{smestaj?.agent?.ime}} {{smestaj?.agent?.prezime}}</h4>
+    <h4>Kategorija: {{smestaj?.kategorijaSmestaja?.naziv}}</h4>
     <h4>Dodatne usluge:</h4>
     <div *ngFor="let d of smestaj?.dodatne_usluge">
       <h5>{{d.naziv}}</h5>
     </div>
     <h4>Dolazak: {{date1}}</h4>
     <h4>Odlazak: {{date2}}</h4>
+    <h4>Cena za izabrani termin: {{smestaj?.cena}}</h4>
 
     <h4>Komentari: </h4>
     <div *ngFor="let k of smestaj?.komentari">

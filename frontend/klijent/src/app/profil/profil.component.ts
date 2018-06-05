@@ -34,4 +34,8 @@ export class ProfilComponent implements OnInit {
     );
   }
 
+  cancelRez(id: string) {
+    console.log(id);
+  }
+
 }
