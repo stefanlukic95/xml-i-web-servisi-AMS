@@ -92,7 +92,7 @@ public class KorisnikController {
     public ResponseEntity<Korisnik> getKorinsik(@PathVariable("id") String id) {
 
         Korisnik korisnik = this.korisnikService.findOne(id);
-        if (korisnik.getUloge().contains("ROLE_AGENT")) {
+        if (korisnik.getUloge().contains("ROLE_USER")) {
             return new ResponseEntity<Korisnik>(korisnik, HttpStatus.OK);
         }else {
             return new ResponseEntity<Korisnik>(HttpStatus.NOT_FOUND);
