@@ -59,14 +59,19 @@ public class RezervacijaController {
 
     @RequestMapping(
             method = RequestMethod.POST,
-            value = "/rezervacija/{smestajId}/{korisnikId}",
+            value = "/rezervacija",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<Rezervacija> insertRezervacija(@PathVariable ("smestajId") String idSmestaj, @PathVariable ("korisnikId") String idKorisnik, @RequestBody Rezervacija rezervacija) throws Exception{
-        Rezervacija createdRezervacija  = this.rezervacijaService.create(rezervacija);
+    public ResponseEntity<Rezervacija> insertRezervacija(@RequestParam(value = "smestaj", required = true) String idSmestaj, @RequestParam(value = "korisnik", required = true) String idKorisnik, @RequestBody Rezervacija rezervacija) throws Exception{
+
+        rezervacija.setIzvrsena(false);
         Smestaj smestaj = smestajService.findOne(idSmestaj);
+        rezervacija.setSmestajNaziv(smestaj.getNaziv());
+        rezervacija.setSmestajId(idSmestaj);
+        rezervacija.setKorisnikId(idKorisnik);
         Korisnik korisnik = korisnikService.findOne(idKorisnik);
+        Rezervacija createdRezervacija  = this.rezervacijaService.create(rezervacija);
         smestaj.getRezervacije().add(createdRezervacija);
         Zauzetost zauz = new Zauzetost(createdRezervacija.getDatumDolaska(), createdRezervacija.getDatumOdlaska());
         smestaj.getZauzeto().add(zauz);

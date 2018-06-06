@@ -1,3 +1,4 @@
+import { RezervacijaService } from './services/rezervacija.service';
 import { KomentarService } from './services/komentar.service';
 import { Interceptor } from './login-core/interceptor';
 import { ToggleLoginService } from './login/toggle-login.service';
@@ -53,6 +54,7 @@ import { DetaljiComponent } from './smestaj/detalji/detalji.component';
     AlertService,
     ToggleLoginService,
     KomentarService,
+    RezervacijaService,
     {provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,
       multi : true},
