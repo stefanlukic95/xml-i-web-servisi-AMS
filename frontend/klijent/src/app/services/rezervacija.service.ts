@@ -17,4 +17,8 @@ export class RezervacijaService {
   addRezervacija(rezervacija: Rezervacija, smestajId: string, korisnikId: string): Observable<Rezervacija> {
     return this.http.post<Rezervacija>(this.url + '?smestaj=' + smestajId + '&korisnik=' + korisnikId , rezervacija, httpOptions);
   }
+
+  deleteRezervacija(id: string): Observable<Rezervacija> {
+    return this.http.delete<Rezervacija>(this.url + '/' + id, httpOptions);
+  }
 }

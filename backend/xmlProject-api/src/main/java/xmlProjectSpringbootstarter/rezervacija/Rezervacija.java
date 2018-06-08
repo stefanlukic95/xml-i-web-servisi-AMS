@@ -19,7 +19,7 @@ public class Rezervacija {
     @JsonIgnore
     private String korisnikId;
     private boolean izvrsena;
-    private Number cena;
+    private Integer cena;
 
 
     public Rezervacija() {

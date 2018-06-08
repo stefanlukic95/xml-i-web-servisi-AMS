@@ -1,3 +1,5 @@
+import { AlertService } from './../alert/alert.service';
+import { RezervacijaService } from './../services/rezervacija.service';
 import { KorisnikService } from './../korisnik/korisnik.service';
 import { Korisnik } from './../korisnik/korisnik';
 import { Component, OnInit } from '@angular/core';
@@ -18,6 +20,8 @@ export class ProfilComponent implements OnInit {
   constructor(
     private korisnikService: KorisnikService,
     private token: TokenStorage,
+    private rezervacijaService: RezervacijaService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -35,7 +39,10 @@ export class ProfilComponent implements OnInit {
   }
 
   cancelRez(id: string) {
-    console.log(id);
+    this.rezervacijaService.deleteRezervacija(id).subscribe();
+    this.alertService.success(
+      'Uspesno ste otkazali rezervaciju'
+    );
   }
 
 }

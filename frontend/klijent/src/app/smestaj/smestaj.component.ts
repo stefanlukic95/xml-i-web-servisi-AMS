@@ -64,10 +64,10 @@ export class SmestajComponent implements OnInit {
     //
     //
     //
-    // this.smestajService.getSmestaje().subscribe(data => {
-    //  this.smestaj = data;
-    //  this.rezultati = true;
-    // });
+     this.smestajService.getSmestaje().subscribe(data => {
+      this.smestaj = data;
+      this.rezultati = true;
+     });
     //
     //
     //
