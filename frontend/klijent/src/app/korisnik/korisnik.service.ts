@@ -23,6 +23,10 @@ export class KorisnikService {
     return this.http.get<Korisnik>(this.url_korisnik + '/' + id.sub + '/');
   }
 
+  getKorisnikById(id: any): Observable<Korisnik> {
+    return this.http.get<Korisnik>('http://localhost:8080/korisnik/' + id + '/');
+  }
+
   constructor(private http: HttpClient) { }
 
 }

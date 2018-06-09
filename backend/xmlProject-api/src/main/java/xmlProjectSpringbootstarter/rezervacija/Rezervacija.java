@@ -3,6 +3,7 @@ package xmlProjectSpringbootstarter.rezervacija;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import xmlProjectSpringbootstarter.korisnik.Korisnik;
 
 import java.util.Date;
 
@@ -18,6 +19,7 @@ public class Rezervacija {
     private String smestajId;
     @JsonIgnore
     private String korisnikId;
+    private Korisnik agent;
     private boolean izvrsena;
     private Integer cena;
 
@@ -26,14 +28,23 @@ public class Rezervacija {
 
     }
 
-    public Rezervacija(Date datumDolaska, Date datumOdlaska, String smestajNaziv, String smestajId, String korisnikId, boolean izvrsena, Integer cena) {
+    public Rezervacija(Date datumDolaska, Date datumOdlaska, String smestajNaziv, String smestajId, String korisnikId, Korisnik agent, boolean izvrsena, Integer cena) {
         this.datumDolaska = datumDolaska;
         this.datumOdlaska = datumOdlaska;
         this.smestajNaziv = smestajNaziv;
         this.smestajId = smestajId;
         this.korisnikId = korisnikId;
+        this.agent = agent;
         this.izvrsena = izvrsena;
         this.cena = cena;
+    }
+
+    public Korisnik getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Korisnik agent) {
+        this.agent = agent;
     }
 
     public String getSmestajId() {

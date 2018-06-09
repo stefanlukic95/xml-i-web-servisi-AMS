@@ -1,3 +1,4 @@
+import { Rezervacija } from './../model/rezervacija';
 import { AlertService } from './../alert/alert.service';
 import { RezervacijaService } from './../services/rezervacija.service';
 import { KorisnikService } from './../korisnik/korisnik.service';
