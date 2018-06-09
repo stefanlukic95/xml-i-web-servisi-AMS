@@ -36,6 +36,16 @@ public class KorisnikController {
     }
 
     @RequestMapping(
+            method = RequestMethod.GET,
+            value = "/korisnik/{id}/",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Korisnik> getKorisnikById(@PathVariable("id") String id) {
+        Korisnik korisnik = korisnikService.findOne(id);
+        return new ResponseEntity<Korisnik>(korisnik, HttpStatus.OK);
+    }
+
+    @RequestMapping(
             method = RequestMethod.POST,
             value = "/signup",
             consumes = MediaType.APPLICATION_JSON_VALUE,

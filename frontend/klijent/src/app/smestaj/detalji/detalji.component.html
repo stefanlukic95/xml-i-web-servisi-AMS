@@ -23,7 +23,7 @@
     <div>
     <form (ngSubmit)="f.form.valid && addComment()" class="register-form" #f="ngForm" novalidate>
       <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !comment.valid }">
-        <textarea id="txtarea" type="text" rows="4" placeholder="Unesite tekst komentara ovde..." cols="100" name="comment" [(ngModel)]="koment"
+        <textarea class="form-control" id="txtarea" type="text" rows="4" placeholder="Unesite tekst komentara ovde..." cols="100" name="comment" [(ngModel)]="koment"
           #comment="ngModel" required></textarea>
         <div class="help-block" *ngIf="f.submitted && !comment.valid">Ne mozete objaviti prazan komentar</div>
       </div>

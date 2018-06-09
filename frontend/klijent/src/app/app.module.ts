@@ -1,3 +1,4 @@
+import { NovaPorukaComponent } from './profil/nova-poruka/nova-poruka.component';
 import { RezervacijaService } from './services/rezervacija.service';
 import { KomentarService } from './services/komentar.service';
 import { Interceptor } from './login-core/interceptor';
@@ -25,6 +26,8 @@ import { AlertComponent } from './alert/alert.component';
 import { ProfilComponent } from './profil/profil.component';
 import { SmestajService } from './smestaj/smestaj.service';
 import { DetaljiComponent } from './smestaj/detalji/detalji.component';
+import { PorukaService } from './services/poruka.service';
+
 
 
 @NgModule({
@@ -38,6 +41,7 @@ import { DetaljiComponent } from './smestaj/detalji/detalji.component';
     AlertComponent,
     ProfilComponent,
     DetaljiComponent,
+    NovaPorukaComponent,
 
   ],
   imports: [
@@ -55,6 +59,7 @@ import { DetaljiComponent } from './smestaj/detalji/detalji.component';
     ToggleLoginService,
     KomentarService,
     RezervacijaService,
+    PorukaService,
     {provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,
       multi : true},

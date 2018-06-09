@@ -71,6 +71,7 @@ public class RezervacijaController {
         rezervacija.setSmestajNaziv(smestaj.getNaziv());
         rezervacija.setSmestajId(idSmestaj);
         rezervacija.setKorisnikId(idKorisnik);
+        rezervacija.setAgent(korisnikService.findOne(smestaj.getAgent()));
         Korisnik korisnik = korisnikService.findOne(idKorisnik);
         Rezervacija createdRezervacija  = this.rezervacijaService.create(rezervacija);
         smestaj.getRezervacije().add(createdRezervacija);

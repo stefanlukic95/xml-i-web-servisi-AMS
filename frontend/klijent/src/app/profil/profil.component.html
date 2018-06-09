@@ -13,6 +13,7 @@
     <p>Od: {{r.datumDolaska | date:'dd-MM-yyyy'}}</p>
     <p>Do: {{r.datumOdlaska | date:'dd-MM-yyyy'}}</p>
     <p>Cena: {{r.cena}}</p>
+    <button class="btn btn-primary" [routerLink]="['/profil/poruka/' + r.agent.id]">Kontaktiraj agenta</button>
     <button class="btn btn-danger" (click)="cancelRez(r.id)">Otkazi rezervaciju</button>
   </div>
 </div>
