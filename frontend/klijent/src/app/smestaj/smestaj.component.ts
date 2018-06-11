@@ -29,6 +29,10 @@ export class SmestajComponent implements OnInit {
   izabraneKategorije = [];
   izabraneDodatne = [];
   datumi = [];
+  cena: number;
+  date1: Date;
+  date2: Date;
+  cene = [];
 
   constructor(
     private smestajService: SmestajService,
@@ -60,10 +64,10 @@ export class SmestajComponent implements OnInit {
     //
     //
     //
-    this.smestajService.getSmestaje().subscribe(data => {
+     this.smestajService.getSmestaje().subscribe(data => {
       this.smestaj = data;
       this.rezultati = true;
-    });
+     });
     //
     //
     //
@@ -109,6 +113,18 @@ export class SmestajComponent implements OnInit {
             'Nijedan smestaj ne odgovara zadatom kriterijumu'
           );
         } else {
+          // tslint:disable-next-line:prefer-const
+          let i: number;
+          for (i = 0; i < this.smestaj.length; i++) {
+            this.date1 = new Date(this.model.datumOd);
+            this.date2 = new Date(this.model.datumDo);
+            this.smestaj[i].cena = 0;
+            while (this.date1 <= this.date2) {
+              this.smestaj[i].cena += this.smestaj[i].termini[this.date1.getMonth()].cena;
+              this.date1 = new Date(this.date1.getTime() + (60 * 60 * 24 * 1000));
+           }
+           localStorage.setItem(this.smestaj[i].id, this.smestaj[i].cena.toString());
+          }
           this.rezultati = true;
         }
       });

@@ -1,3 +1,4 @@
+import { NovaPorukaComponent } from './../profil/nova-poruka/nova-poruka.component';
 import { DetaljiComponent } from './../smestaj/detalji/detalji.component';
 import { ProfilComponent } from './../profil/profil.component';
 import { RegistracijaComponent } from './../registracija/registracija.component';
@@ -11,7 +12,8 @@ const routes: Routes = [
   { path: 'registracija', component: RegistracijaComponent },
   { path: 'login', component: LoginComponent},
   { path: 'profil', component: ProfilComponent },
-  { path: 'smestaj/detalji/:smestajId', component: DetaljiComponent}
+  { path: 'smestaj/detalji/:smestajId', component: DetaljiComponent},
+  { path: 'profil/poruka/:agentId', component: NovaPorukaComponent}
 ];
 
 @NgModule({

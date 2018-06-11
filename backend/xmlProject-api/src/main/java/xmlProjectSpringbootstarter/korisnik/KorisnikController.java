@@ -36,6 +36,16 @@ public class KorisnikController {
     }
 
     @RequestMapping(
+            method = RequestMethod.GET,
+            value = "/korisnik/{id}/",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    public ResponseEntity<Korisnik> getKorisnikById(@PathVariable("id") String id) {
+        Korisnik korisnik = korisnikService.findOne(id);
+        return new ResponseEntity<Korisnik>(korisnik, HttpStatus.OK);
+    }
+
+    @RequestMapping(
             method = RequestMethod.POST,
             value = "/signup",
             consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -92,7 +102,7 @@ public class KorisnikController {
     public ResponseEntity<Korisnik> getKorinsik(@PathVariable("id") String id) {
 
         Korisnik korisnik = this.korisnikService.findOne(id);
-        if (korisnik.getUloge().contains("ROLE_AGENT")) {
+        if (korisnik.getUloge().contains("ROLE_USER")) {
             return new ResponseEntity<Korisnik>(korisnik, HttpStatus.OK);
         }else {
             return new ResponseEntity<Korisnik>(HttpStatus.NOT_FOUND);

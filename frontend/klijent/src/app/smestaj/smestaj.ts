@@ -20,6 +20,7 @@ export class Smestaj {
     public termini: Array<Termin>,
     public dodatne_usluge: Array<DodatnaUsluga>,
     public komentari: Array<Komentar>,
+    public cena = 0,
     public id?: string
   ) { }
 }

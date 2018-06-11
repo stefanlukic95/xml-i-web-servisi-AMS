@@ -7,14 +7,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Termin {
     @Id
     private String id;
-    private String mesec;
+    private Integer mesec;
     private int cena;
 
     public Termin(){
 
     }
 
-    public Termin( String mesec, int cena) {
+    public Termin( Integer mesec, int cena) {
         this.mesec = mesec;
         this.cena = cena;
     }
@@ -23,11 +23,11 @@ public class Termin {
         return id;
     }
 
-    public String getMesec() {
+    public Integer getMesec() {
         return mesec;
     }
 
-    public void setMesec(String mesec) {
+    public void setMesec(Integer mesec) {
         this.mesec = mesec;
     }
 
@@ -38,5 +38,6 @@ public class Termin {
     public void setCena(int cena) {
         this.cena = cena;
     }
+
 }
 

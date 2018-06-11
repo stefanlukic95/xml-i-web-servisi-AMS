@@ -10,12 +10,15 @@ import { SmestajService } from '../smestaj.service';
 import { TokenStorage } from '../../login-core/token-storage';
 import * as jwt_decode from 'jwt-decode';
 import { Korisnik } from '../../korisnik/korisnik';
+import { RezervacijaService } from '../../services/rezervacija.service';
+import { Rezervacija } from '../../model/rezervacija';
 
 @Component({
   selector: 'app-detalji',
   templateUrl: './detalji.component.html',
   styleUrls: ['./detalji.component.css']
 })
+
 export class DetaljiComponent implements OnInit {
   smestajId: string;
   smestaj: Smestaj;
@@ -26,6 +29,7 @@ export class DetaljiComponent implements OnInit {
   ime: string;
   bioSmestaj = false;
   korisnik: Korisnik;
+  rezervacija: Rezervacija;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,7 +38,8 @@ export class DetaljiComponent implements OnInit {
     private token: TokenStorage,
     private alertService: AlertService,
     private router: Router,
-    private korisnikService: KorisnikService
+    private korisnikService: KorisnikService,
+    private rezervacijaService: RezervacijaService
     ) {}
 
   ngOnInit() {
@@ -44,8 +49,6 @@ export class DetaljiComponent implements OnInit {
         this.getSmestaj(this.smestajId);
         this.date1 = localStorage.getItem('date1');
         this.date2 = localStorage.getItem('date2');
-        console.log(this.date1);
-        console.log(this.date2);
       });
     }
     if (this.token.getToken() !== null) {
@@ -61,6 +64,7 @@ export class DetaljiComponent implements OnInit {
     this.smestajService.getSmestaj(id).subscribe(
       data => {
         this.smestaj = data;
+        this.smestaj.cena = Number(localStorage.getItem(this.smestajId));
       }
     );
   }
@@ -71,6 +75,7 @@ export class DetaljiComponent implements OnInit {
       this.router.navigate(['login']);
     } else {
       this.sendKomentar();
+      (<HTMLInputElement>document.getElementById('txtarea')).value = '';
       this.alertService.success('Komentar je poslat na odobravanje');
     }
   }
@@ -92,10 +97,9 @@ export class DetaljiComponent implements OnInit {
       this.alertService.error('Morate biti ulogovani da bi rezervisali smestaj', true);
       this.router.navigate(['login']);
     } else {
-      console.log(this.korisnik);
-      console.log(this.smestaj.naziv);
-      console.log(this.date1);
-      console.log(this.date2);
+      this.alertService.success('Uspesno ste rezervisali smestaj');
+      this.rezervacija = new Rezervacija(new Date(this.date1) , new Date(this.date2), this.smestaj.cena);
+      this.rezervacijaService.addRezervacija(this.rezervacija, this.smestajId, this.korisnik.id).subscribe();
     }
   }
 }

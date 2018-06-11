@@ -56,7 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/token/*", "/").permitAll()
                 .antMatchers(HttpMethod.GET, "/dodatneusluge","/kategorija","/tipsmestaja","/smestaj/*").permitAll()
                 .antMatchers(HttpMethod.GET, "/dodatneusluge/*","/kategorija/*","/tipsmestaja/*","/korisnici/*","/korisnici-list/*","/komentari/*").hasAuthority("ROLE_ADMIN")
-                .antMatchers(HttpMethod.POST, "/komentari/*").hasAuthority("ROLE_USER")
+                .antMatchers(HttpMethod.POST, "/komentari/*").hasAnyAuthority()
                 .antMatchers(HttpMethod.POST, "/dodatneusluge/*","/kategorija/*","/tipsmestaja/*","/korisnici/*","/korisnici-list/*").hasAuthority("ROLE_ADMIN")
                 .antMatchers(HttpMethod.PUT, "/dodatneusluge/*","/kategorija/*","/tipsmestaja/*","/korisnici/*","/korisnici-list/*","/komentari/*").hasAuthority("ROLE_ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/dodatneusluge/*","/kategorija/*","/tipsmestaja/*","/korisnici/*","/korisnici-list/*","/komentari/*").hasAuthority("ROLE_ADMIN")
@@ -70,7 +70,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/smestaj/search","/signup","/user/*/","/smestaj");
+        web.ignoring().antMatchers("/smestaj/search","/signup","/user/*/","/smestaj","/korisnik/*/", "/poruka","/soap-api/*");
     }
 
     @Bean

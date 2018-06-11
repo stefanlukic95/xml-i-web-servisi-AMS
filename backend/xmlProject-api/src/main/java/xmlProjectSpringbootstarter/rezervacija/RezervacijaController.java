@@ -11,6 +11,7 @@ import xmlProjectSpringbootstarter.smestaj.Smestaj;
 import xmlProjectSpringbootstarter.smestaj.SmestajService;
 import xmlProjectSpringbootstarter.smestaj.Zauzetost;
 
+import java.util.Calendar;
 import java.util.List;
 
 @RestController
@@ -59,14 +60,20 @@ public class RezervacijaController {
 
     @RequestMapping(
             method = RequestMethod.POST,
-            value = "/rezervacija/{smestajId}/{korisnikId}",
+            value = "/rezervacija",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE
     )
-    public ResponseEntity<Rezervacija> insertRezervacija(@PathVariable ("smestajId") String idSmestaj, @PathVariable ("korisnikId") String idKorisnik, @RequestBody Rezervacija rezervacija) throws Exception{
-        Rezervacija createdRezervacija  = this.rezervacijaService.create(rezervacija);
+    public ResponseEntity<Rezervacija> insertRezervacija(@RequestParam(value = "smestaj", required = true) String idSmestaj, @RequestParam(value = "korisnik", required = true) String idKorisnik, @RequestBody Rezervacija rezervacija) throws Exception{
+
+        rezervacija.setIzvrsena(false);
         Smestaj smestaj = smestajService.findOne(idSmestaj);
+        rezervacija.setSmestajNaziv(smestaj.getNaziv());
+        rezervacija.setSmestajId(idSmestaj);
+        rezervacija.setKorisnikId(idKorisnik);
+        rezervacija.setAgent(korisnikService.findOne(smestaj.getAgent()));
         Korisnik korisnik = korisnikService.findOne(idKorisnik);
+        Rezervacija createdRezervacija  = this.rezervacijaService.create(rezervacija);
         smestaj.getRezervacije().add(createdRezervacija);
         Zauzetost zauz = new Zauzetost(createdRezervacija.getDatumDolaska(), createdRezervacija.getDatumOdlaska());
         smestaj.getZauzeto().add(zauz);
@@ -105,7 +112,53 @@ public class RezervacijaController {
             value = "/rezervacija/{id}"
     )
     public ResponseEntity<Rezervacija> deleteRezervacija(@PathVariable("id") String id){
+        Rezervacija rezervacija = rezervacijaService.findOne(id);
+        Smestaj smestaj = smestajService.findOne(rezervacija.getSmestajId());
+        Korisnik korisnik = korisnikService.findOne(rezervacija.getKorisnikId());
+        Rezervacija rezBrisanjeS = null;
+        Rezervacija rezBrisanjeK = null;
+        Zauzetost zauBrisanje = null;
+
+
+        for(Rezervacija rez : smestaj.getRezervacije()) {
+            if(rez.getId().equals(rezervacija.getId())) {
+                System.out.println("BRISE REZERVACIJU IZ SMESTAJAA");
+                rezBrisanjeS = rez;
+            }
+        }
+
+        for(Zauzetost zau : smestaj.getZauzeto()) {
+            System.out.println("DATUMIIIIIIIIII");
+            System.out.println("pocetak");
+            System.out.println(zau.getDat_pocetak());
+            System.out.println(rezervacija.getDatumDolaska());
+            System.out.println("kraj");
+            System.out.println(zau.getDat_kraj());
+            System.out.println(rezervacija.getDatumOdlaska());
+            Calendar cal1 = Calendar.getInstance();
+            Calendar cal2 = Calendar.getInstance();
+            cal1.setTime(zau.getDat_pocetak());
+            cal2.setTime(rezervacija.getDatumDolaska());
+            if(cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) && cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR)) {
+                System.out.println("DOBRO POREDIIIIIIIIIIIIIIIII");
+                zauBrisanje = zau;
+            }
+        }
+
+        for(Rezervacija rez: korisnik.getRezervacije()) {
+            if(rez.getId().equals(rezervacija.getId())) {
+                System.out.println("BRISE REZERVACIJU IZ KORISNIKA");
+                rezBrisanjeK = rez;
+            }
+        }
+
+        smestaj.getRezervacije().remove(rezBrisanjeS);
+        smestaj.getZauzeto().remove(zauBrisanje);
+        korisnik.getRezervacije().remove(rezBrisanjeK);
+        smestajService.update(smestaj);
+        korisnikService.update(korisnik);
+
         this.rezervacijaService.delete(id);
-        return new ResponseEntity<Rezervacija>(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<Rezervacija>(HttpStatus.OK);
     }
 }
