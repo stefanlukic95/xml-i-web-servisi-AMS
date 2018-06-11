@@ -1,0 +1,18 @@
+<a *ngFor="let SmestajShow of smestaji">
+  <h2>NAZIV SMESTAJA: {{SmestajShow.Naziv}}</h2>
+  
+</a>
+
+<h4>DODAVANJE SMESTAJA</h4>
+
+
+<div>
+    <form #noviSmestajForm="ngForm" (ngSubmit)="noviSmestajSubmit(noviSmestajForm)">
+      <div >
+        <label for="naziv" >Naziv </label>
+        <input type="text" id="naziv" name="naziv"  required ngModel #smestajNaziv="ngModel">
+      </div>
+
+      <button type="submit"  [disabled]="!noviSmestajForm.valid">Dodaj</button>
+      </form>
+    </div>
