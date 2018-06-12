@@ -15,7 +15,6 @@ public class Rezervacija {
     private Date datumDolaska;
     private Date datumOdlaska;
     private String smestajNaziv;
-    @JsonIgnore
     private String smestajId;
     @JsonIgnore
     private String korisnikId;

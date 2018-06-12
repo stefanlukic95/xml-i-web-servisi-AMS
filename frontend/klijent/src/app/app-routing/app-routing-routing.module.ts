@@ -1,3 +1,4 @@
+import { PorukeComponent } from './../poruke/poruke.component';
 import { NovaPorukaComponent } from './../profil/nova-poruka/nova-poruka.component';
 import { DetaljiComponent } from './../smestaj/detalji/detalji.component';
 import { ProfilComponent } from './../profil/profil.component';
@@ -13,7 +14,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'profil', component: ProfilComponent },
   { path: 'smestaj/detalji/:smestajId', component: DetaljiComponent},
-  { path: 'profil/poruka/:agentId', component: NovaPorukaComponent}
+  { path: 'profil/poruka/:agentId', component: NovaPorukaComponent},
+  { path: 'poruke', component: PorukeComponent}
 ];
 
 @NgModule({

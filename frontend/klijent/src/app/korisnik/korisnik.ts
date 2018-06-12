@@ -10,7 +10,8 @@ export class Korisnik {
     public adresa: string,
     public pmb: string,
     public rezervacije: Array<Rezervacija>,
-    public poruke: Array<Poruka>,
+    public primljene_poruke: Array<Poruka>,
+    public poslate_poruke: Array<Poruka>,
     public id?: string
   ) { }
 }

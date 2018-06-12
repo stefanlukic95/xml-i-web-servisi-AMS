@@ -23,3 +23,8 @@
 #meSpan{
   color: #e8491d;
 }
+
+a:link, a:visited, a:active, a:hover {
+  color: White;
+  text-decoration: none
+}

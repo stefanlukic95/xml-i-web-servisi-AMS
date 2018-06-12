@@ -27,6 +27,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { SmestajService } from './smestaj/smestaj.service';
 import { DetaljiComponent } from './smestaj/detalji/detalji.component';
 import { PorukaService } from './services/poruka.service';
+import { PorukeComponent } from './poruke/poruke.component';
 
 
 
@@ -42,6 +43,7 @@ import { PorukaService } from './services/poruka.service';
     ProfilComponent,
     DetaljiComponent,
     NovaPorukaComponent,
+    PorukeComponent,
 
   ],
   imports: [
