@@ -21,16 +21,18 @@
       </div>
     </div>
     <div>
-    <form (ngSubmit)="f.form.valid && addComment()" class="register-form" #f="ngForm" novalidate>
-      <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !comment.valid }">
-        <textarea class="form-control" id="txtarea" type="text" rows="4" placeholder="Unesite tekst komentara ovde..." cols="100" name="comment" [(ngModel)]="koment"
-          #comment="ngModel" required></textarea>
-        <div class="help-block" *ngIf="f.submitted && !comment.valid">Ne mozete objaviti prazan komentar</div>
+      <div *ngIf="dopustenKomentar">
+        <form (ngSubmit)="f.form.valid && addComment()" class="register-form" #f="ngForm" novalidate>
+          <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !comment.valid }">
+            <textarea class="form-control" id="txtarea" type="text" rows="4" placeholder="Unesite tekst komentara ovde..." cols="100"
+              name="comment" [(ngModel)]="koment" #comment="ngModel" required></textarea>
+            <div class="help-block" *ngIf="f.submitted && !comment.valid">Ne mozete objaviti prazan komentar</div>
+          </div>
+          <button class="btn btn-primary">Objavi komentar</button>
+        </form>
       </div>
-      <button class="btn btn-primary">Objavi komentar</button>
-    </form>
-    <div>
-      <button (click)="rezervisi()" class="btn btn-success">Rezervisi</button>
+      <div>
+        <button (click)="rezervisi()" class="btn btn-success">Rezervisi</button>
+      </div>
     </div>
   </div>
-</div>

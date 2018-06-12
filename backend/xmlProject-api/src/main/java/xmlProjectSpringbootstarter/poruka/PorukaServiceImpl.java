@@ -20,17 +20,20 @@ public class PorukaServiceImpl implements PorukaService{
     @Override
     public Poruka newPoruka(Poruka poruka) {
 
+
+        Korisnik posaljilac = korisnikService.findOne(poruka.getPosaljilac());
+        Korisnik primalac = korisnikService.findOne(poruka.getPrimalac());
+        poruka.setPosaljilac(posaljilac.getIme());
+        poruka.setPrimalac(primalac.getIme());
         Poruka por = porukaRepository.insert(poruka);
-        Korisnik posaljilac = korisnikService.findOne(por.getPosaljilac());
-        Korisnik primalac = korisnikService.findOne(por.getPrimalac());
-        if(posaljilac.getPoruke()==null) {
-            posaljilac.setPoruke(new ArrayList<Poruka>());
+        if(posaljilac.getPoslate_poruke()==null) {
+            posaljilac.setPoslate_poruke(new ArrayList<Poruka>());
         }
-        if(primalac.getPoruke()==null) {
-            primalac.setPoruke(new ArrayList<Poruka>());
+        if(primalac.getPrimljene_poruke()==null) {
+            primalac.setPrimljene_poruke(new ArrayList<Poruka>());
         }
-        posaljilac.getPoruke().add(por);
-        primalac.getPoruke().add(por);
+        posaljilac.getPoslate_poruke().add(por);
+        primalac.getPrimljene_poruke().add(por);
         korisnikService.update(posaljilac);
         korisnikService.update(primalac);
         return por;

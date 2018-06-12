@@ -5,7 +5,9 @@ export class Rezervacija {
     public datumOdlaska: Date,
     public cena?: number,
     public smestajNaziv?: string,
+    public smestajId?: string,
     public agent?: Korisnik,
+    public izvrsena?: boolean,
     public id?: string
   ) { }
 }

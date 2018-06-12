@@ -27,9 +27,9 @@ export class DetaljiComponent implements OnInit {
   koment: string;
   komentar: Komentar;
   ime: string;
-  bioSmestaj = false;
   korisnik: Korisnik;
   rezervacija: Rezervacija;
+  dopustenKomentar = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -55,6 +55,11 @@ export class DetaljiComponent implements OnInit {
       this.korisnikService.getKorisnik(jwt_decode(this.token.getToken())).subscribe(
         data => {
           this.korisnik = data;
+          for (const rez of this.korisnik.rezervacije) {
+            if (rez.smestajId === this.smestajId && rez.izvrsena) {
+              this.dopustenKomentar = true;
+            }
+          }
         }
       );
     }

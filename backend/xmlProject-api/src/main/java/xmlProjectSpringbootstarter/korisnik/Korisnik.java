@@ -21,7 +21,8 @@ public class Korisnik {
     private String adresa;
     private String pmb;
     private List<Rezervacija> rezervacije;
-    private List<Poruka> poruke;
+    private List<Poruka> primljene_poruke;
+    private List<Poruka> poslate_poruke;
 
     @JsonIgnore
     private boolean enabled;
@@ -32,7 +33,7 @@ public class Korisnik {
 
     }
 
-    public Korisnik(String ime, String prezime, String email, String password, String brtel, String adresa, String pmb, List<Rezervacija> rezervacije, List<Poruka> poruke, boolean enabled, List<String> uloge) {
+    public Korisnik(String ime, String prezime, String email, String password, String brtel, String adresa, String pmb, List<Rezervacija> rezervacije, List<Poruka> primljene_poruke, List<Poruka> poslate_poruke, boolean enabled, List<String> uloge) {
         this.ime = ime;
         this.prezime = prezime;
         this.email = email;
@@ -41,17 +42,26 @@ public class Korisnik {
         this.adresa = adresa;
         this.pmb = pmb;
         this.rezervacije = rezervacije;
-        this.poruke = poruke;
+        this.primljene_poruke = primljene_poruke;
+        this.poslate_poruke = poslate_poruke;
         this.enabled = enabled;
         this.uloge = uloge;
     }
 
-    public List<Poruka> getPoruke() {
-        return poruke;
+    public List<Poruka> getPrimljene_poruke() {
+        return primljene_poruke;
     }
 
-    public void setPoruke(List<Poruka> poruke) {
-        this.poruke = poruke;
+    public void setPrimljene_poruke(List<Poruka> primljene_poruke) {
+        this.primljene_poruke = primljene_poruke;
+    }
+
+    public List<Poruka> getPoslate_poruke() {
+        return poslate_poruke;
+    }
+
+    public void setPoslate_poruke(List<Poruka> poslate_poruke) {
+        this.poslate_poruke = poslate_poruke;
     }
 
     public String getAdresa() {

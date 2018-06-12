@@ -9,6 +9,9 @@
     <li *ngIf="!isLoggedIn">
       <a routerLink='/registracija'>Registracija</a>
     </li>
+    <li *ngIf="isLoggedIn">
+      <a routerLink='/poruke'>Poruke</a>
+    </li>
   </ul>
 </div>
 <div *ngIf="isLoggedIn" class="logoutLblPos">
