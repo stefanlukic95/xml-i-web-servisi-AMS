@@ -1,11 +1,9 @@
 package xmlProjectSpringbootstarter.smestaj;
 
-
 import javax.jws.WebService;
 
 @WebService
-public interface SmestajSOAPService {
+public interface ZauzetostSOAPService {
 
-    Smestaj create(Smestaj smestaj);
-
+    Zauzetost create(Zauzetost zauzetost);
 }
