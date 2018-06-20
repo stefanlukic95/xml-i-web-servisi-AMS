@@ -4,6 +4,7 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
+import smestaj.AddSmestajResponse;
 
 @Endpoint
 public class SmestajEndPoint {
@@ -11,9 +12,10 @@ public class SmestajEndPoint {
 
     private SmestajService smestajService;
 
-    /*@PayloadRoot(namespace = "", localPart = "SmestajResponse")
+    /*@PayloadRoot(namespace = NAMESPACE_URI, localPart = "AddSmestajResponse")
     @ResponsePayload
-    public SmestajResponse insertSmestaj(@RequestPayload Smestaj request) {
+    public AddSmestajResponse insertSmestaj(@RequestPayload Smestaj response) {
+        AddSmestajResponse responsee = new AddSmestajResponse();
 
     }*/
 }
