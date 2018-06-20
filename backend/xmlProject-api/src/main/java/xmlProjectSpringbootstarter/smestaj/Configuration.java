@@ -1,3 +1,4 @@
+/*
 package xmlProjectSpringbootstarter.smestaj;
 
 import javax.xml.ws.Endpoint;
@@ -25,3 +26,4 @@ public class Configuration {
         return endpoint;                               // pri tome je putanja_do_cxf_servleta definisana u application.properties
     }
 }
+*/

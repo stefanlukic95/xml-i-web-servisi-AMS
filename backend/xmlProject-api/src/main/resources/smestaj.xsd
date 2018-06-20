@@ -1,48 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
     targetNamespace="smestaj" xmlns:sm="smestaj">
-    <xs:element name="smestaj">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="tip_smestaja" type="sm:tip_smestaja"/>
-                <xs:element name="kategorija" type="sm:kategorija"/>
-                <xs:element name="drzava" type="sm:drzava"/>
-                <xs:element name="naseljeno_mesto" type="sm:naseljeno_mesto"/>
-                <xs:element name="ocena" type="sm:ocena"/>
-                <xs:element name="adresa">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string"/>
-                    </xs:simpleType>
-                </xs:element>
-                <xs:element name="kapacitet">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:integer">
-                            <xs:minInclusive value="1"/>
-                            <xs:maxInclusive value="10"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:element>
-                <xs:element name="opis">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string">
-                            <xs:minLength value="3"/>
-                            <xs:maxLength value="200"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:element>
-                <xs:element name="slika">
-                    <xs:simpleType>
-                        <xs:restriction base="xs:string">
-                            <xs:maxLength value="255"/>
-                            <xs:minLength value="3"/>
-                        </xs:restriction>
-                    </xs:simpleType>
-                </xs:element>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+    <xs:complexType name="smestaj">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="naziv" type="xs:string"/>
+            <xs:element name="kapacitet" type="xs:int"/>
+            <xs:element name="naseljeno_mesto" type="sm:naseljeno_mesto"/>
+            <xs:element name="opis" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" name="slike" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="rezervacije" type="sm:rezervacija"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="zauzeto" type="sm:zauzetost"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="komentari" type="sm:komentar"/>
+            <xs:element name="agent" type="sm:radnik"/>
+            <xs:element name="tip_smestaja" type="sm:tip_smestaja"/>
+            <xs:element name="kategorija_smestaja" type="sm:kategorija"/>
+            <xs:element maxOccurs="12" minOccurs="12" name="termini" type="sm:termin"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="dodtane_usluge"
+                type="sm:dodatna_usluga"/>
+        </xs:sequence>
+    </xs:complexType>
     <xs:complexType name="lice">
         <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
             <xs:element name="ime">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
@@ -51,7 +31,6 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
-            <xs:element name="poruka" type="sm:poruka"/>
             <xs:element name="prezime">
                 <xs:simpleType>
                     <xs:restriction base="xs:string">
@@ -69,18 +48,12 @@
                     </xs:restriction>
                 </xs:simpleType>
             </xs:element>
-        </xs:sequence>
-    </xs:complexType>
-    <xs:complexType name="termin">
-        <xs:sequence>
-            <xs:element name="mesec" type="xs:gMonth"/>
-            <xs:element name="cena">
-                <xs:simpleType>
-                    <xs:restriction base="xs:int">
-                        <xs:minInclusive value="0"/>
-                    </xs:restriction>
-                </xs:simpleType>
-            </xs:element>
+            <xs:element name="email" type="xs:string"/>
+            <xs:element name="password" type="xs:string"/>
+            <xs:element name="adresa" type="xs:string"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="rezervacije" type="sm:rezervacija"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="primljene_poruke" type="sm:poruka"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="poslate_poruke" type="sm:poruka"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="posetilac">
@@ -104,40 +77,35 @@
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:simpleType name="tip_smestaja">
-        <xs:restriction base="xs:string">
-            <xs:minLength value="3"/>
-            <xs:maxLength value="30"/>
-        </xs:restriction>
-    </xs:simpleType>
+    <xs:complexType name="termin">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="mesec" type="xs:int"/>
+            <xs:element name="cena">
+                <xs:simpleType>
+                    <xs:restriction base="xs:int">
+                        <xs:minInclusive value="0"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
     <xs:complexType name="komentar">
         <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="ime" type="xs:string"/>
             <xs:element name="sadrzaj">
                 <xs:simpleType>
                     <xs:restriction base="xs:string"/>
                 </xs:simpleType>
             </xs:element>
-            <xs:element name="odobren">
-                <xs:simpleType>
-                    <xs:restriction base="xs:boolean"/>
-                </xs:simpleType>
-            </xs:element>
+            <xs:element name="odobren" type="xs:boolean"> </xs:element>
+            <xs:element name="idSmestaja" type="xs:string"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:simpleType name="kategorija">
-        <xs:restriction base="xs:string">
-            <xs:minLength value="3"/>
-            <xs:maxLength value="30"/>
-        </xs:restriction>
-    </xs:simpleType>
-    <xs:simpleType name="dodatna_usluga">
-        <xs:restriction base="xs:string">
-            <xs:minLength value="3"/>
-            <xs:maxLength value="30"/>
-        </xs:restriction>
-    </xs:simpleType>
     <xs:complexType name="drzava">
         <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
             <xs:element name="naziv">
                 <xs:simpleType>
                     <xs:restriction base="xs:string"/>
@@ -152,6 +120,7 @@
     </xs:complexType>
     <xs:complexType name="naseljeno_mesto">
         <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
             <xs:element name="naziv">
                 <xs:simpleType>
                     <xs:restriction base="xs:string"/>
@@ -162,13 +131,12 @@
                     <xs:restriction base="xs:string"/>
                 </xs:simpleType>
             </xs:element>
+            <xs:element name="drzava" type="sm:drzava"/>
         </xs:sequence>
     </xs:complexType>
-    <xs:simpleType name="ocena">
-        <xs:restriction base="xs:string"/>
-    </xs:simpleType>
     <xs:complexType name="poruka">
         <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
             <xs:element name="sadrzaj">
                 <xs:simpleType>
                     <xs:restriction base="xs:string"/>
@@ -186,4 +154,69 @@
             </xs:element>
         </xs:sequence>
     </xs:complexType>
+    <xs:complexType name="tip_smestaja">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="naziv" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="kategorija">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="naziv" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="dodatna_usluga">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="naziv" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ocena">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="smestaj" type="xs:string"/>
+            <xs:element name="ocena" type="xs:double"/>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="korisnici" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="rezervacija">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="datum_dolaska" type="xs:date"/>
+            <xs:element name="datum_odlaska" type="xs:date"/>
+            <xs:element name="naziv_smestaja" type="xs:string"/>
+            <xs:element name="id_smestaja" type="xs:string"/>
+            <xs:element name="id_korisnika" type="xs:string"/>
+            <xs:element name="agent" type="sm:radnik"/>
+            <xs:element name="izvrseno" type="xs:boolean"/>
+            <xs:element name="cena" type="xs:int"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="zauzetost">
+        <xs:sequence>
+            <xs:element name="datum_pocetka" type="xs:date"/>
+            <xs:element name="datum_kraja" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+
+
+
+    <xs:element name="addSmestajRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="smestaj" type="sm:smestaj"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addSmestajResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="name" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>
