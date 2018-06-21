@@ -8,6 +8,8 @@
 
 package smestaj;
 
+import xmlProjectSpringbootstarter.tipsmestaja.Tipsmestaja;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
@@ -44,7 +46,7 @@ import javax.xml.bind.annotation.XmlType;
 public class GetTipoviResponse {
 
     @XmlElement(required = true)
-    protected List<TipSmestaja> tip;
+    protected List<Tipsmestaja> tip;
 
     /**
      * Gets the value of the tip property.
@@ -68,11 +70,14 @@ public class GetTipoviResponse {
      * 
      * 
      */
-    public List<TipSmestaja> getTip() {
+    public List<Tipsmestaja> getTip() {
         if (tip == null) {
-            tip = new ArrayList<TipSmestaja>();
+            tip = new ArrayList<Tipsmestaja>();
         }
         return this.tip;
     }
 
+    public void setTip(List<Tipsmestaja> tip) {
+        this.tip = tip;
+    }
 }

@@ -44,7 +44,7 @@ import javax.xml.bind.annotation.XmlType;
 public class GetKategorijeResponse {
 
     @XmlElement(required = true)
-    protected List<Kategorija> kategorija;
+    protected List<xmlProjectSpringbootstarter.kategorija.Kategorija> kategorija;
 
     /**
      * Gets the value of the kategorija property.
@@ -68,11 +68,14 @@ public class GetKategorijeResponse {
      * 
      * 
      */
-    public List<Kategorija> getKategorija() {
+    public List<xmlProjectSpringbootstarter.kategorija.Kategorija> getKategorija() {
         if (kategorija == null) {
-            kategorija = new ArrayList<Kategorija>();
+            kategorija = new ArrayList<xmlProjectSpringbootstarter.kategorija.Kategorija>();
         }
         return this.kategorija;
     }
 
+    public void setKategorija(List<xmlProjectSpringbootstarter.kategorija.Kategorija> kategorija) {
+        this.kategorija = kategorija;
+    }
 }

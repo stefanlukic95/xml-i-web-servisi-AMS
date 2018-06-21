@@ -1,5 +1,7 @@
 package xmlProjectSpringbootstarter.tipsmestaja;
 
+import smestaj.TipSmestaja;
+
 import java.util.List;
 
 public interface TipsmestajaService {

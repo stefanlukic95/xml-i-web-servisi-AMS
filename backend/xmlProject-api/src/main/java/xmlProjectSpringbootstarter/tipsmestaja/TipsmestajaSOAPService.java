@@ -7,4 +7,5 @@ import javax.jws.WebService;
 public interface TipsmestajaSOAPService {
 
     Tipsmestaja create(Tipsmestaja tipsmestaja);
+
 }

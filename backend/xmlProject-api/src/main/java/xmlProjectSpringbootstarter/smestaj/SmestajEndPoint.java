@@ -5,12 +5,20 @@ import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
-import smestaj.GetCoountryRequest;
-import smestaj.GetCountryResponse;
+import smestaj.*;
 import xmlProjectSpringbootstarter.drzava.Drzava;
 import xmlProjectSpringbootstarter.drzava.DrzavaDAO;
 import xmlProjectSpringbootstarter.drzava.DrzavaSOAPService;
 import xmlProjectSpringbootstarter.drzava.DrzavaService;
+import xmlProjectSpringbootstarter.kategorija.Kategorija;
+import xmlProjectSpringbootstarter.kategorija.KategorijaService;
+import xmlProjectSpringbootstarter.tipsmestaja.Tipsmestaja;
+import xmlProjectSpringbootstarter.tipsmestaja.TipsmestajaSOAPService;
+import xmlProjectSpringbootstarter.tipsmestaja.TipsmestajaService;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 //import smestaj.AddSmestajResponse;
 
 @Endpoint
@@ -33,7 +41,14 @@ public class SmestajEndPoint {
     @Autowired
     private  DrzavaService drzavaService;
 
+    @Autowired
+    private TipsmestajaService tipsmestajaService;
 
+    @Autowired
+    private TipsmestajaSOAPService tipsmestajaSOAPService;
+
+    @Autowired
+    private KategorijaService kategorijaService;
 
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getCoountryRequest")
@@ -54,6 +69,40 @@ public class SmestajEndPoint {
         response.setDrzava(drz2);
 
         return response;
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getTipoviRequest")
+    @ResponsePayload
+    public GetTipoviResponse getTipovi(@RequestPayload GetTipoviRequest request){
+
+        GetTipoviResponse response = new GetTipoviResponse();
+
+        List<Tipsmestaja> tipsmestaja = tipsmestajaService.findAll();
+
+        List<Tipsmestaja> tipsmestaja2 = new ArrayList<>();
+
+        tipsmestaja2.addAll(tipsmestaja);
+
+        response.setTip(tipsmestaja2);
+        return response;
+
+    }
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getKategorijeRequest")
+    @ResponsePayload
+    public GetKategorijeResponse getTipovi(@RequestPayload GetKategorijeRequest request){
+
+        GetKategorijeResponse response = new GetKategorijeResponse();
+
+        List<Kategorija> kategorija = kategorijaService.findAll();
+
+        List<Kategorija> kategorija2 = new ArrayList<>();
+
+        kategorija2.addAll(kategorija);
+
+        response.setKategorija(kategorija2);
+        return response;
+
     }
 
 
