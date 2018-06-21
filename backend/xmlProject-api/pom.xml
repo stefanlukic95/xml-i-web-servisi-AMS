@@ -78,14 +78,13 @@
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-
             <plugin>
+
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>jaxb2-maven-plugin</artifactId>
                 <version>1.6</version>
@@ -103,8 +102,6 @@
                     <clearOutputDir>false</clearOutputDir>
                 </configuration>
             </plugin>
-
-
         </plugins>
     </build>
 

@@ -68,7 +68,7 @@ public class TerminController {
         Termin termini = this.terminService.findOne(id);
 
         if(termini == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Termin>(HttpStatus.NOT_FOUND);
         }
         Termin updateTermin = this.terminService.update(termin);
         if (updateTermin == null) {
@@ -76,7 +76,7 @@ public class TerminController {
                     HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
-        return new ResponseEntity<>(updateTermin, HttpStatus.OK);
+        return new ResponseEntity<Termin>(updateTermin, HttpStatus.OK);
     }
 
 

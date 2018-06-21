@@ -8,6 +8,8 @@
 
 package smestaj;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -25,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="name" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="tip" type="{smestaj}tip_smestaja" maxOccurs="unbounded"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +38,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "name"
+    "tip"
 })
-@XmlRootElement(name = "addSmestajResponse")
-public class AddSmestajResponse {
+@XmlRootElement(name = "getTipoviResponse")
+public class GetTipoviResponse {
 
     @XmlElement(required = true)
-    protected String name;
+    protected List<TipSmestaja> tip;
 
     /**
-     * Gets the value of the name property.
+     * Gets the value of the tip property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Sets the value of the name property.
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the tip property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getTip().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link TipSmestaja }
+     * 
+     * 
      */
-    public void setName(String value) {
-        this.name = value;
+    public List<TipSmestaja> getTip() {
+        if (tip == null) {
+            tip = new ArrayList<TipSmestaja>();
+        }
+        return this.tip;
     }
 
 }

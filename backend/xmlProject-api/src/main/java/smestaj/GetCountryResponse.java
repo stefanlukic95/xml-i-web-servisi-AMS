@@ -11,21 +11,21 @@ package smestaj;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for kategorija complex type.
+ * <p>Java class for anonymous complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="kategorija">
+ * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="naziv" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="drzava" type="{smestaj}drzava"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,63 +35,37 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "kategorija", propOrder = {
-    "id",
-    "naziv"
+@XmlType(name = "", propOrder = {
+    "drzava"
 })
-public class Kategorija {
+@XmlRootElement(name = "getCountryResponse")
+public class GetCountryResponse {
 
     @XmlElement(required = true)
-    protected String id;
-    @XmlElement(required = true)
-    protected String naziv;
+    protected Drzava drzava;
 
     /**
-     * Gets the value of the id property.
+     * Gets the value of the drzava property.
      * 
      * @return
      *     possible object is
-     *     {@link String }
+     *     {@link Drzava }
      *     
      */
-    public String getId() {
-        return id;
+    public Drzava getDrzava() {
+        return drzava;
     }
 
     /**
-     * Sets the value of the id property.
+     * Sets the value of the drzava property.
      * 
      * @param value
      *     allowed object is
-     *     {@link String }
+     *     {@link Drzava }
      *     
      */
-    public void setId(String value) {
-        this.id = value;
-    }
-
-    /**
-     * Gets the value of the naziv property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNaziv() {
-        return naziv;
-    }
-
-    /**
-     * Sets the value of the naziv property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNaziv(String value) {
-        this.naziv = value;
+    public void setDrzava(Drzava value) {
+        this.drzava = value;
     }
 
 }

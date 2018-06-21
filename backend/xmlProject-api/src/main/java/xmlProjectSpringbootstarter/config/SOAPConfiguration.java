@@ -1,3 +1,4 @@
+
 package xmlProjectSpringbootstarter.config;
 
 import org.springframework.context.ApplicationContext;
@@ -32,11 +33,12 @@ public class SOAPConfiguration extends WsConfigurerAdapter {
     }
 
     @Bean("smestaj")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema bookingSchema){
+    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema smestajSchema){
 
         DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
-        definition.setSchema(bookingSchema);
+        definition.setSchema(smestajSchema);
         definition.setLocationUri("/soapWs");
+        definition.setTargetNamespace("smestaj");
         definition.setPortTypeName("SmestajServicePort");
         definition.setServiceName("SmestajService");
 
