@@ -75,4 +75,7 @@ public class GetDodatneUslugeResponse {
         return this.dodatnaUsluga;
     }
 
+    public void setDodatnaUsluga(List<DodatnaUsluga> dodatnaUsluga) {
+        this.dodatnaUsluga = dodatnaUsluga;
+    }
 }

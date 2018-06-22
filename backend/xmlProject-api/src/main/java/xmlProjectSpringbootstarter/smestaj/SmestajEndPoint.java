@@ -6,6 +6,8 @@ import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 import smestaj.*;
+import xmlProjectSpringbootstarter.dodatnaUsluga.DodatnaUsluga;
+import xmlProjectSpringbootstarter.dodatnaUsluga.DodatnaUslugaService;
 import xmlProjectSpringbootstarter.drzava.Drzava;
 import xmlProjectSpringbootstarter.drzava.DrzavaDAO;
 import xmlProjectSpringbootstarter.drzava.DrzavaSOAPService;
@@ -49,6 +51,9 @@ public class SmestajEndPoint {
 
     @Autowired
     private KategorijaService kategorijaService;
+
+    @Autowired
+    private DodatnaUslugaService dodatnaUslugaService;
 
 
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getCoountryRequest")
@@ -116,5 +121,27 @@ public class SmestajEndPoint {
 
     }
 
+
+    @PayloadRoot(namespace = NAMESPACE_URI, localPart = "getDodatneUslugeRequest")
+    @ResponsePayload
+    public GetDodatneUslugeResponse getDodatneUsluge(@RequestPayload GetDodatneUslugeRequest request){
+
+        GetDodatneUslugeResponse response = new GetDodatneUslugeResponse();
+
+        List<DodatnaUsluga> dusluga = dodatnaUslugaService.findAll();
+
+        List<smestaj.DodatnaUsluga> dusluga2 = new ArrayList<>();
+
+
+        for(DodatnaUsluga d: dusluga){
+            smestaj.DodatnaUsluga dus = new smestaj.DodatnaUsluga();
+            dus.setId(d.getId());
+            dus.setNaziv(d.getNaziv());
+            dusluga2.add(dus);
+        }
+
+        response.setDodatnaUsluga(dusluga2);
+        return response;
+    }
 
 }
