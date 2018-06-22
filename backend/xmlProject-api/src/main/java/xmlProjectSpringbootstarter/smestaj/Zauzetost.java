@@ -13,6 +13,10 @@ public class Zauzetost {
         this.dat_kraj = dat_kraj;
     }
 
+    public Zauzetost() {
+
+    }
+
     public Date getDat_pocetak() {
         return dat_pocetak;
     }

@@ -2,7 +2,6 @@ package xmlProjectSpringbootstarter.tipsmestaja;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import smestaj.TipSmestaja;
 
 @Document (collection = "Tipsmestaja")
 public class Tipsmestaja {

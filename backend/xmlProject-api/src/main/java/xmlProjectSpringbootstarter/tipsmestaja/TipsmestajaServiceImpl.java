@@ -2,7 +2,7 @@ package xmlProjectSpringbootstarter.tipsmestaja;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import smestaj.TipSmestaja;
+
 
 import java.util.List;
 

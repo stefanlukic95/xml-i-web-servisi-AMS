@@ -25,7 +25,7 @@ public class KomentariServiceImpl implements KomentariService{
     }
 
     @Override
-    public Komentari create(Komentari komentar) throws Exception {
+    public Komentari create(Komentari komentar) {
         Komentari savedKomentar = this.komentariRepository.insert(komentar);
         return savedKomentar;
     }
