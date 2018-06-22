@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.XmlType;
 public class GetTipoviResponse {
 
     @XmlElement(required = true)
-    protected List<Tipsmestaja> tip;
+    protected List<TipSmestaja> tip;
 
     /**
      * Gets the value of the tip property.
@@ -70,14 +70,14 @@ public class GetTipoviResponse {
      * 
      * 
      */
-    public List<Tipsmestaja> getTip() {
+    public List<TipSmestaja> getTip() {
         if (tip == null) {
-            tip = new ArrayList<Tipsmestaja>();
+            tip = new ArrayList<TipSmestaja>();
         }
         return this.tip;
     }
 
-    public void setTip(List<Tipsmestaja> tip) {
+    public void setTip(List<TipSmestaja> tip) {
         this.tip = tip;
     }
 }

@@ -64,8 +64,6 @@ public class SmestajEndPoint {
         drz2.setId(drz.getId());
         drz2.setNaziv(drz.getNaziv());
         drz2.setSifra(drz.getSifra());
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-        System.out.println(drz2.getNaziv());
         response.setDrzava(drz2);
 
         return response;
@@ -79,9 +77,16 @@ public class SmestajEndPoint {
 
         List<Tipsmestaja> tipsmestaja = tipsmestajaService.findAll();
 
-        List<Tipsmestaja> tipsmestaja2 = new ArrayList<>();
+        List<TipSmestaja> tipsmestaja2 = new ArrayList<>();
 
-        tipsmestaja2.addAll(tipsmestaja);
+
+        for(Tipsmestaja t: tipsmestaja){
+            smestaj.TipSmestaja tip = new smestaj.TipSmestaja();
+            tip.setId(t.getId());
+            tip.setNaziv(t.getNaziv());
+            tipsmestaja2.add(tip);
+        }
+
 
         response.setTip(tipsmestaja2);
         return response;
@@ -96,9 +101,15 @@ public class SmestajEndPoint {
 
         List<Kategorija> kategorija = kategorijaService.findAll();
 
-        List<Kategorija> kategorija2 = new ArrayList<>();
+        List<smestaj.Kategorija> kategorija2 = new ArrayList<>();
 
-        kategorija2.addAll(kategorija);
+
+        for(Kategorija k: kategorija){
+            smestaj.Kategorija kat = new smestaj.Kategorija();
+            kat.setId(k.getId());
+            kat.setNaziv(k.getNaziv());
+            kategorija2.add(kat);
+        }
 
         response.setKategorija(kategorija2);
         return response;
