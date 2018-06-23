@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch="smestaj" xmlns:tns="smestaj" targetNamespace="smestaj" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:sm="smestaj" elementFormDefault="qualified" targetNamespace="smestaj" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="smestaj">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" />
+          <xs:element name="naziv" type="xs:string" />
+          <xs:element name="kapacitet" type="xs:int" />
+          <xs:element name="naseljeno_mesto" type="sm:naseljeno_mesto" />
+          <xs:element name="opis" type="xs:string" />
+          <xs:element maxOccurs="unbounded" name="slike" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="rezervacije" type="sm:rezervacija" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="zauzeto" type="sm:zauzetost" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="komentari" type="sm:komentar" />
+          <xs:element name="agent" type="sm:radnik" />
+          <xs:element name="tip_smestaja" type="sm:tip_smestaja" />
+          <xs:element name="kategorija_smestaja" type="sm:kategorija" />
+          <xs:element minOccurs="12" maxOccurs="12" name="termini" type="sm:termin" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="dodtane_usluge" type="sm:dodatna_usluga" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="lice">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" />
+          <xs:element name="ime">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="20" />
+                <xs:minLength value="2" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="prezime">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:minLength value="2" />
+                <xs:whiteSpace value="preserve" />
+                <xs:maxLength value="30" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element maxOccurs="unbounded" name="broj_telefona">
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:minLength value="7" />
+                <xs:maxLength value="15" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="email" type="xs:string" />
+          <xs:element name="password" type="xs:string" />
+          <xs:element name="adresa" type="xs:string" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="rezervacije" type="sm:rezervacija" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="primljene_poruke" type="sm:poruka" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="poslate_poruke" type="sm:poruka" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="posetilac">
+        <xs:complexContent mixed="false">
+          <xs:extension base="sm:lice" />
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="radnik">
+        <xs:complexContent mixed="false">
+          <xs:extension base="sm:lice">
+            <xs:sequence>
+              <xs:element name="pmb">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:minLength value="3" />
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="termin">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" />
+          <xs:element name="mesec" type="xs:int" />
+          <xs:element name="cena">
+            <xs:simpleType>
+              <xs:restriction base="xs:int">
+                <xs:minInclusive value="0" />
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="komentar">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" />
+          <xs:element name="ime" type="xs:string" />
+          <xs:element name="sadrzaj">
+            <xs:simpleType>
+              <xs:restriction base="xs:string" />
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="odobren" type="xs:boolean" />
+          <xs:element name="idSmestaja" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="drzava">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" />
+          <xs:element name="naziv">
+            <xs:simpleType>
+              <xs:restriction base="xs:string" />
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="sifra">
+            <xs:simpleType>
+              <xs:restriction base="xs:string" />
+            </xs:simpleType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="naseljeno_mesto">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" />
+          <xs:element name="naziv">
+            <xs:simpleType>
+              <xs:restriction base="xs:string" />
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="pttBroj">
+            <xs:simpleType>
+              <xs:restriction base="xs:string" />
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="drzava" type="sm:drzava" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="poruka">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" />
+          <xs:element name="sadrzaj">
+            <xs:simpleType>
+              <xs:restriction base="xs:string" />
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="posaljilac">
+            <xs:simpleType>
+              <xs:restriction base="xs:string" />
+            </xs:simpleType>
+          </xs:element>
+          <xs:element name="primalac">
+            <xs:simpleType>
+              <xs:restriction base="xs:string" />
+            </xs:simpleType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="tip_smestaja">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" />
+          <xs:element name="naziv" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="kategorija">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" />
+          <xs:element name="naziv" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="dodatna_usluga">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" />
+          <xs:element name="naziv" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="ocena">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" />
+          <xs:element name="smestaj" type="xs:string" />
+          <xs:element name="ocena" type="xs:double" />
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="korisnici" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="rezervacija">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" />
+          <xs:element name="datum_dolaska" type="xs:date" />
+          <xs:element name="datum_odlaska" type="xs:date" />
+          <xs:element name="naziv_smestaja" type="xs:string" />
+          <xs:element name="id_smestaja" type="xs:string" />
+          <xs:element name="id_korisnika" type="xs:string" />
+          <xs:element name="agent" type="sm:radnik" />
+          <xs:element name="izvrseno" type="xs:boolean" />
+          <xs:element name="cena" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="zauzetost">
+        <xs:sequence>
+          <xs:element name="datum_pocetka" type="xs:date" />
+          <xs:element name="datum_kraja" type="xs:date" />
+          <xs:element name="idSmestaja" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="addSmestajRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="smestaj" type="sm:smestaj" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addSmestajResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCountryResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="drzava" type="sm:drzava" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getCoountryRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="id" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getTipoviRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getTipoviResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="tip" type="sm:tip_smestaja" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getKategorijeRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getKategorijeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="kategorija" type="sm:kategorija" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getDodatneUslugeRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="name" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getDodatneUslugeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" name="dodatna_usluga" type="sm:dodatna_usluga" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addZauzetostRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="zauzetost" type="sm:zauzetost" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="addZauzetostResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="message" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAgentRequest">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="email" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getAgentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="agent" type="sm:radnik" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addZauzetostRequest">
+    <wsdl:part name="addZauzetostRequest" element="tns:addZauzetostRequest" />
+  </wsdl:message>
+  <wsdl:message name="getDodatneUslugeRequest">
+    <wsdl:part name="getDodatneUslugeRequest" element="tns:getDodatneUslugeRequest" />
+  </wsdl:message>
+  <wsdl:message name="getTipoviResponse">
+    <wsdl:part name="getTipoviResponse" element="tns:getTipoviResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDodatneUslugeResponse">
+    <wsdl:part name="getDodatneUslugeResponse" element="tns:getDodatneUslugeResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAgentResponse">
+    <wsdl:part name="getAgentResponse" element="tns:getAgentResponse" />
+  </wsdl:message>
+  <wsdl:message name="addZauzetostResponse">
+    <wsdl:part name="addZauzetostResponse" element="tns:addZauzetostResponse" />
+  </wsdl:message>
+  <wsdl:message name="getKategorijeRequest">
+    <wsdl:part name="getKategorijeRequest" element="tns:getKategorijeRequest" />
+  </wsdl:message>
+  <wsdl:message name="getAgentRequest">
+    <wsdl:part name="getAgentRequest" element="tns:getAgentRequest" />
+  </wsdl:message>
+  <wsdl:message name="getKategorijeResponse">
+    <wsdl:part name="getKategorijeResponse" element="tns:getKategorijeResponse" />
+  </wsdl:message>
+  <wsdl:message name="addSmestajRequest">
+    <wsdl:part name="addSmestajRequest" element="tns:addSmestajRequest" />
+  </wsdl:message>
+  <wsdl:message name="getCountryResponse">
+    <wsdl:part name="getCountryResponse" element="tns:getCountryResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTipoviRequest">
+    <wsdl:part name="getTipoviRequest" element="tns:getTipoviRequest" />
+  </wsdl:message>
+  <wsdl:message name="addSmestajResponse">
+    <wsdl:part name="addSmestajResponse" element="tns:addSmestajResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCoountryRequest">
+    <wsdl:part name="getCoountryRequest" element="tns:getCoountryRequest" />
+  </wsdl:message>
+  <wsdl:portType name="SmestajServicePort">
+    <wsdl:operation name="addZauzetost">
+      <wsdl:input name="addZauzetostRequest" message="tns:addZauzetostRequest" />
+      <wsdl:output name="addZauzetostResponse" message="tns:addZauzetostResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getDodatneUsluge">
+      <wsdl:input name="getDodatneUslugeRequest" message="tns:getDodatneUslugeRequest" />
+      <wsdl:output name="getDodatneUslugeResponse" message="tns:getDodatneUslugeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getTipovi">
+      <wsdl:input name="getTipoviRequest" message="tns:getTipoviRequest" />
+      <wsdl:output name="getTipoviResponse" message="tns:getTipoviResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getAgent">
+      <wsdl:input name="getAgentRequest" message="tns:getAgentRequest" />
+      <wsdl:output name="getAgentResponse" message="tns:getAgentResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getKategorije">
+      <wsdl:input name="getKategorijeRequest" message="tns:getKategorijeRequest" />
+      <wsdl:output name="getKategorijeResponse" message="tns:getKategorijeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="addSmestaj">
+      <wsdl:input name="addSmestajRequest" message="tns:addSmestajRequest" />
+      <wsdl:output name="addSmestajResponse" message="tns:addSmestajResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCountry">
+      <wsdl:output name="getCountryResponse" message="tns:getCountryResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getCoountry">
+      <wsdl:input name="getCoountryRequest" message="tns:getCoountryRequest" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SmestajServicePortSoap11" type="tns:SmestajServicePort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="addZauzetost">
+      <soap:operation soapAction="" />
+      <wsdl:input name="addZauzetostRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addZauzetostResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDodatneUsluge">
+      <soap:operation soapAction="" />
+      <wsdl:input name="getDodatneUslugeRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getDodatneUslugeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTipovi">
+      <soap:operation soapAction="" />
+      <wsdl:input name="getTipoviRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getTipoviResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAgent">
+      <soap:operation soapAction="" />
+      <wsdl:input name="getAgentRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getAgentResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getKategorije">
+      <soap:operation soapAction="" />
+      <wsdl:input name="getKategorijeRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getKategorijeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addSmestaj">
+      <soap:operation soapAction="" />
+      <wsdl:input name="addSmestajRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="addSmestajResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCountry">
+      <soap:operation soapAction="" />
+      <wsdl:output name="getCountryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCoountry">
+      <soap:operation soapAction="" />
+      <wsdl:input name="getCoountryRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SmestajService">
+    <wsdl:port name="SmestajServicePortSoap11" binding="tns:SmestajServicePortSoap11">
+      <soap:address location="http://localhost:8080/soapWs" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
